@@ -34,30 +34,33 @@
     requestAnimationFrame(() => el.classList.add("is-visible"));
   });
 
+  function handleContactSubmit(event) {
+    if (event) event.preventDefault();
+    const data = new FormData(form);
+    const name = String(data.get("name") || "").trim();
+    const phone = String(data.get("phone") || "").trim();
+    const email = String(data.get("email") || "").trim();
+
+    if (!name || !phone || !email) {
+      note.textContent = "נא למלא שם, טלפון ואימייל.";
+      note.classList.add("is-error");
+      return false;
+    }
+
+    note.classList.remove("is-error");
+    note.textContent = "תודה! הפנייה התקבלה — נחזור אליכם בהקדם.";
+    form.reset();
+    return false;
+  }
+
   if (form && note) {
-    form.addEventListener("submit", (event) => {
-      event.preventDefault();
-      const data = new FormData(form);
-      const name = String(data.get("name") || "").trim();
-      const phone = String(data.get("phone") || "").trim();
-      const email = String(data.get("email") || "").trim();
-      const message = String(data.get("message") || "").trim();
-
-      if (!name || !phone || !email) {
-        note.textContent = "נא למלא שם, טלפון ואימייל.";
-        note.classList.add("is-error");
-        return;
-      }
-
-      note.classList.remove("is-error");
-      note.textContent = "תודה! הפנייה התקבלה — נחזור אליכם בהקדם.";
-
-      const subject = encodeURIComponent(`פנייה מאתר Inovix — ${name}`);
-      const body = encodeURIComponent(
-        `שם: ${name}\nטלפון: ${phone}\nאימייל: ${email}\n\n${message || "ללא הודעה נוספת"}`
-      );
-      window.location.href = `mailto:lioabramov@gmail.com?subject=${subject}&body=${body}`;
-      form.reset();
-    });
+    form.addEventListener("submit", handleContactSubmit);
+    const submitBtn = form.querySelector('button[type="submit"]');
+    if (submitBtn) {
+      submitBtn.addEventListener("click", (event) => {
+        event.preventDefault();
+        handleContactSubmit(event);
+      });
+    }
   }
 })();
