@@ -41,13 +41,22 @@
       const name = String(data.get("name") || "").trim();
       const phone = String(data.get("phone") || "").trim();
       const email = String(data.get("email") || "").trim();
+      const message = String(data.get("message") || "").trim();
 
       if (!name || !phone || !email) {
         note.textContent = "נא למלא שם, טלפון ואימייל.";
+        note.classList.add("is-error");
         return;
       }
 
+      note.classList.remove("is-error");
       note.textContent = "תודה! הפנייה התקבלה — נחזור אליכם בהקדם.";
+
+      const subject = encodeURIComponent(`פנייה מאתר Inovix — ${name}`);
+      const body = encodeURIComponent(
+        `שם: ${name}\nטלפון: ${phone}\nאימייל: ${email}\n\n${message || "ללא הודעה נוספת"}`
+      );
+      window.location.href = `mailto:lioabramov@gmail.com?subject=${subject}&body=${body}`;
       form.reset();
     });
   }

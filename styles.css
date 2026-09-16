@@ -377,9 +377,21 @@ a {
 .form-note {
   grid-column: 1 / -1;
   min-height: 1.4em;
-  margin: 0;
+  margin: 0.25rem 0 0;
+  padding: 0.65rem 0.85rem;
+  border-radius: 10px;
   color: var(--accent-deep);
-  font-weight: 500;
+  background: var(--accent-soft);
+  font-weight: 600;
+}
+
+.form-note:empty {
+  display: none;
+}
+
+.form-note.is-error {
+  color: #8a2f2f;
+  background: rgba(138, 47, 47, 0.1);
 }
 
 .site-footer {
