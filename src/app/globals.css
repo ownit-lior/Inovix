@@ -1,0 +1,189 @@
+@import "tailwindcss";
+
+:root {
+  /* Brand palette from INOVIX logo */
+  --navy: #051635;
+  --tech-blue: #2a7a9b;
+  --tech-blue-deep: #1f5f78;
+  --lime: #7ed321;
+  --lime-bright: #9ae84a;
+  --teal: #2a929b;
+  --accent: var(--lime);
+  --accent-bright: var(--lime-bright);
+  /* Keep aliases used across components */
+  --gold: var(--lime);
+  --gold-bright: var(--lime-bright);
+  --ink: #051635;
+  --muted: #5b6b7c;
+  --surface: #ffffff;
+  --surface-soft: #f4f7f8;
+  --showroom: #0b1220;
+  --brand-gradient: linear-gradient(135deg, #7ed321 0%, #3db89a 48%, #2a7a9b 100%);
+  --background: var(--surface);
+  --foreground: var(--ink);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-tech: var(--tech-blue);
+  --color-gold: var(--gold);
+  --color-navy: var(--navy);
+  --color-lime: var(--lime);
+  --color-teal: var(--teal);
+  --font-sans: var(--font-heebo);
+}
+
+html {
+  scroll-behavior: smooth;
+  /* Firefox: thin, theme-matched scrollbar */
+  scrollbar-width: thin;
+  scrollbar-color: var(--tech-blue) var(--surface-soft);
+}
+
+body {
+  background: var(--surface);
+  color: var(--ink);
+  font-family: var(--font-heebo), "Heebo", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* —— Text selection —— */
+::selection {
+  background: var(--tech-blue);
+  color: #ffffff;
+}
+
+::-moz-selection {
+  background: var(--tech-blue);
+  color: #ffffff;
+}
+
+/* —— Elegant thin WebKit scrollbar (Chrome / Safari / Edge) —— */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--surface-soft);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--tech-blue) 55%, var(--navy));
+  border-radius: 999px;
+  border: 2px solid var(--surface-soft);
+  background-clip: padding-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--tech-blue);
+  border: 2px solid var(--surface-soft);
+  background-clip: padding-box;
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* Dark sections (e.g. showroom) — match dark theme when preferred or forced */
+.dark-scroll,
+#showroom {
+  scrollbar-color: color-mix(in srgb, var(--tech-blue) 70%, white) var(--showroom);
+}
+
+.dark-scroll::-webkit-scrollbar-track,
+#showroom::-webkit-scrollbar-track {
+  background: #121820;
+}
+
+.dark-scroll::-webkit-scrollbar-thumb,
+#showroom::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--tech-blue) 65%, white);
+  border-color: #121820;
+}
+
+.dark-scroll::-webkit-scrollbar-thumb:hover,
+#showroom::-webkit-scrollbar-thumb:hover {
+  background: var(--lime);
+  border-color: #121820;
+}
+
+.brand-gradient-text {
+  background: var(--brand-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.brand-gradient-bg {
+  background: var(--brand-gradient);
+}
+
+/* Soft brand tint for light homepage sections */
+.brand-tint {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(
+    165deg,
+    #f3f8f9 0%,
+    #ffffff 42%,
+    #eef6f4 100%
+  );
+}
+
+.brand-tint::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 65% 45% at 8% 20%, rgba(42, 146, 155, 0.14), transparent 55%),
+    radial-gradient(ellipse 55% 40% at 92% 80%, rgba(126, 211, 33, 0.12), transparent 50%);
+}
+
+/* Shared navy brand atmosphere — features → showroom → testimonials → contact */
+.brand-section {
+  position: relative;
+  overflow: hidden;
+  background: var(--navy);
+  color: #fff;
+}
+
+.brand-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(42, 146, 155, 0.24) 0%,
+      rgba(5, 22, 53, 0.18) 48%,
+      rgba(126, 211, 33, 0.11) 100%
+    ),
+    radial-gradient(circle at 12% 18%, rgba(42, 146, 155, 0.28), transparent 42%),
+    radial-gradient(circle at 88% 82%, rgba(126, 211, 33, 0.16), transparent 40%);
+}
+
+/* Infinite partner-logo carousel (3 identical loops → -33.333%) */
+@keyframes brand-marquee-scroll {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-33.333%, 0, 0);
+  }
+}
+
+.brand-marquee {
+  animation: brand-marquee-scroll 42s linear infinite;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .brand-marquee {
+    animation: none;
+  }
+}
