@@ -74,35 +74,38 @@ export default function Testimonials() {
           </motion.h2>
           <div className="mx-auto mt-5 h-px w-16 bg-[var(--lime)]/70" />
         </div>
+      </div>
 
-        <div className="relative mt-10 sm:mt-12 md:mt-14">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 18 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -12 }}
-              transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-              className="overflow-hidden"
-            >
-              <div className="relative aspect-[16/10] min-h-[280px] w-full sm:min-h-[380px] md:aspect-[21/9] md:min-h-[440px]">
-                <Image
-                  src={review.image}
-                  alt={review.imageAlt}
-                  fill
-                  sizes="100vw"
-                  className="object-cover"
-                  priority
-                />
-                <div
-                  className="absolute inset-0"
-                  style={{
-                    background:
-                      "linear-gradient(180deg, rgba(5,22,53,0.15) 0%, rgba(5,22,53,0.55) 55%, rgba(5,22,53,0.88) 100%)",
-                  }}
-                />
-                <blockquote className="absolute inset-x-0 bottom-0 p-5 text-center sm:p-8 md:p-10 md:text-right">
-                  <p className="mx-auto max-w-3xl text-base leading-relaxed font-medium text-white sm:text-lg md:ms-auto md:me-0 md:text-xl">
+      {/* Full-bleed review image on desktop */}
+      <div className="relative mt-10 w-full sm:mt-12 md:mt-14">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -12 }}
+            transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+            className="overflow-hidden"
+          >
+            <div className="relative aspect-[16/10] min-h-[280px] w-full sm:min-h-[380px] md:aspect-[21/9] md:min-h-[480px] lg:aspect-[3/1] lg:min-h-[520px]">
+              <Image
+                src={review.image}
+                alt={review.imageAlt}
+                fill
+                sizes="100vw"
+                className="object-cover"
+                priority
+              />
+              <div
+                className="absolute inset-0"
+                style={{
+                  background:
+                    "linear-gradient(180deg, rgba(5,22,53,0.15) 0%, rgba(5,22,53,0.55) 55%, rgba(5,22,53,0.88) 100%)",
+                }}
+              />
+              <blockquote className="absolute inset-x-0 bottom-0 p-5 text-center sm:p-8 md:px-10 md:py-12 md:text-right lg:px-16">
+                <div className="mx-auto w-full max-w-6xl">
+                  <p className="mx-auto max-w-3xl text-base leading-relaxed font-medium text-white sm:text-lg md:ms-auto md:me-0 md:text-xl lg:text-2xl">
                     “{review.quote}”
                   </p>
                   <footer className="mt-4 sm:mt-5">
@@ -111,43 +114,43 @@ export default function Testimonials() {
                     </div>
                     <div className="mt-1 text-sm text-white/65">{review.role}</div>
                   </footer>
-                </blockquote>
-              </div>
-            </motion.div>
-          </AnimatePresence>
-        </div>
+                </div>
+              </blockquote>
+            </div>
+          </motion.div>
+        </AnimatePresence>
+      </div>
 
-        <div className="mt-7 flex items-center justify-center gap-3 sm:mt-8 sm:gap-4">
-          <button
-            type="button"
-            onClick={() => go(-1)}
-            className="flex h-11 w-11 items-center justify-center rounded-full border border-white/25 bg-white/5 text-white transition hover:border-[var(--lime)] hover:text-[var(--lime-bright)]"
-            aria-label="הקודם"
-          >
-            →
-          </button>
-          <div className="flex gap-2">
-            {REVIEWS.map((_, i) => (
-              <button
-                key={i}
-                type="button"
-                aria-label={`ביקורת ${i + 1}`}
-                onClick={() => setIndex(i)}
-                className={`h-2 rounded-full transition-all ${
-                  i === index ? "w-8 bg-[var(--lime)]" : "w-2 bg-white/30"
-                }`}
-              />
-            ))}
-          </div>
-          <button
-            type="button"
-            onClick={() => go(1)}
-            className="flex h-11 w-11 items-center justify-center rounded-full border border-white/25 bg-white/5 text-white transition hover:border-[var(--lime)] hover:text-[var(--lime-bright)]"
-            aria-label="הבא"
-          >
-            ←
-          </button>
+      <div className="mt-7 flex items-center justify-center gap-3 sm:mt-8 sm:gap-4">
+        <button
+          type="button"
+          onClick={() => go(-1)}
+          className="flex h-11 w-11 items-center justify-center rounded-full border border-white/25 bg-white/5 text-white transition hover:border-[var(--lime)] hover:text-[var(--lime-bright)]"
+          aria-label="הקודם"
+        >
+          →
+        </button>
+        <div className="flex gap-2">
+          {REVIEWS.map((_, i) => (
+            <button
+              key={i}
+              type="button"
+              aria-label={`ביקורת ${i + 1}`}
+              onClick={() => setIndex(i)}
+              className={`h-2 rounded-full transition-all ${
+                i === index ? "w-8 bg-[var(--lime)]" : "w-2 bg-white/30"
+              }`}
+            />
+          ))}
         </div>
+        <button
+          type="button"
+          onClick={() => go(1)}
+          className="flex h-11 w-11 items-center justify-center rounded-full border border-white/25 bg-white/5 text-white transition hover:border-[var(--lime)] hover:text-[var(--lime-bright)]"
+          aria-label="הבא"
+        >
+          ←
+        </button>
       </div>
     </section>
   );
