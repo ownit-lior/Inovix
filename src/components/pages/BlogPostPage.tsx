@@ -98,7 +98,7 @@ export default function BlogPostPage({ post }: { post: BlogPost }) {
               href="/#contact"
               className="brand-gradient-bg mt-5 inline-flex min-h-12 items-center justify-center rounded-full px-8 py-3.5 text-sm font-bold text-[var(--navy)] transition hover:brightness-110"
             >
-              דברו איתנו לייעוץ
+              צרו קשר לייעוץ
             </Link>
           </div>
         </section>

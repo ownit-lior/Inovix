@@ -191,7 +191,7 @@ export default function ServicePage({ service }: { service: Service }) {
                     href="/#contact"
                     className="brand-gradient-bg inline-flex min-h-12 items-center justify-center rounded-full px-7 py-3.5 text-sm font-bold text-[var(--navy)] shadow-[0_12px_32px_rgba(126,211,33,0.35)] transition hover:brightness-110"
                   >
-                    דברו איתנו לייעוץ
+                    צרו קשר לייעוץ
                   </Link>
                   <Link
                     href="/#features"

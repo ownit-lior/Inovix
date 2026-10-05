@@ -120,7 +120,7 @@ export default function Contact() {
                 type="submit"
                 className="brand-gradient-bg mt-2 flex min-h-12 w-full items-center justify-center rounded-full py-3.5 text-sm font-bold text-[var(--navy)] transition hover:brightness-110"
               >
-                דברו איתנו לייעוץ
+                צרו קשר לייעוץ
               </button>
             </div>
           )}

@@ -364,7 +364,7 @@ export default function Navbar({ variant = "auto" }: NavbarProps) {
                   className="brand-gradient-bg flex min-h-12 items-center justify-center rounded-full px-5 py-3.5 text-sm font-bold text-[var(--navy)]"
                   onClick={() => setOpen(false)}
                 >
-                  דברו איתנו לייעוץ
+                  צרו קשר לייעוץ
                 </Link>
               </li>
             </ul>

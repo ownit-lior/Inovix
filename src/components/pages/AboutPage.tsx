@@ -67,7 +67,7 @@ export default function AboutPage() {
             src: IMAGES.about.hero,
             alt: "וילה מודרנית עם בריכה ופטיו",
           }}
-          cta={{ href: "/#contact", label: "דברו איתנו לייעוץ" }}
+          cta={{ href: "/#contact", label: "צרו קשר לייעוץ" }}
           secondaryCta={{ href: "/#features", label: "השירותים שלנו" }}
         />
 
