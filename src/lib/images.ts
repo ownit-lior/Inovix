@@ -40,7 +40,7 @@ export const IMAGES = {
     /** Security hero — PTZ camera on luxury villa */
     security: "/services/security.jpg",
     securityCameras: "/services/security-cameras.jpg",
-    securityAlarm: "/services/security-alarm-jamb-side.jpg",
+    securityAlarm: "/services/security-alarm-jamb-high.jpg",
     securityIntercom: "/services/security-smart-intercom.jpg",
     securitySmartLock: "/services/security-smart-lock.jpg",
     /** Open tidy rack — professional cabling & LED status */
