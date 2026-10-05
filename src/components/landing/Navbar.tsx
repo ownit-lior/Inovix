@@ -209,7 +209,7 @@ export default function Navbar({ variant = "auto" }: NavbarProps) {
           ))}
         </ul>
 
-        {/* Left side (physical left): socials + contact + phone */}
+        {/* Left side (physical left): socials + phone */}
         <div
           className="relative z-10 flex items-center gap-2 sm:gap-2.5"
           dir="ltr"
@@ -237,12 +237,30 @@ export default function Navbar({ variant = "auto" }: NavbarProps) {
               </li>
             ))}
           </ul>
-          <Link
-            href="/#contact"
-            className="brand-gradient-bg hidden rounded-full px-5 py-2.5 text-sm font-semibold text-[var(--navy)] shadow-[0_8px_24px_rgba(126,211,33,0.35)] transition hover:brightness-110 lg:inline-flex"
+          <a
+            href={`tel:${CONTACT.phoneTel}`}
+            aria-label={`התקשרו ${CONTACT.phoneDisplay}`}
+            title={CONTACT.phoneDisplay}
+            className={[
+              "hidden h-9 w-9 items-center justify-center rounded-full border transition lg:inline-flex",
+              lightText
+                ? "border-white/25 text-white/90 hover:border-[var(--lime)]/60 hover:bg-white/10 hover:text-[var(--lime-bright)]"
+                : "border-slate-200 text-[var(--ink)]/75 hover:border-[var(--teal)]/40 hover:bg-[var(--surface-soft)] hover:text-[var(--teal)]",
+            ].join(" ")}
           >
-            צרו קשר
-          </Link>
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.8"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="h-4 w-4"
+              aria-hidden
+            >
+              <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.6a2 2 0 0 1-.5 2.1L8.1 9.6a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.8.3 1.7.6 2.6.7A2 2 0 0 1 22 16.9z" />
+            </svg>
+          </a>
 
           <button
             type="button"
