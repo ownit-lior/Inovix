@@ -8,7 +8,7 @@ const u = (id: string, w: number) =>
 export const IMAGES = {
   home: {
     /** Evening villa patio + pool */
-    hero: "/hero-villa.jpg",
+    hero: "/hero-villa-v6.jpg",
     /** Living room with recessed speakers — AV lifestyle */
     showroomMain: "/services/av.jpg",
     /** Luxury glass intercom on stone villa entrance */
