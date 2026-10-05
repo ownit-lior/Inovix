@@ -7,8 +7,8 @@ const u = (id: string, w: number) =>
 
 export const IMAGES = {
   home: {
-    /** Paradox curtain detector high on vitrina jamb */
-    hero: "/services/security-alarm-jamb-high.jpg",
+    /** Evening villa patio + pool */
+    hero: "/hero-villa.jpg",
     /** Living room with recessed speakers — AV lifestyle */
     showroomMain: "/services/av.jpg",
     /** Luxury glass intercom on stone villa entrance */
