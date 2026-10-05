@@ -74,44 +74,41 @@ export default function Features() {
           </h2>
           <div className="mx-auto mt-5 h-px w-16 bg-[var(--lime)]/70" />
         </motion.div>
-      </div>
 
-      {/* Full-bleed image bands on desktop */}
-      <motion.div
-        className="mt-10 flex w-full flex-col gap-2 sm:mt-12 sm:gap-3 md:mt-14 md:gap-0"
-        variants={container}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, amount: 0.1 }}
-      >
-        {FEATURES.map((f) => (
-          <motion.div key={f.href} variants={item} className="w-full">
-            <Link
-              href={f.href}
-              className="group relative block aspect-[16/9] w-full overflow-hidden sm:aspect-[21/9] md:aspect-[3/1] lg:aspect-[3.4/1]"
-            >
-              <Image
-                src={f.image}
-                alt={f.imageAlt}
-                fill
-                sizes="100vw"
-                className="object-cover transition duration-700 group-hover:scale-[1.03]"
-              />
-              <div
-                className="absolute inset-0 transition duration-500 group-hover:opacity-95"
-                style={{
-                  background:
-                    "linear-gradient(90deg, rgba(5,22,53,0.82) 0%, rgba(5,22,53,0.35) 52%, rgba(5,22,53,0.2) 100%)",
-                }}
-              />
-              <div className="absolute inset-y-0 end-0 w-1 bg-[var(--lime)]/0 transition group-hover:bg-[var(--lime)]" />
-              <div className="absolute inset-0 flex items-end p-5 sm:items-center sm:p-8 md:px-10 md:py-12 lg:px-16">
-                <div className="mx-auto w-full max-w-6xl text-right">
-                  <div className="max-w-xl ms-auto md:ms-0 md:me-auto">
+        <motion.div
+          className="mt-10 flex flex-col gap-3 sm:mt-12 sm:gap-4 md:mt-14"
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.1 }}
+        >
+          {FEATURES.map((f) => (
+            <motion.div key={f.href} variants={item}>
+              <Link
+                href={f.href}
+                className="group relative block aspect-[16/9] overflow-hidden sm:aspect-[21/9]"
+              >
+                <Image
+                  src={f.image}
+                  alt={f.imageAlt}
+                  fill
+                  sizes="100vw"
+                  className="object-cover transition duration-700 group-hover:scale-[1.04]"
+                />
+                <div
+                  className="absolute inset-0 transition duration-500 group-hover:opacity-95"
+                  style={{
+                    background:
+                      "linear-gradient(90deg, rgba(5,22,53,0.82) 0%, rgba(5,22,53,0.35) 52%, rgba(5,22,53,0.2) 100%)",
+                  }}
+                />
+                <div className="absolute inset-y-0 end-0 w-1 bg-[var(--lime)]/0 transition group-hover:bg-[var(--lime)]" />
+                <div className="absolute inset-0 flex items-end p-5 sm:items-center sm:p-8 md:p-10">
+                  <div className="max-w-xl text-right">
                     <p className="text-xs font-semibold tracking-[0.16em] text-[var(--lime-bright)] sm:text-sm">
                       {f.eyebrow}
                     </p>
-                    <h3 className="mt-1.5 text-xl font-extrabold text-white sm:text-2xl md:text-3xl lg:text-4xl">
+                    <h3 className="mt-1.5 text-xl font-extrabold text-white sm:text-2xl md:text-3xl">
                       {f.title}
                     </h3>
                     <p className="mt-3 inline-flex items-center gap-2 text-sm font-semibold text-white/80 transition group-hover:text-[var(--lime-bright)]">
@@ -122,11 +119,11 @@ export default function Features() {
                     </p>
                   </div>
                 </div>
-              </div>
-            </Link>
-          </motion.div>
-        ))}
-      </motion.div>
+              </Link>
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
     </section>
   );
 }
