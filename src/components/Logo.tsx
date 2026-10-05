@@ -7,8 +7,8 @@ type LogoProps = {
   onDark?: boolean;
 };
 
-/** Native wordmark aspect from processed asset ≈ 2282×792 */
-const ASPECT = 2282 / 792;
+/** Native wordmark aspect from processed asset ≈ 1128×377 */
+const ASPECT = 1128 / 377;
 const SIZES = {
   sm: { h: 36 },
   md: { h: 44 },
@@ -16,7 +16,7 @@ const SIZES = {
 } as const;
 
 /** Bump when logo binaries change so browsers/CDN drop stale assets */
-const LOGO_V = "v21";
+const LOGO_V = "v22";
 
 export default function Logo({
   className = "",
