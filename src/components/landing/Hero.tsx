@@ -90,7 +90,7 @@ export default function Hero() {
           }
         >
           <Image
-            src={`${HERO_IMAGE}?v=5`}
+            src={HERO_IMAGE}
             alt="וילה יוקרתית עם בריכה בתאורת ערב"
             fill
             priority
