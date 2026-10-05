@@ -90,38 +90,33 @@ export default function Hero() {
           }
         >
           <Image
-            src={`${HERO_IMAGE}?v=3`}
-            alt="וילה יוקרתית עם בריכה בתאורת ערב"
+            src={`${HERO_IMAGE}?v=4`}
+            alt="גלאי וילון Paradox מותקן גבוה על דופן משקוף הוטרינה"
             fill
             priority
             sizes="100vw"
-            className="object-cover object-[58%_42%] sm:object-center"
+            className="object-cover object-[40%_30%] sm:object-[45%_28%]"
           />
         </motion.div>
 
-        {/* Soft brand wash — keeps pool teal visible, lifts title on dark stone */}
+        {/* Soft brand wash — keeps hero photo visible, lifts title readability */}
         <div
           className="absolute inset-0"
           style={{
             background: `
               linear-gradient(
                 180deg,
-                rgba(5, 22, 53, 0.62) 0%,
-                rgba(5, 22, 53, 0.22) 36%,
-                rgba(5, 22, 53, 0.34) 58%,
-                rgba(5, 22, 53, 0.78) 100%
+                rgba(5, 22, 53, 0.55) 0%,
+                rgba(5, 22, 53, 0.18) 34%,
+                rgba(5, 22, 53, 0.28) 58%,
+                rgba(5, 22, 53, 0.72) 100%
               ),
               linear-gradient(
                 100deg,
-                rgba(5, 22, 53, 0.72) 0%,
-                rgba(5, 22, 53, 0.28) 40%,
-                rgba(42, 146, 155, 0.16) 72%,
+                rgba(5, 22, 53, 0.68) 0%,
+                rgba(5, 22, 53, 0.22) 42%,
+                rgba(42, 146, 155, 0.12) 72%,
                 transparent 100%
-              ),
-              radial-gradient(
-                70% 55% at 78% 58%,
-                rgba(42, 146, 155, 0.22) 0%,
-                transparent 68%
               )
             `,
           }}
