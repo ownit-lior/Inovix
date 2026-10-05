@@ -37,8 +37,8 @@ export const IMAGES = {
     planningMistakes: "/blog/blog-planning-mistakes.jpg",
   },
   services: {
-    /** Security hero — PTZ camera on luxury villa */
-    security: "/services/security.jpg",
+    /** Security hero — luxury villa with discreet PTZ at dusk */
+    security: "/services/security-hero-villa-wide.jpg",
     securityCameras: "/services/security-cameras.jpg",
     securityAlarm: "/services/security-alarm-jamb-high.jpg",
     securityIntercom: "/services/security-smart-intercom.jpg",

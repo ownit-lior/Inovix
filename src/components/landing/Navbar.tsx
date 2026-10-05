@@ -10,7 +10,9 @@ import {
   useMotionValueEvent,
 } from "framer-motion";
 import Logo from "@/components/Logo";
+import SocialIcon from "@/components/SocialIcon";
 import { SERVICES } from "@/lib/services";
+import { SOCIAL_LINKS } from "@/lib/social";
 
 type NavbarProps = {
   /** Force solid header (service pages / non-hero pages) */
@@ -206,6 +208,29 @@ export default function Navbar({ variant = "auto" }: NavbarProps) {
         </ul>
 
         <div className="relative z-10 flex items-center gap-2 sm:gap-3">
+          <ul
+            className="hidden items-center gap-1.5 lg:flex"
+            aria-label="רשתות חברתיות"
+          >
+            {SOCIAL_LINKS.map((link) => (
+              <li key={link.id}>
+                <a
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={link.name}
+                  className={[
+                    "flex h-9 w-9 items-center justify-center rounded-full border transition",
+                    lightText
+                      ? "border-white/25 text-white/85 hover:border-[var(--lime)]/60 hover:bg-white/10 hover:text-[var(--lime-bright)]"
+                      : "border-slate-200 text-[var(--ink)]/70 hover:border-[var(--teal)]/40 hover:bg-[var(--surface-soft)] hover:text-[var(--teal)]",
+                  ].join(" ")}
+                >
+                  <SocialIcon link={link} className="h-4 w-4" />
+                </a>
+              </li>
+            ))}
+          </ul>
           <Link
             href="/#contact"
             className="brand-gradient-bg hidden rounded-full px-5 py-2.5 text-sm font-semibold text-[var(--navy)] shadow-[0_8px_24px_rgba(126,211,33,0.35)] transition hover:brightness-110 lg:inline-flex"

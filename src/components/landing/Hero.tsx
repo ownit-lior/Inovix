@@ -12,9 +12,7 @@ import {
   useTransform,
 } from "framer-motion";
 
-import SocialIcon from "@/components/SocialIcon";
 import { IMAGES } from "@/lib/images";
-import { SOCIAL_LINKS } from "@/lib/social";
 
 const HERO_IMAGE = IMAGES.home.hero;
 
@@ -182,24 +180,6 @@ export default function Hero() {
           >
             צרו קשר לייעוץ
           </a>
-          <ul
-            className="hidden items-center gap-2.5 md:flex"
-            aria-label="רשתות חברתיות"
-          >
-            {SOCIAL_LINKS.map((link) => (
-              <li key={link.id}>
-                <a
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={link.name}
-                  className="flex h-11 w-11 items-center justify-center rounded-full border border-white/35 bg-[rgba(5,22,53,0.35)] text-white/90 backdrop-blur-[2px] transition hover:border-[var(--lime)]/70 hover:bg-[rgba(5,22,53,0.55)] hover:text-[var(--lime-bright)]"
-                >
-                  <SocialIcon link={link} className="h-[1.2rem] w-[1.2rem]" />
-                </a>
-              </li>
-            ))}
-          </ul>
           <a
             href="/tour"
             className="inline-flex min-h-12 w-full items-center justify-center rounded-full border border-white/40 bg-[rgba(5,22,53,0.4)] px-8 py-3.5 text-sm font-semibold text-white backdrop-blur-[2px] transition hover:border-[var(--lime)]/60 hover:bg-[rgba(5,22,53,0.55)] sm:w-auto"
