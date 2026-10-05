@@ -9,7 +9,7 @@ export default function ShowroomPlaceholder() {
   return (
     <section
       id="showroom"
-      className="relative flex min-h-[70vh] items-center overflow-hidden bg-[var(--navy)] py-20 text-white sm:min-h-[75vh] sm:py-24 md:py-28"
+      className="relative flex min-h-[38vh] items-center overflow-hidden bg-[var(--navy)] py-12 text-white sm:min-h-[42vh] sm:py-14 md:min-h-[46vh] md:py-16"
     >
       <div className="absolute inset-0 z-0">
         <Image
