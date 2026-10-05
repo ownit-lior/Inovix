@@ -79,8 +79,9 @@ export const SERVICES: Service[] = [
         title: "אזעקה",
         desc: "מערכות אזעקה היברידיות (קוויות ואלחוטיות) המותאמות לתשתית הקיימת, עם שליטה מלאה מאפליקציה מתקדמת בענן ורכיבים אמינים של יצרנים מובילים — הגנה היקפית מדויקת בלי להתפשר על יציבות.",
         image: IMAGES.services.securityAlarm,
-        imageAlt: "גלאי וילון Paradox להתקנה אנכית בחלון ובכניסות",
-        imageFit: "contain",
+        imageAlt:
+          "גלאי וילון Paradox מותקן על דופן משקוף הוטרינה ומביט לרוחב הפתח",
+        imageFit: "cover",
       },
       {
         title: "אינטרקום",
