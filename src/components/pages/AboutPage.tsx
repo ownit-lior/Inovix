@@ -58,7 +58,7 @@ export default function AboutPage() {
   return (
     <>
       <Navbar variant="solid" />
-      <main>
+      <main id="main-content">
         <PageHero
           eyebrow="אודות INOVIX"
           title="מומחים בייעוץ, תכנון וביצוע מערכות טכנולוגיה"
@@ -68,7 +68,7 @@ export default function AboutPage() {
             alt: "וילה מודרנית עם בריכה ופטיו",
           }}
           cta={{ href: "/#contact", label: "צרו קשר לייעוץ" }}
-          secondaryCta={{ href: "/#features", label: "השירותים שלנו" }}
+          secondaryCta={{ href: "/#features", label: "הפתרונות שלנו" }}
         />
 
         <section className="bg-[var(--surface-soft)] py-14 sm:py-16 md:py-20">

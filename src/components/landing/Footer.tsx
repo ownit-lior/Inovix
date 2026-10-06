@@ -74,6 +74,12 @@ export default function Footer() {
           <Link href="/#contact" className="transition hover:text-[var(--lime-bright)]">
             צור קשר
           </Link>
+          <Link
+            href="/accessibility"
+            className="transition hover:text-[var(--lime-bright)]"
+          >
+            הצהרת נגישות
+          </Link>
         </div>
 
         <p className="text-xs text-white/45">

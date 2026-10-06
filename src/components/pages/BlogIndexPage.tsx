@@ -13,7 +13,7 @@ export default function BlogIndexPage() {
   return (
     <>
       <Navbar variant="solid" />
-      <main>
+      <main id="main-content">
         <PageHero
           eyebrow="הבלוג של INOVIX"
           title="תובנות, טיפים ומגמות בעולם הבית החכם"

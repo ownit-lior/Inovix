@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 import { Heebo } from "next/font/google";
+import AccessibilityWidget from "@/components/AccessibilityWidget";
 import "./globals.css";
 
 const heebo = Heebo({
@@ -25,7 +26,11 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="he" dir="rtl" className={`${heebo.variable} h-full`}>
       <body className="min-h-full bg-[var(--surface)] text-[var(--ink)] antialiased">
+        <a href="#main-content" className="skip-link">
+          דלג לתוכן המרכזי
+        </a>
         {children}
+        <AccessibilityWidget />
       </body>
     </html>
   );

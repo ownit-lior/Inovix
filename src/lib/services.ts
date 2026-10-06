@@ -42,7 +42,15 @@ export type Service = {
   image: string;
   imageAlt: string;
   highlights: ServiceHighlight[];
-  offerings: { title: string; desc: string; image?: string; imageAlt?: string; imageFit?: "cover" | "contain" }[];
+  offerings: {
+    title: string;
+    desc: string;
+    image?: string;
+    imageAlt?: string;
+    imageFit?: "cover" | "contain";
+    /** Landing page under /services/[slug]/[topic] */
+    topicSlug?: string;
+  }[];
   audience: string;
   /** Optional override for the overview section headline */
   overviewTitle?: string;
@@ -71,12 +79,14 @@ export const SERVICES: Service[] = [
     offerings: [
       {
         title: "מצלמות",
+        topicSlug: "cameras",
         desc: "מערכות CCTV מתקדמות עם אנליטיקה חכמה (DDA) שמבדילה בין אדם לרכב, קווי הגנה וירטואליים להתראה לפני חדירה, ואפשרויות למצלמות ממונעות (PTZ) לכיסוי שטחים גדולים — בווילות, חניונים ומתחמים מורכבים.",
         image: IMAGES.services.securityCameras,
         imageAlt: "מצלמת אבטחה PTZ ממונעת על חזית נכס יוקרתי",
       },
       {
         title: "אזעקה",
+        topicSlug: "alarm",
         desc: "מערכות אזעקה היברידיות (קוויות ואלחוטיות) המותאמות לתשתית הקיימת, עם שליטה מלאה מאפליקציה מתקדמת בענן ורכיבים אמינים של יצרנים מובילים — הגנה היקפית מדויקת בלי להתפשר על יציבות.",
         image: IMAGES.services.securityAlarm,
         imageAlt:
@@ -85,12 +95,14 @@ export const SERVICES: Service[] = [
       },
       {
         title: "אינטרקום",
+        topicSlug: "intercom",
         desc: "פנלים מעוצבים ובקרת כניסה חכמה — קודן מגע, קורא קרבה (RFID) ואפשרויות זיהוי פנים במערכות גישה מתקדמות. אסתטיקה של כניסה יוקרתית עם שליטה וניהול הרשאות מלאים.",
         image: IMAGES.services.securityIntercom,
         imageAlt: "אינטרקום חכם עם מסך וידאו בכניסה לווילה",
       },
       {
         title: "מנעולים חכמים",
+        topicSlug: "smart-locks",
         desc: "מנעולי דלת חכמים יוקרתיים עם קודן מגע, טביעת אצבע, שליטה מהאפליקציה ואינטגרציה מלאה לבית החכם ולמערכת האבטחה — כניסה אלגנטית בלי להתפשר על רמת האבטחה.",
         image: IMAGES.services.securitySmartLock,
         imageAlt: "מנעול דלת חכם יוקרתי שחור על דלת עץ בכניסה לבית מודרני",
@@ -127,24 +139,28 @@ export const SERVICES: Service[] = [
     offerings: [
       {
         title: "ארונות תקשורת ייעודיים",
+        topicSlug: "network-racks",
         desc: "ארונות תקשורת מעוצבים ומסודרים בקפידה, הכוללים מערכות קירור שקטות. חיווט אסתטי ברמת גימור מושלמת, עם תכנון חכם המאפשר הרחבה עתידית בקלות.",
         image: IMAGES.services.networkingRack,
         imageAlt: "ארון תקשורת מסודר עם חיווט מקצועי ותאורת סטטוס",
       },
       {
         title: "תשתיות תקשורת",
+        topicSlug: "cabling",
         desc: "פריסת כבילה מתקדמת המותאמת אישית למבנה. תשתית רובוסטית שמהווה את עמוד השדרה לכל מערכות הבית החכם, האודיו והאבטחה.",
         image: IMAGES.services.networkingCat7,
         imageAlt: "כבל רשת Cat 7 מסוכך עם מחברי RJ45 איכותיים",
       },
       {
         title: "סוויצ׳ים וראוטרים",
+        topicSlug: "switches-routers",
         desc: "שילוב ציוד קצה מתקדם ומתגים מנוהלים (Managed Switches) התומכים בעומסי עבודה כבדים, הפרדת רשתות (VLAN) לאבטחה מקסימלית וביצועים ללא פשרות — כולל פתרונות מובילים כמו Ubiquiti UniFi.",
         image: IMAGES.services.networkingSwitch,
         imageAlt: "סוויץ׳ מנוהל מותקן בארון תקשורת עם חיווט מסודר",
       },
       {
         title: "אקסס פוינט",
+        topicSlug: "access-points",
         desc: "תכנון ופריסה של נקודות גישה (Access Points) מהדור החדש, כולל תמיכה ב־Wi‑Fi 7, ליצירת רשת Mesh חלקה. כיסוי אלחוטי עוצמתי ויציב ללא ניתוקים — גם בבתים רחבי ידיים או בשטחים חיצוניים.",
         image: IMAGES.services.networkingAp,
         imageAlt: "נקודת גישה אלחוטית מודרנית מותקנת בתקרה בבית יוקרתי",
@@ -174,30 +190,35 @@ export const SERVICES: Service[] = [
     offerings: [
       {
         title: "מתקנים ייעודיים לבית ולחוץ",
+        topicSlug: "mounts",
         desc: "מעליות מסך נסתרות בתקרה, זרועות חשמליות ומתקני חוץ עמידים לתנאי מזג האוויר. אנו דואגים שהטכנולוגיה תופיע רק כשצריך אותה, ותיעלם כבמטה קסם.",
         image: IMAGES.services.avMounts,
         imageAlt: "מעלית מסך נסתרת יורדת מתקרה בסלון יוקרתי",
       },
       {
         title: "מסכים וטלוויזיות לבית ולחוץ",
+        topicSlug: "screens",
         desc: "שילוב מסכי ענק דקים, מסכי חוץ (Outdoor TV) עמידים לסביבת הבריכה, ומסכי מראה (Mirror TV) המשתלבים כרהיט דקורטיבי. איכות צפייה 4K/8K ללא פשרות.",
         image: IMAGES.services.avScreens,
         imageAlt: "טלוויזיית חוץ ליד בריכה בווילה יוקרתית",
       },
       {
         title: "מערכות שמע איכותיות לבית ולחוץ",
+        topicSlug: "audio",
         desc: "אזור שמע רב־חללי (Multi-Room) המנוהל באפליקציה אחת. שילוב של רמקולים אדריכליים שקועים (In-Ceiling/In-Wall) ופתרונות סאונד מוסווים לגינה מבית המותגים המובילים בעולם (כדוגמת Sonos ו־Denon).",
         image: IMAGES.services.avAudio,
         imageAlt: "רמקול נוף חיצוני בגינת וילה ליד בריכה ומטבח חוץ",
       },
       {
         title: "מערכות אודיו־וידאו למשרדים",
+        topicSlug: "office-av",
         desc: "חדרי ישיבות חכמים המאפשרים התחלת פגישה בלחיצת כפתור (One-Touch Join). שילוב פסי קול ייעודיים, מערכות שיתוף מסך אלחוטיות ושמע היקפי ברור לשיחות וידאו מושלמות.",
         image: IMAGES.services.avOffice,
         imageAlt: "חדר ישיבות חכם עם מסך גדול ופסי קול",
       },
       {
         title: "קולנוע ביתי",
+        topicSlug: "home-cinema",
         desc: "מקרני 4K, מסכי הקרנה ענקיים ומערכות סאונד היקפי (Dolby Atmos). תכנון אקוסטי מוקפד המבטיח חוויית קולנוע עוצרת נשימה, אצלכם בסלון או בחדר ייעודי.",
         image: IMAGES.services.avCinema,
         imageAlt: "חדר קולנוע ביתי עם מסך הקרנה ומקרן 4K",
@@ -231,6 +252,7 @@ export const SERVICES: Service[] = [
     offerings: [
       {
         title: "KNX עם מערכת Control4",
+        topicSlug: "knx-control4",
         desc: "הסטנדרט העולמי לווילאות ופרויקטי יוקרה. תשתית קווית אמינה בתקן KNX, עטופה בממשק השליטה האלגנטי של Control4. תאורה, אקלים, אודיו ואבטחה — הכל מסונכרן במסך מגע אחד.",
         image: IMAGES.services.smartKnx,
         imageAlt: "מסך מגע חכם לשליטת אקלים על קיר בחדר שינה",
@@ -238,6 +260,7 @@ export const SERVICES: Service[] = [
       },
       {
         title: "Palwintec · Zigbee",
+        topicSlug: "palwintec-zigbee",
         desc: "מפסקי מגע מעוצבים ויוקרתיים מבית Palwintec, הפועלים על רשת Zigbee אלחוטית חכמה. פתרון גמיש ויציב המשתלב בשלמות עם עיצוב הפנים של הבית.",
         image: IMAGES.services.smartPalwintec,
         imageAlt: "לוח שליטה עגול עם מסך מגע על קיר בסלון מודרני",
@@ -245,6 +268,7 @@ export const SERVICES: Service[] = [
       },
       {
         title: "Domex · Z‑Wave",
+        topicSlug: "domex-zwave",
         desc: "הפתרון המושלם לשדרוג בתים קיימים ללא שבירת קירות. ציוד הקצה של Domex מבוסס תדר Z‑Wave, היוצר רשת Mesh אלחוטית, עצמאית וחזקה במיוחד שמכסה כל פינה בנכס.",
         image: IMAGES.services.smartDomex,
         imageAlt: "מתג Domex שחור עם נוריות חיווי על קיר מחוספס בסלון יוקרתי",

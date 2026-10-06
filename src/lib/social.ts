@@ -4,17 +4,17 @@ export type SocialLink = {
   href: string;
 };
 
-/** Social profiles — update hrefs when accounts are ready */
+/** Social profiles */
 export const SOCIAL_LINKS: SocialLink[] = [
   {
     id: "instagram",
     name: "Instagram",
-    href: "https://www.instagram.com/",
+    href: "https://www.instagram.com/inovixsmarthome/",
   },
   {
     id: "facebook",
     name: "Facebook",
-    href: "https://www.facebook.com/",
+    href: "https://www.facebook.com/profile.php?id=61576491770628",
   },
   {
     id: "tiktok",

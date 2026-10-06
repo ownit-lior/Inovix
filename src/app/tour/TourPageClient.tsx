@@ -9,7 +9,10 @@ export default function TourPageClient() {
   return (
     <div className="bg-[var(--navy)] text-white">
       <Navbar variant="solid" />
-      <main className="relative flex min-h-[100dvh] items-center overflow-hidden pt-24 pb-16 sm:pt-28 sm:pb-20">
+      <main
+        id="main-content"
+        className="relative flex min-h-[100dvh] items-center overflow-hidden pt-24 pb-16 sm:pt-28 sm:pb-20"
+      >
         <div
           className="pointer-events-none absolute inset-0"
           style={{

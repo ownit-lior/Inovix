@@ -157,7 +157,7 @@ export default function ServicePage({ service }: { service: Service }) {
   return (
     <>
       <Navbar variant="solid" />
-      <main>
+      <main id="main-content">
         {/* Hero — full-bleed image across the header */}
         <section className="relative flex min-h-[70dvh] items-end overflow-hidden bg-[var(--navy)] pt-24 pb-14 text-white sm:min-h-[75dvh] sm:pt-28 sm:pb-16 md:items-center md:pt-32 md:pb-20">
           <div className="absolute inset-0 z-0" aria-hidden>
@@ -298,46 +298,68 @@ export default function ServicePage({ service }: { service: Service }) {
                   : "md:grid-cols-2",
               ].join(" ")}
             >
-              {service.offerings.map((item, i) => (
-                <motion.article
-                  key={item.title}
-                  initial={{ opacity: 0, y: 28 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.2 }}
-                  transition={{ duration: 0.5, delay: i * 0.06 }}
-                  className="overflow-hidden rounded-2xl border border-slate-200/80 bg-[var(--surface-soft)]"
-                >
-                  {item.image && (
-                    <div
-                      className={`relative aspect-[4/3] overflow-hidden ${
-                        item.imageFit === "contain"
-                          ? "bg-white"
-                          : "bg-slate-200"
-                      }`}
-                    >
-                      <Image
-                        src={item.image}
-                        alt={item.imageAlt ?? item.title}
-                        fill
-                        sizes="(max-width: 768px) 100vw, 33vw"
-                        className={
+              {service.offerings.map((item, i) => {
+                const href = item.topicSlug
+                  ? `${service.href}/${item.topicSlug}`
+                  : undefined;
+                const body = (
+                  <>
+                    {item.image && (
+                      <div
+                        className={`relative aspect-[4/3] overflow-hidden ${
                           item.imageFit === "contain"
-                            ? "object-contain"
-                            : "object-cover"
-                        }
-                      />
+                            ? "bg-white"
+                            : "bg-slate-200"
+                        }`}
+                      >
+                        <Image
+                          src={item.image}
+                          alt={item.imageAlt ?? item.title}
+                          fill
+                          sizes="(max-width: 768px) 100vw, 33vw"
+                          className={
+                            item.imageFit === "contain"
+                              ? "object-contain transition duration-500 group-hover:scale-[1.03]"
+                              : "object-cover transition duration-500 group-hover:scale-[1.03]"
+                          }
+                        />
+                      </div>
+                    )}
+                    <div className="p-5 sm:p-6">
+                      <h3 className="text-base font-bold text-[var(--ink)] sm:text-lg">
+                        {item.title}
+                      </h3>
+                      <p className="mt-2 text-sm leading-relaxed text-[var(--muted)]">
+                        {item.desc}
+                      </p>
+                      {href ? (
+                        <p className="mt-3 text-sm font-semibold text-[var(--teal)]">
+                          לדף המלא ←
+                        </p>
+                      ) : null}
                     </div>
-                  )}
-                  <div className="p-5 sm:p-6">
-                    <h3 className="text-base font-bold text-[var(--ink)] sm:text-lg">
-                      {item.title}
-                    </h3>
-                    <p className="mt-2 text-sm leading-relaxed text-[var(--muted)]">
-                      {item.desc}
-                    </p>
-                  </div>
-                </motion.article>
-              ))}
+                  </>
+                );
+
+                return (
+                  <motion.article
+                    key={item.title}
+                    initial={{ opacity: 0, y: 28 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.2 }}
+                    transition={{ duration: 0.5, delay: i * 0.06 }}
+                    className="overflow-hidden rounded-2xl border border-slate-200/80 bg-[var(--surface-soft)]"
+                  >
+                    {href ? (
+                      <Link href={href} className="group block h-full">
+                        {body}
+                      </Link>
+                    ) : (
+                      body
+                    )}
+                  </motion.article>
+                );
+              })}
             </div>
           </div>
         </section>

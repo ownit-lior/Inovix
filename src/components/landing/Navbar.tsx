@@ -138,7 +138,7 @@ export default function Navbar({ variant = "auto" }: NavbarProps) {
               aria-haspopup="true"
               onClick={() => setServicesOpen((v) => !v)}
             >
-              שירותים
+              פתרונות
               <svg
                 viewBox="0 0 12 12"
                 className={`h-3 w-3 transition-transform ${servicesOpen ? "rotate-180" : ""}`}
@@ -340,7 +340,7 @@ export default function Navbar({ variant = "auto" }: NavbarProps) {
                   aria-expanded={mobileServicesOpen}
                   onClick={() => setMobileServicesOpen((v) => !v)}
                 >
-                  שירותים
+                  פתרונות
                   <svg
                     viewBox="0 0 12 12"
                     className={`h-4 w-4 transition-transform ${mobileServicesOpen ? "rotate-180" : ""}`}

@@ -12,7 +12,7 @@ export default function BlogPostPage({ post }: { post: BlogPost }) {
   return (
     <>
       <Navbar variant="solid" />
-      <main>
+      <main id="main-content">
         <section className="bg-[var(--navy)] pt-24 pb-10 text-white sm:pt-28 md:pt-32 md:pb-12">
           <div className="mx-auto max-w-3xl px-3 sm:px-4 md:px-6">
             <motion.div

@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <div className="bg-[var(--navy)] text-white">
       <Navbar />
-      <main>
+      <main id="main-content">
         <Hero />
         <Features />
         <Testimonials />

@@ -8,10 +8,39 @@ import { IMAGES } from "@/lib/images";
 
 export default function Contact() {
   const [sent, setSent] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState("");
 
-  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSent(true);
+    const form = e.currentTarget;
+    const data = new FormData(form);
+    const name = String(data.get("name") ?? "").trim();
+    const phone = String(data.get("phone") ?? "").trim();
+    const email = String(data.get("email") ?? "").trim();
+    const message = String(data.get("message") ?? "").trim();
+    if (!name || !phone || !email || !message) return;
+
+    setSubmitting(true);
+    setError("");
+    try {
+      const res = await fetch("/api/leads", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, phone, email, message }),
+      });
+      const payload = (await res.json()) as { error?: string };
+      if (!res.ok) {
+        setError(payload.error || "שליחה נכשלה. נסו שוב.");
+        return;
+      }
+      setSent(true);
+      form.reset();
+    } catch {
+      setError("שגיאת רשת. נסו שוב.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -97,7 +126,7 @@ export default function Contact() {
               <div className="mb-3 text-3xl text-[var(--teal)]">✓</div>
               <p className="text-lg font-bold text-[var(--ink)]">קיבלנו את הפרטים</p>
               <p className="mt-2 text-sm text-[var(--muted)]">
-                נחזור אליכם לתיאום שיחת ייעוץ. תודה שבחרתם ב־INOVIX.
+                הפנייה נשמרה. נחזור אליכם לתיאום שיחת ייעוץ. תודה שבחרתם ב־INOVIX.
               </p>
             </div>
           ) : (
@@ -116,11 +145,17 @@ export default function Contact() {
                   className="w-full resize-none rounded-xl border border-slate-200 bg-[var(--surface-soft)] px-3 py-3 text-base outline-none transition focus:border-[var(--teal)] focus:ring-2 focus:ring-[var(--teal)]/20 sm:px-4"
                 />
               </label>
+              {error ? (
+                <p className="text-sm text-red-600" role="alert">
+                  {error}
+                </p>
+              ) : null}
               <button
                 type="submit"
-                className="brand-gradient-bg mt-2 flex min-h-12 w-full items-center justify-center rounded-full py-3.5 text-sm font-bold text-[var(--navy)] transition hover:brightness-110"
+                disabled={submitting}
+                className="brand-gradient-bg mt-2 flex min-h-12 w-full items-center justify-center rounded-full py-3.5 text-sm font-bold text-[var(--navy)] transition hover:brightness-110 disabled:opacity-60"
               >
-                צרו קשר לייעוץ
+                {submitting ? "שולח…" : "צרו קשר לייעוץ"}
               </button>
             </div>
           )}
