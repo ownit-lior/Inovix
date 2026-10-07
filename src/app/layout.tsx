@@ -25,10 +25,11 @@ export const metadata: Metadata = {
       "ייעוץ, תכנון וביצוע של מערכות אבטחה, תקשורת, אודיו־וידאו ובית חכם לבתים ולעסקים.",
     images: [
       {
-        url: "/og-image.jpg",
+        url: "/og-he-v3.jpg",
         width: 1200,
         height: 630,
-        alt: "INOVIX — מערכות אבטחה ובית חכם",
+        type: "image/jpeg",
+        alt: "INOVIX — ייעוץ, תכנון וביצוע · אבטחה, תקשורת ובית חכם",
       },
     ],
   },
@@ -37,7 +38,7 @@ export const metadata: Metadata = {
     title: "INOVIX | ייעוץ, תכנון וביצוע מערכות אבטחה ובית חכם",
     description:
       "ייעוץ, תכנון וביצוע של מערכות אבטחה, תקשורת, אודיו־וידאו ובית חכם לבתים ולעסקים.",
-    images: ["/og-image.jpg"],
+    images: ["/og-he-v3.jpg"],
   },
 };
 
