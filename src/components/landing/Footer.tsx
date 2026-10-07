@@ -80,6 +80,9 @@ export default function Footer() {
           >
             הצהרת נגישות
           </Link>
+          <Link href="/terms" className="transition hover:text-[var(--lime-bright)]">
+            תנאי שימוש
+          </Link>
         </div>
 
         <p className="text-xs text-white/45">
