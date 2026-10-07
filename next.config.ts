@@ -23,7 +23,7 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       {
-        source: "/share-preview.jpg",
+        source: "/wa-preview.jpg",
         headers: [
           {
             key: "Cache-Control",
@@ -33,7 +33,7 @@ const nextConfig: NextConfig = {
         ],
       },
       {
-        source: "/share-preview-square.jpg",
+        source: "/wa-preview-square.jpg",
         headers: [
           {
             key: "Cache-Control",
