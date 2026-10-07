@@ -10,26 +10,39 @@ const heebo = Heebo({
   weight: ["300", "400", "500", "600", "700", "800"],
 });
 
+const SITE_URL = "https://www.inovix.co.il";
+const OG_IMAGE = `${SITE_URL}/inovix-share.jpg`;
+const OG_IMAGE_SQUARE = `${SITE_URL}/inovix-share-square.jpg`;
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.inovix.co.il"),
+  metadataBase: new URL(SITE_URL),
   title: "INOVIX | ייעוץ, תכנון וביצוע מערכות אבטחה ובית חכם",
   description:
     "INOVIX — ייעוץ, תכנון וביצוע של מערכות אבטחה, תקשורת, אודיו־וידאו ובית חכם לבתים ולעסקים.",
   openGraph: {
     type: "website",
     locale: "he_IL",
-    url: "https://www.inovix.co.il",
+    url: SITE_URL,
     siteName: "INOVIX",
     title: "INOVIX | ייעוץ, תכנון וביצוע מערכות אבטחה ובית חכם",
     description:
       "ייעוץ, תכנון וביצוע של מערכות אבטחה, תקשורת, אודיו־וידאו ובית חכם לבתים ולעסקים.",
     images: [
       {
-        url: "/og-he-v3.jpg",
+        url: OG_IMAGE,
+        secureUrl: OG_IMAGE,
         width: 1200,
         height: 630,
         type: "image/jpeg",
         alt: "INOVIX — ייעוץ, תכנון וביצוע · אבטחה, תקשורת ובית חכם",
+      },
+      {
+        url: OG_IMAGE_SQUARE,
+        secureUrl: OG_IMAGE_SQUARE,
+        width: 1080,
+        height: 1080,
+        type: "image/jpeg",
+        alt: "INOVIX",
       },
     ],
   },
@@ -38,7 +51,7 @@ export const metadata: Metadata = {
     title: "INOVIX | ייעוץ, תכנון וביצוע מערכות אבטחה ובית חכם",
     description:
       "ייעוץ, תכנון וביצוע של מערכות אבטחה, תקשורת, אודיו־וידאו ובית חכם לבתים ולעסקים.",
-    images: ["/og-he-v3.jpg"],
+    images: [OG_IMAGE],
   },
 };
 

@@ -20,6 +20,30 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  async headers() {
+    return [
+      {
+        source: "/inovix-share.jpg",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=604800, stale-while-revalidate=86400",
+          },
+          { key: "Content-Type", value: "image/jpeg" },
+        ],
+      },
+      {
+        source: "/inovix-share-square.jpg",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=604800, stale-while-revalidate=86400",
+          },
+          { key: "Content-Type", value: "image/jpeg" },
+        ],
+      },
+    ];
+  },
 };
 
 export default nextConfig;
