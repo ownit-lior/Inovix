@@ -23,7 +23,7 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       {
-        source: "/inovix-share.jpg",
+        source: "/share-preview.jpg",
         headers: [
           {
             key: "Cache-Control",
@@ -33,7 +33,7 @@ const nextConfig: NextConfig = {
         ],
       },
       {
-        source: "/inovix-share-square.jpg",
+        source: "/share-preview-square.jpg",
         headers: [
           {
             key: "Cache-Control",

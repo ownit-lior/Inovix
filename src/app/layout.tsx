@@ -13,8 +13,8 @@ const heebo = Heebo({
 // Use apex (no www): public DNS still sends www to MyNames parking,
 // so Instagram fails to load https://www.../inovix-share.jpg (HTML instead of JPEG).
 const SITE_URL = "https://inovix.co.il";
-const OG_IMAGE = `${SITE_URL}/inovix-share.jpg`;
-const OG_IMAGE_SQUARE = `${SITE_URL}/inovix-share-square.jpg`;
+const OG_IMAGE = `${SITE_URL}/share-preview.jpg`;
+const OG_IMAGE_SQUARE = `${SITE_URL}/share-preview-square.jpg`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
