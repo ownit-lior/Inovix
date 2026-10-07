@@ -11,9 +11,34 @@ const heebo = Heebo({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.inovix.co.il"),
   title: "INOVIX | ייעוץ, תכנון וביצוע מערכות אבטחה ובית חכם",
   description:
     "INOVIX — ייעוץ, תכנון וביצוע של מערכות אבטחה, תקשורת, אודיו־וידאו ובית חכם לבתים ולעסקים.",
+  openGraph: {
+    type: "website",
+    locale: "he_IL",
+    url: "https://www.inovix.co.il",
+    siteName: "INOVIX",
+    title: "INOVIX | ייעוץ, תכנון וביצוע מערכות אבטחה ובית חכם",
+    description:
+      "ייעוץ, תכנון וביצוע של מערכות אבטחה, תקשורת, אודיו־וידאו ובית חכם לבתים ולעסקים.",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "INOVIX — מערכות אבטחה ובית חכם",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "INOVIX | ייעוץ, תכנון וביצוע מערכות אבטחה ובית חכם",
+    description:
+      "ייעוץ, תכנון וביצוע של מערכות אבטחה, תקשורת, אודיו־וידאו ובית חכם לבתים ולעסקים.",
+    images: ["/og-image.jpg"],
+  },
 };
 
 export const viewport: Viewport = {
