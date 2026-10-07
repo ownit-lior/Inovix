@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { SERVICES } from "@/lib/services";
 import { getAllServiceTopics } from "@/lib/service-topics";
 
-const SITE = "https://www.inovix.co.il";
+const SITE = "https://inovix.co.il";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();

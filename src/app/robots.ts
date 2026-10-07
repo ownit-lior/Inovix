@@ -13,6 +13,6 @@ export default function robots(): MetadataRoute.Robots {
         allow: "/",
       },
     ],
-    sitemap: "https://www.inovix.co.il/sitemap.xml",
+    sitemap: "https://inovix.co.il/sitemap.xml",
   };
 }

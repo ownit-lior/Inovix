@@ -10,7 +10,9 @@ const heebo = Heebo({
   weight: ["300", "400", "500", "600", "700", "800"],
 });
 
-const SITE_URL = "https://www.inovix.co.il";
+// Use apex (no www): public DNS still sends www to MyNames parking,
+// so Instagram fails to load https://www.../inovix-share.jpg (HTML instead of JPEG).
+const SITE_URL = "https://inovix.co.il";
 const OG_IMAGE = `${SITE_URL}/inovix-share.jpg`;
 const OG_IMAGE_SQUARE = `${SITE_URL}/inovix-share-square.jpg`;
 
@@ -19,6 +21,9 @@ export const metadata: Metadata = {
   title: "INOVIX | ייעוץ, תכנון וביצוע מערכות אבטחה ובית חכם",
   description:
     "INOVIX — ייעוץ, תכנון וביצוע של מערכות אבטחה, תקשורת, אודיו־וידאו ובית חכם לבתים ולעסקים.",
+  alternates: {
+    canonical: SITE_URL,
+  },
   openGraph: {
     type: "website",
     locale: "he_IL",
