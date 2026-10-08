@@ -30,6 +30,30 @@ const REVIEWS = [
     image: IMAGES.services.securityAlarm,
     imageAlt: "מערכת אזעקה ואבטחה לעסק קטן",
   },
+  {
+    name: "נועה כהן",
+    role: "פנטהאוז, תל אביב",
+    quote:
+      "מהייעוץ ועד הביצוע — הכל היה מסודר ומקצועי. קיבלנו מערכת אבטחה ובית חכם שעובדת בשקט ובדיוק.",
+    image: IMAGES.projects.penthouse,
+    imageAlt: "פנטהאוז בתל אביב — סלון עם מערכת אודיו־וידאו משולבת",
+  },
+  {
+    name: "דניאל לוי",
+    role: "משרדים, הרצליה פיתוח",
+    quote:
+      "תכנון מדויק וביצוע ברמה גבוהה. אבטחה, רשת ואודיו־וידאו — גורם אחד שאחראי על הכל בעסק.",
+    image: IMAGES.services.networking,
+    imageAlt: "משרדים בהרצליה — תשתית תקשורת וארון רשת מסודר",
+  },
+  {
+    name: "מיכל אברהם",
+    role: "דירת גן, רעננה",
+    quote:
+      "הייעוץ עזר לנו להבין מה באמת צריך. הביצוע היה נקי, והמערכות פשוט עובדות.",
+    image: IMAGES.projects.garden,
+    imageAlt: "דירת גן ברעננה — חצר וילה עם טכנולוגיה משולבת",
+  },
 ] as const;
 
 export default function Testimonials() {
@@ -150,5 +174,4 @@ export default function Testimonials() {
         </div>
       </div>
     </section>
-  );
-}
+  )
