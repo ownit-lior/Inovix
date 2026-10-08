@@ -7,28 +7,28 @@ import { IMAGES } from "@/lib/images";
 
 const REVIEWS = [
   {
-    name: "נועה כהן",
-    role: "פנטהאוז, תל אביב",
+    name: "נציג ועד בית",
+    role: "פרויקט מגורים בנתניה",
     quote:
-      "מהייעוץ ועד הביצוע — הכל היה מסודר ומקצועי. קיבלנו מערכת אבטחה ובית חכם שעובדת בשקט ובדיוק.",
-    image: IMAGES.projects.penthouse,
-    imageAlt: "פנטהאוז בתל אביב — סלון עם מערכת אודיו־וידאו משולבת",
+      "חיפשנו פתרון מקיף ומקצועי לשני בנייני המגורים שלנו, ו-INOVIX סיפקו עבודה ברמה הגבוהה ביותר. ההתקנה של עשרות מצלמות אבטחה ותשתית רשת מתקדמת על פני מספר מפלסי חניון בוצעה בצורה אסתטית, חכמה וללא פשרות. פשוט שקט נפשי.",
+    image: IMAGES.services.securityCameras,
+    imageAlt: "מצלמות אבטחה ותשתית מקצועית בפרויקט מגורים",
   },
   {
-    name: "דניאל לוי",
-    role: "משרדים, הרצליה פיתוח",
+    name: "מנהל תפעול",
+    role: "פארק מדע וטכנולוגיה",
     quote:
-      "תכנון מדויק וביצוע ברמה גבוהה. אבטחה, רשת ואודיו־וידאו — גורם אחד שאחראי על הכל בעסק.",
+      "כמשרד שדורש טכנולוגיה מתקדמת, היה לנו קריטי לעבוד עם אינטגרטור שמבין עניין. הצוות תכנן והטמיע עבורנו אקוסיסטם שלם שמשלב בקרת כניסה חכמה למשרדים, מצלמות, אזעקה ורשת תקשורת יציבה. שירות מקצועי וזמינות מלאה לכל שאלה.",
     image: IMAGES.projects.office,
-    imageAlt: "משרדים בהרצליה — תשתית תקשורת וארון רשת מסודר",
+    imageAlt: "משרדים — בקרת כניסה, אבטחה ותקשורת משולבת",
   },
   {
-    name: "מיכל אברהם",
-    role: "דירת גן, רעננה",
+    name: "בעלי עסק",
+    role: "עגלת קפה",
     quote:
-      "הייעוץ עזר לנו להבין מה באמת צריך. הביצוע היה נקי, והמערכות פשוט עובדות.",
-    image: IMAGES.projects.garden,
-    imageAlt: "דירת גן ברעננה — חצר וילה עם טכנולוגיה משולבת",
+      "ליאור נתן לנו שירות מעולה ומהיר מהרגע הראשון. מעבר להתקנה המקצועית של מערכות האזעקה והאבטחה לעסק, קיבלנו ליווי מסודר בכל נושא אישורי הבטיחות והתקנים הנדרשים. ממליצים בחום לכל בעל עסק.",
+    image: IMAGES.services.securityAlarm,
+    imageAlt: "מערכת אזעקה ואבטחה לעסק קטן",
   },
 ] as const;
 
@@ -38,7 +38,7 @@ export default function Testimonials() {
   useEffect(() => {
     const id = window.setInterval(() => {
       setIndex((i) => (i + 1) % REVIEWS.length);
-    }, 5600);
+    }, 7200);
     return () => window.clearInterval(id);
   }, []);
 
@@ -102,7 +102,7 @@ export default function Testimonials() {
                   }}
                 />
                 <blockquote className="absolute inset-x-0 bottom-0 p-5 text-center sm:p-8 md:p-10 md:text-right">
-                  <p className="mx-auto max-w-3xl text-base leading-relaxed font-medium text-white sm:text-lg md:ms-auto md:me-0 md:text-xl">
+                  <p className="mx-auto max-w-3xl text-sm leading-relaxed font-medium text-white sm:text-base md:ms-auto md:me-0 md:text-lg lg:text-xl">
                     “{review.quote}”
                   </p>
                   <footer className="mt-4 sm:mt-5">
