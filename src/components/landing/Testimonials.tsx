@@ -75,7 +75,7 @@ export default function Testimonials() {
   return (
     <section
       id="testimonials"
-      className="brand-section section-seam-y py-16 text-white sm:py-20 md:py-24"
+      className="brand-section py-16 text-white sm:py-20 md:py-24"
     >
       <div className="relative mx-auto max-w-6xl px-3 sm:px-4 md:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">

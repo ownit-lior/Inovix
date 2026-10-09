@@ -60,7 +60,7 @@ export default function HomeImagine() {
 
   if (reduce) {
     return (
-      <section className="brand-section border-t border-white/5 py-20 text-center">
+      <section className="brand-section py-20 text-center">
         <div className="mx-auto max-w-3xl px-4">
           {BEATS.map((b) => (
             <div key={b.eyebrow} className="mb-10 last:mb-0">

@@ -130,7 +130,7 @@ body {
   background: transparent;
 }
 
-/* Contact + brands: same navy brand atmosphere as HomeBlog (no white field) */
+/* Contact + brands: identical navy field to brand-section — no color cut */
 .brand-band {
   position: relative;
   overflow: hidden;
@@ -147,13 +147,12 @@ body {
   background:
     linear-gradient(
       145deg,
-      rgba(42, 146, 155, 0.28) 0%,
-      rgba(5, 22, 53, 0.2) 48%,
-      rgba(126, 211, 33, 0.12) 100%
+      rgba(42, 146, 155, 0.24) 0%,
+      rgba(5, 22, 53, 0.18) 48%,
+      rgba(126, 211, 33, 0.11) 100%
     ),
-    radial-gradient(circle at 14% 18%, rgba(42, 146, 155, 0.32), transparent 42%),
-    radial-gradient(circle at 88% 42%, rgba(126, 211, 33, 0.14), transparent 40%),
-    radial-gradient(circle at 30% 78%, rgba(42, 122, 155, 0.2), transparent 45%);
+    radial-gradient(circle at 12% 18%, rgba(42, 146, 155, 0.28), transparent 42%),
+    radial-gradient(circle at 88% 82%, rgba(126, 211, 33, 0.16), transparent 40%);
 }
 
 .brand-band > * {
@@ -207,22 +206,25 @@ body {
     radial-gradient(circle at 88% 82%, rgba(126, 211, 33, 0.16), transparent 40%);
 }
 
-/* Seamless color blends between homepage blocks — no hard separators */
+/*
+ * Connectors: soft teal/lime washes only — no dark bars / hairline seams.
+ * Navy-to-navy blocks share one continuous field.
+ */
 .section-seam-top,
 .section-seam-bottom {
   pointer-events: none;
   position: absolute;
   inset-inline: 0;
   z-index: 2;
-  height: clamp(4.5rem, 12vh, 8rem);
+  height: clamp(3rem, 10vh, 6rem);
 }
 
 .section-seam-top {
   top: 0;
   background: linear-gradient(
     180deg,
-    rgba(5, 22, 53, 0.95) 0%,
-    rgba(5, 22, 53, 0.45) 45%,
+    rgba(42, 146, 155, 0.18) 0%,
+    rgba(126, 211, 33, 0.06) 40%,
     transparent 100%
   );
 }
@@ -231,33 +233,21 @@ body {
   bottom: 0;
   background: linear-gradient(
     0deg,
-    rgba(5, 22, 53, 0.95) 0%,
-    rgba(5, 22, 53, 0.45) 45%,
+    rgba(42, 146, 155, 0.16) 0%,
+    rgba(126, 211, 33, 0.05) 40%,
     transparent 100%
   );
 }
 
+/* Former dark seam bars removed — they read as hard dividers */
 .section-seam-y {
   position: relative;
 }
 
 .section-seam-y::after {
-  content: "";
-  pointer-events: none;
-  position: absolute;
-  inset-inline: 0;
-  bottom: -1px;
-  height: clamp(3.5rem, 10vh, 7rem);
-  z-index: 3;
-  background: linear-gradient(
-    180deg,
-    transparent 0%,
-    rgba(5, 22, 53, 0.55) 40%,
-    var(--navy) 100%
-  );
+  content: none;
 }
 
-/* Blog → contact: keep continuous navy (no light flash) */
 .section-blend-to-light {
   position: relative;
 }
@@ -266,21 +256,13 @@ body {
   content: none;
 }
 
-/* Light section pulls navy wash from above */
 .section-blend-from-navy::before {
-  content: "";
-  pointer-events: none;
-  position: absolute;
-  inset-inline: 0;
-  top: 0;
-  height: clamp(4rem, 12vh, 8rem);
-  z-index: 2;
-  background: linear-gradient(
-    180deg,
-    rgba(5, 22, 53, 0.55) 0%,
-    rgba(5, 22, 53, 0.12) 55%,
-    transparent 100%
-  );
+  content: none;
+}
+
+/* Continuous homepage canvas: kill accidental edge flashes between blocks */
+#main-content > * + * {
+  margin-top: -1px;
 }
 
 /* Infinite partner-logo carousel (3 identical loops → -33.333%) */

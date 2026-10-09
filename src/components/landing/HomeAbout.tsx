@@ -25,7 +25,7 @@ export default function HomeAbout() {
   return (
     <section
       id="about"
-      className="brand-section section-seam-y relative flex min-h-[85dvh] items-center py-20 sm:py-24 md:min-h-[90dvh] md:py-28"
+      className="brand-section relative flex min-h-[85dvh] items-center py-20 sm:py-24 md:min-h-[90dvh] md:py-28"
     >
       <AmbientOrbs />
       <SectionShapes variant="teal" />

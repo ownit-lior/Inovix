@@ -85,7 +85,7 @@ export default function HomeProcessScroll() {
     return (
       <section
         id="process"
-        className="brand-section border-t border-white/5 py-16 sm:py-20"
+        className="brand-section py-16 sm:py-20"
       >
         <div className="mx-auto max-w-3xl px-3 sm:px-4">
           <p className="text-xs font-semibold tracking-[0.2em] text-[var(--lime-bright)] uppercase">

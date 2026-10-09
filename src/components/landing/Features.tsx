@@ -75,7 +75,7 @@ export default function Features() {
     return (
       <section
         id="features"
-        className="brand-section section-seam-y py-16 sm:py-20"
+        className="brand-section py-16 sm:py-20"
       >
         <div className="relative mx-auto max-w-6xl px-3 sm:px-4">
           <p className="text-center text-xs font-semibold tracking-[0.2em] text-[var(--lime-bright)] uppercase">
