@@ -86,14 +86,14 @@ export default function Features() {
             <motion.div key={f.href} variants={item}>
               <Link
                 href={f.href}
-                className="group relative block aspect-[16/9] overflow-hidden sm:aspect-[21/9]"
+                className="shine-on-hover group relative block aspect-[16/9] overflow-hidden sm:aspect-[21/9]"
               >
                 <Image
                   src={f.image}
                   alt={f.imageAlt}
                   fill
                   sizes="100vw"
-                  className="object-cover transition duration-700 group-hover:scale-[1.04]"
+                  className="object-cover transition duration-700 group-hover:scale-[1.05]"
                 />
                 <div
                   className="absolute inset-0 transition duration-500 group-hover:opacity-95"
@@ -108,7 +108,7 @@ export default function Features() {
                     <p className="text-xs font-semibold tracking-[0.16em] text-[var(--lime-bright)] sm:text-sm">
                       {f.eyebrow}
                     </p>
-                    <h3 className="mt-1.5 text-xl font-extrabold text-white sm:text-2xl md:text-3xl">
+                    <h3 className="mt-1.5 text-xl font-extrabold text-white transition duration-500 group-hover:tracking-wide sm:text-2xl md:text-3xl">
                       {f.title}
                     </h3>
                     <p className="mt-3 inline-flex items-center gap-2 text-sm font-semibold text-white/80 transition group-hover:text-[var(--lime-bright)]">

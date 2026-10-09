@@ -165,6 +165,12 @@ export function getPost(slug: string): BlogPost | undefined {
   return BLOG_POSTS.find((p) => p.slug === slug);
 }
 
+export function getLatestPosts(count = 3): BlogPost[] {
+  return [...BLOG_POSTS]
+    .sort((a, b) => b.date.localeCompare(a.date))
+    .slice(0, count);
+}
+
 export function formatPostDate(iso: string): string {
   return new Intl.DateTimeFormat("he-IL", {
     day: "numeric",

@@ -12,6 +12,7 @@ import {
   useTransform,
 } from "framer-motion";
 
+import Magnetic from "@/components/effects/Magnetic";
 import { IMAGES } from "@/lib/images";
 
 const HERO_IMAGE = IMAGES.home.hero;
@@ -174,18 +175,22 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.45 }}
         >
-          <a
-            href="#contact"
-            className="brand-gradient-bg inline-flex min-h-12 w-full items-center justify-center rounded-full px-8 py-3.5 text-sm font-bold text-[var(--navy)] shadow-[0_12px_32px_rgba(126,211,33,0.32)] transition hover:brightness-110 sm:w-auto"
-          >
-            צרו קשר לייעוץ
-          </a>
-          <a
-            href="/tour"
-            className="inline-flex min-h-12 w-full items-center justify-center rounded-full border border-white/40 bg-[rgba(5,22,53,0.4)] px-8 py-3.5 text-sm font-semibold text-white backdrop-blur-[2px] transition hover:border-[var(--lime)]/60 hover:bg-[rgba(5,22,53,0.55)] sm:w-auto"
-          >
-            סיור תלת־ממד
-          </a>
+          <Magnetic className="w-full sm:w-auto" strength={0.32}>
+            <a
+              href="#contact"
+              className="brand-gradient-bg inline-flex min-h-12 w-full items-center justify-center rounded-full px-8 py-3.5 text-sm font-bold text-[var(--navy)] shadow-[0_12px_32px_rgba(126,211,33,0.32)] transition hover:brightness-110 sm:w-auto"
+            >
+              צרו קשר לייעוץ
+            </a>
+          </Magnetic>
+          <Magnetic className="w-full sm:w-auto" strength={0.25}>
+            <a
+              href="/tour"
+              className="inline-flex min-h-12 w-full items-center justify-center rounded-full border border-white/40 bg-[rgba(5,22,53,0.4)] px-8 py-3.5 text-sm font-semibold text-white backdrop-blur-[2px] transition hover:border-[var(--lime)]/60 hover:bg-[rgba(5,22,53,0.55)] sm:w-auto"
+            >
+              סיור תלת־ממד
+            </a>
+          </Magnetic>
         </motion.div>
       </div>
 
