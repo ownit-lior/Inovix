@@ -15,7 +15,7 @@ import SmoothScroll from "@/components/effects/SmoothScroll";
 export default function Home() {
   return (
     <SmoothScroll>
-      <div className="bg-[var(--navy)] text-white">
+      <div className="overflow-x-clip bg-[var(--navy)] text-white">
         <ScrollProgress />
         <Navbar />
         <main id="main-content">

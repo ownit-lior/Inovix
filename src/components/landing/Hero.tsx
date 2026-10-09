@@ -31,30 +31,23 @@ export default function Hero() {
     ["0%", reduce ? "0%" : "12%"],
   );
 
-  const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
-  const springX = useSpring(mouseX, { stiffness: 90, damping: 22, mass: 0.4 });
   const springY = useSpring(mouseY, { stiffness: 90, damping: 22, mass: 0.4 });
 
-  const titleX = useTransform(springX, [-0.5, 0.5], reduce ? [0, 0] : [12, -12]);
+  /* Vertical-only parallax — no sideways drift */
   const titleY = useTransform(springY, [-0.5, 0.5], reduce ? [0, 0] : [8, -8]);
-  const subX = useTransform(springX, [-0.5, 0.5], reduce ? [0, 0] : [7, -7]);
   const subY = useTransform(springY, [-0.5, 0.5], reduce ? [0, 0] : [5, -5]);
-  const ctaX = useTransform(springX, [-0.5, 0.5], reduce ? [0, 0] : [4, -4]);
   const ctaY = useTransform(springY, [-0.5, 0.5], reduce ? [0, 0] : [3, -3]);
-  const brandX = useTransform(springX, [-0.5, 0.5], reduce ? [0, 0] : [9, -9]);
   const brandY = useTransform(springY, [-0.5, 0.5], reduce ? [0, 0] : [6, -6]);
 
   const onMouseMove = (e: MouseEvent<HTMLElement>) => {
     if (reduce || !ref.current) return;
     if (window.matchMedia("(pointer: coarse)").matches) return;
     const rect = ref.current.getBoundingClientRect();
-    mouseX.set((e.clientX - rect.left) / rect.width - 0.5);
     mouseY.set((e.clientY - rect.top) / rect.height - 0.5);
   };
 
   const onMouseLeave = () => {
-    mouseX.set(0);
     mouseY.set(0);
   };
 
@@ -80,8 +73,7 @@ export default function Hero() {
               ? { scale: 1.03 }
               : {
                   scale: [1.03, 1.09, 1.03],
-                  x: ["0%", "-0.8%", "0%"],
-                  y: ["0%", "0.6%", "0%"],
+                  y: ["0%", "1.2%", "0%"],
                 }
           }
           transition={
@@ -131,7 +123,7 @@ export default function Hero() {
 
       <div className="relative z-10 mx-auto w-full max-w-6xl px-3 sm:px-4 md:px-6 lg:px-8">
         <motion.div
-          style={{ x: brandX, y: brandY }}
+          style={{ y: brandY }}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.08 }}
@@ -146,7 +138,7 @@ export default function Hero() {
 
         <motion.h1
           className="mt-5 max-w-3xl text-[1.85rem] leading-[1.2] font-extrabold text-white sm:mt-6 sm:text-4xl sm:leading-[1.15] md:text-5xl lg:text-6xl"
-          style={{ x: titleX, y: titleY, filter: titleFilter }}
+          style={{ y: titleY, filter: titleFilter }}
           initial={{ opacity: 0, y: 28 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.18 }}
@@ -160,7 +152,7 @@ export default function Hero() {
 
         <motion.p
           className="mt-4 max-w-xl text-[0.95rem] leading-relaxed text-white/92 [text-shadow:0_2px_16px_rgba(5,22,53,0.6)] sm:mt-5 sm:text-base md:text-lg"
-          style={{ x: subX, y: subY }}
+          style={{ y: subY }}
           initial={{ opacity: 0, y: 22 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.75, delay: 0.32 }}
@@ -170,7 +162,7 @@ export default function Hero() {
 
         <motion.div
           className="mt-7 flex w-full flex-col gap-3 sm:mt-9 sm:w-auto sm:flex-row sm:items-center sm:gap-4"
-          style={{ x: ctaX, y: ctaY }}
+          style={{ y: ctaY }}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.45 }}

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useId, useRef, useState, type FormEvent } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { CONTACT } from "@/lib/contact";
 
@@ -12,72 +12,192 @@ type WhatsAppFabProps = {
 };
 
 /**
- * Always-on WhatsApp FAB (Ginnie-style chat button):
- * green circle, pulse ring, optional tip bubble.
+ * WhatsApp FAB on the physical right — opens a chat window first,
+ * then continues to WhatsApp (Ginnie-style lead chat).
  */
 export default function WhatsAppFab({
   message = DEFAULT_MESSAGE,
 }: WhatsAppFabProps) {
   const reduce = useReducedMotion();
-  const [tip, setTip] = useState(false);
+  const panelId = useId();
   const [mounted, setMounted] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [note, setNote] = useState("");
+  const panelRef = useRef<HTMLDivElement>(null);
+  const nameRef = useRef<HTMLInputElement>(null);
 
-  const href = `https://wa.me/${CONTACT.whatsapp}?text=${encodeURIComponent(message)}`;
+  useEffect(() => setMounted(true), []);
 
   useEffect(() => {
-    setMounted(true);
-    if (reduce) return;
-    const show = window.setTimeout(() => setTip(true), 2200);
-    const hide = window.setTimeout(() => setTip(false), 9000);
-    return () => {
-      window.clearTimeout(show);
-      window.clearTimeout(hide);
+    if (!open) return;
+    const t = window.setTimeout(() => nameRef.current?.focus(), 180);
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
     };
-  }, [reduce]);
+    window.addEventListener("keydown", onKey);
+    return () => {
+      window.clearTimeout(t);
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [open]);
+
+  useEffect(() => {
+    if (!open) return;
+    const onDown = (e: MouseEvent) => {
+      const t = e.target as Node;
+      if (panelRef.current?.contains(t)) return;
+      const fab = document.getElementById("inovix-wa-fab");
+      if (fab?.contains(t)) return;
+      setOpen(false);
+    };
+    document.addEventListener("mousedown", onDown);
+    return () => document.removeEventListener("mousedown", onDown);
+  }, [open]);
+
+  const openWhatsApp = (text: string) => {
+    const url = `https://wa.me/${CONTACT.whatsapp}?text=${encodeURIComponent(text)}`;
+    window.open(url, "_blank", "noopener,noreferrer");
+    setOpen(false);
+  };
+
+  const onSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    const parts = [
+      message,
+      name.trim() ? `שם: ${name.trim()}` : "",
+      phone.trim() ? `טלפון: ${phone.trim()}` : "",
+      note.trim() ? `הודעה: ${note.trim()}` : "",
+    ].filter(Boolean);
+    openWhatsApp(parts.join("\n"));
+  };
 
   if (!mounted) return null;
 
   return (
-    <div className="pointer-events-none fixed bottom-4 end-4 z-[95] flex flex-col items-end gap-2.5 sm:bottom-6 sm:end-6">
+    <div className="pointer-events-none fixed bottom-4 right-4 z-[95] flex flex-col items-end gap-3 sm:bottom-6 sm:right-6">
       <AnimatePresence>
-        {tip && (
+        {open && (
           <motion.div
-            key="wa-tip"
-            initial={{ opacity: 0, y: 10, scale: 0.94 }}
+            key="wa-panel"
+            ref={panelRef}
+            id={panelId}
+            role="dialog"
+            aria-modal="true"
+            aria-label="צ׳אט WhatsApp עם INOVIX"
+            initial={
+              reduce
+                ? { opacity: 0 }
+                : { opacity: 0, y: 24, scale: 0.94 }
+            }
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 8, scale: 0.96 }}
-            transition={{ duration: 0.35 }}
-            className="pointer-events-none relative max-w-[13rem] rounded-2xl bg-white px-3.5 py-2.5 text-center shadow-[0_14px_36px_rgba(5,22,53,0.28)]"
+            exit={
+              reduce
+                ? { opacity: 0 }
+                : { opacity: 0, y: 16, scale: 0.96 }
+            }
+            transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
+            className="pointer-events-auto w-[min(22rem,calc(100vw-2rem))] overflow-hidden rounded-2xl border border-black/5 bg-white shadow-[0_20px_50px_rgba(5,22,53,0.28)]"
           >
-            <p className="text-xs font-bold leading-snug text-[var(--ink)]">
-              דברו איתנו בוואטסאפ
-            </p>
-            <p className="mt-0.5 text-[0.7rem] text-[var(--muted)]" dir="ltr">
-              {CONTACT.phoneDisplay}
-            </p>
-            <span
-              className="absolute -bottom-1.5 end-7 h-3 w-3 rotate-45 bg-white"
-              aria-hidden
-            />
+            {/* Header */}
+            <div className="flex items-center justify-between gap-3 bg-[#075E54] px-4 py-3 text-white">
+              <div className="flex items-center gap-3">
+                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[#25D366] text-sm font-extrabold text-white">
+                  IN
+                </span>
+                <div>
+                  <p className="text-sm font-bold leading-tight">INOVIX</p>
+                  <p className="text-[0.7rem] text-white/75">בדרך כלל עונים מהר</p>
+                </div>
+              </div>
+              <button
+                type="button"
+                aria-label="סגור חלון"
+                className="flex h-8 w-8 items-center justify-center rounded-full text-white/80 transition hover:bg-white/10 hover:text-white"
+                onClick={() => setOpen(false)}
+              >
+                <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
+                  <path d="M6 6l12 12M18 6 6 18" />
+                </svg>
+              </button>
+            </div>
+
+            {/* Chat body */}
+            <div className="space-y-3 bg-[#ECE5DD] px-3 py-4">
+              <div className="max-w-[90%] rounded-2xl rounded-tr-sm bg-white px-3.5 py-2.5 text-sm leading-relaxed text-[var(--ink)] shadow-sm">
+                שלום 👋
+                <br />
+                איך נוכל לעזור לכם היום? השאירו פרטים ונמשיך יחד בוואטסאפ.
+              </div>
+
+              <form onSubmit={onSubmit} className="space-y-2.5 rounded-2xl bg-white p-3 shadow-sm">
+                <label className="block">
+                  <span className="sr-only">שם מלא</span>
+                  <input
+                    ref={nameRef}
+                    type="text"
+                    name="name"
+                    autoComplete="name"
+                    placeholder="שם מלא"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    className="w-full rounded-xl border border-slate-200 bg-[var(--surface-soft)] px-3 py-2.5 text-sm text-[var(--ink)] outline-none transition focus:border-[var(--teal)]"
+                  />
+                </label>
+                <label className="block">
+                  <span className="sr-only">טלפון</span>
+                  <input
+                    type="tel"
+                    name="phone"
+                    autoComplete="tel"
+                    inputMode="tel"
+                    dir="ltr"
+                    placeholder="מספר טלפון"
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                    className="w-full rounded-xl border border-slate-200 bg-[var(--surface-soft)] px-3 py-2.5 text-sm text-[var(--ink)] outline-none transition focus:border-[var(--teal)]"
+                  />
+                </label>
+                <label className="block">
+                  <span className="sr-only">הודעה</span>
+                  <textarea
+                    name="note"
+                    rows={2}
+                    placeholder="במה נוכל לעזור? (אופציונלי)"
+                    value={note}
+                    onChange={(e) => setNote(e.target.value)}
+                    className="w-full resize-none rounded-xl border border-slate-200 bg-[var(--surface-soft)] px-3 py-2.5 text-sm text-[var(--ink)] outline-none transition focus:border-[var(--teal)]"
+                  />
+                </label>
+                <button
+                  type="submit"
+                  className="flex w-full min-h-11 items-center justify-center gap-2 rounded-xl bg-[#25D366] px-4 py-2.5 text-sm font-bold text-white transition hover:brightness-110"
+                >
+                  <WhatsAppIcon className="h-5 w-5" />
+                  המשך לוואטסאפ
+                </button>
+              </form>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
 
-      <motion.a
-        href={href}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="שלחו הודעה ב־WhatsApp"
+      <motion.button
+        id="inovix-wa-fab"
+        type="button"
+        aria-label={open ? "סגור צ׳אט WhatsApp" : "פתח צ׳אט WhatsApp"}
+        aria-expanded={open}
+        aria-controls={panelId}
         className="pointer-events-auto relative flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_12px_36px_rgba(37,211,102,0.5)] transition hover:brightness-110 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#25D366] sm:h-[3.75rem] sm:w-[3.75rem]"
         initial={{ opacity: 0, scale: 0.55, y: 18 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         transition={{ type: "spring", stiffness: 380, damping: 22, delay: 0.35 }}
         whileHover={reduce ? undefined : { scale: 1.07 }}
         whileTap={reduce ? undefined : { scale: 0.94 }}
-        onMouseEnter={() => setTip(true)}
-        onFocus={() => setTip(true)}
+        onClick={() => setOpen((v) => !v)}
       >
-        {!reduce && (
+        {!reduce && !open && (
           <>
             <span
               className="whatsapp-pulse absolute inset-0 rounded-full bg-[#25D366]"
@@ -89,8 +209,14 @@ export default function WhatsAppFab({
             />
           </>
         )}
-        <WhatsAppIcon className="relative z-10 h-7 w-7 sm:h-8 sm:w-8" />
-      </motion.a>
+        {open ? (
+          <svg viewBox="0 0 24 24" className="relative z-10 h-6 w-6" fill="none" stroke="currentColor" strokeWidth="2.2" aria-hidden>
+            <path d="M6 6l12 12M18 6 6 18" />
+          </svg>
+        ) : (
+          <WhatsAppIcon className="relative z-10 h-7 w-7 sm:h-8 sm:w-8" />
+        )}
+      </motion.button>
     </div>
   );
 }

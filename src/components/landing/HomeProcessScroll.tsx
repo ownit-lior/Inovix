@@ -121,28 +121,29 @@ export default function HomeProcessScroll() {
       className="relative bg-[var(--navy)]"
       style={{ height: `${stepCount * 100}vh` }}
     >
-      <div className="sticky top-0 flex h-[100dvh] items-center overflow-hidden">
+      <div className="sticky top-0 flex h-[100dvh] items-center overflow-x-clip overflow-y-hidden">
         <AmbientOrbs className="opacity-80" />
         <div className="film-grain" aria-hidden />
 
-        {/* Progress rail */}
+        {/* Vertical progress rail (top → bottom) */}
         <div
-          className="pointer-events-none absolute inset-x-0 top-0 z-20 h-[3px] bg-white/10"
+          className="pointer-events-none absolute start-3 top-[18%] bottom-[18%] z-20 w-[3px] rounded-full bg-white/10 sm:start-6"
           aria-hidden
         >
           <motion.div
-            className="h-full origin-right"
+            className="w-full origin-top rounded-full"
             style={{
-              scaleX: progressScale,
+              scaleY: progressScale,
+              height: "100%",
               background:
-                "linear-gradient(90deg, #7ed321 0%, #3db89a 50%, #2a7a9b 100%)",
+                "linear-gradient(180deg, #7ed321 0%, #3db89a 50%, #2a7a9b 100%)",
             }}
           />
         </div>
 
-        <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-col gap-10 px-3 sm:px-4 md:flex-row md:items-center md:gap-16 md:px-6 lg:px-8">
-          {/* Step dots */}
-          <div className="flex shrink-0 justify-center gap-2 md:flex-col md:gap-3">
+        <div className="relative z-10 mx-auto flex w-full max-w-6xl items-center gap-6 px-3 ps-8 sm:gap-10 sm:px-4 sm:ps-12 md:gap-14 md:px-6 md:ps-14 lg:px-8">
+          {/* Vertical step dots — always column */}
+          <div className="flex shrink-0 flex-col items-center gap-3">
             {STEPS.map((s, i) => (
               <button
                 key={s.num}
@@ -150,7 +151,7 @@ export default function HomeProcessScroll() {
                 aria-label={`שלב ${s.num}: ${s.title}`}
                 aria-current={i === active ? "step" : undefined}
                 className={[
-                  "h-2.5 w-2.5 rounded-full transition-all duration-300 md:h-3 md:w-3",
+                  "h-2.5 w-2.5 rounded-full transition-all duration-300 sm:h-3 sm:w-3",
                   i === active
                     ? "scale-125 bg-[var(--lime)] shadow-[0_0_16px_rgba(126,211,33,0.55)]"
                     : i < active
@@ -176,17 +177,17 @@ export default function HomeProcessScroll() {
               תהליך העבודה
             </p>
             <h2 className="mt-2 max-w-xl text-2xl font-extrabold text-white/90 sm:text-3xl md:text-4xl">
-              גוללים בין השלבים — מהייעוץ עד המסירה
+              גוללים למטה בין השלבים — מהייעוץ עד המסירה
             </h2>
 
             <div className="relative mt-8 min-h-[14rem] sm:mt-10 sm:min-h-[15rem]">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={STEPS[active].num}
-                  initial={{ opacity: 0, y: 36, filter: "blur(6px)" }}
-                  animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                  exit={{ opacity: 0, y: -28, filter: "blur(6px)" }}
-                  transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+                  initial={{ opacity: 0, y: 48 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -48 }}
+                  transition={{ duration: 0.42, ease: [0.22, 1, 0.36, 1] }}
                   className="absolute inset-x-0 top-0"
                 >
                   <p className="text-[4.5rem] font-extrabold leading-none tracking-tight text-white/[0.08] sm:text-[6rem] md:text-[7.5rem]">

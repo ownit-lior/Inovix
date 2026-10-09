@@ -83,18 +83,34 @@ export default function HomeImagine() {
       style={{ height: `${BEATS.length * 100}vh` }}
       aria-label="חוויית INOVIX"
     >
-      <div className="sticky top-0 flex h-[100dvh] items-center justify-center overflow-hidden">
+      <div className="sticky top-0 flex h-[100dvh] items-center justify-center overflow-x-clip overflow-y-hidden">
         <AmbientOrbs />
         <div className="film-grain" aria-hidden />
+
+        {/* Vertical beat indicators */}
+        <div
+          className="absolute start-4 top-1/2 z-20 flex -translate-y-1/2 flex-col gap-2.5 sm:start-8"
+          aria-hidden
+        >
+          {BEATS.map((_, i) => (
+            <span
+              key={i}
+              className={[
+                "w-1 rounded-full transition-all duration-300",
+                i === active ? "h-8 bg-[var(--lime)]" : "h-3 bg-white/25",
+              ].join(" ")}
+            />
+          ))}
+        </div>
 
         <div className="relative z-10 mx-auto w-full max-w-4xl px-4 text-center">
           <AnimatePresence mode="wait">
             <motion.div
               key={BEATS[active].eyebrow}
-              initial={{ opacity: 0, y: 40, filter: "blur(8px)" }}
-              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-              exit={{ opacity: 0, y: -32, filter: "blur(8px)" }}
-              transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+              initial={{ opacity: 0, y: 56 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -56 }}
+              transition={{ duration: 0.48, ease: [0.22, 1, 0.36, 1] }}
             >
               <p className="text-sm font-semibold tracking-[0.28em] text-[var(--lime-bright)] uppercase sm:text-base">
                 {BEATS[active].eyebrow}
@@ -115,18 +131,6 @@ export default function HomeImagine() {
               </div>
             </motion.div>
           </AnimatePresence>
-
-          <div className="mt-12 flex justify-center gap-2" aria-hidden>
-            {BEATS.map((_, i) => (
-              <span
-                key={i}
-                className={[
-                  "h-1 rounded-full transition-all duration-300",
-                  i === active ? "w-8 bg-[var(--lime)]" : "w-3 bg-white/25",
-                ].join(" ")}
-              />
-            ))}
-          </div>
         </div>
       </div>
     </section>
