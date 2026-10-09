@@ -107,50 +107,80 @@ export default function Contact() {
 
         <motion.form
           onSubmit={onSubmit}
-          className="rounded-2xl border border-[var(--teal)]/15 bg-white/90 p-4 shadow-[0_20px_50px_rgba(5,22,53,0.08)] backdrop-blur-sm sm:rounded-3xl sm:p-6 md:p-8"
+          className="overflow-hidden rounded-2xl border border-[var(--teal)]/20 bg-white shadow-[0_20px_50px_rgba(5,22,53,0.1)] sm:rounded-3xl"
           initial={{ opacity: 0, y: 48 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.65, delay: 0.1 }}
         >
-          {sent ? (
-            <div className="flex min-h-[240px] flex-col items-center justify-center text-center sm:min-h-[280px]">
-              <div className="mb-3 text-3xl text-[var(--teal)]">✓</div>
-              <p className="text-lg font-bold text-[var(--ink)]">קיבלנו את הפרטים</p>
-              <p className="mt-2 text-sm text-[var(--muted)]">
-                הפנייה נשמרה. נחזור אליכם לתיאום שיחת ייעוץ. תודה שבחרתם ב־INOVIX.
-              </p>
-            </div>
-          ) : (
-            <div className="space-y-4">
-              <Field label="שם מלא" name="name" required />
-              <Field label="טלפון" name="phone" type="tel" required />
-              <Field label="אימייל" name="email" type="email" required />
-              <label className="block">
-                <span className="mb-1.5 block text-sm font-medium text-[var(--ink)]">
-                  ספרו לנו על הפרויקט
-                </span>
-                <textarea
-                  name="message"
-                  rows={4}
-                  required
-                  className="w-full resize-none rounded-xl border border-slate-200 bg-[var(--surface-soft)] px-3 py-3 text-base outline-none transition focus:border-[var(--teal)] focus:ring-2 focus:ring-[var(--teal)]/20 sm:px-4"
-                />
-              </label>
-              {error ? (
-                <p className="text-sm text-red-600" role="alert">
-                  {error}
+          <div
+            className="px-4 py-4 text-white sm:px-6 sm:py-5"
+            style={{
+              background:
+                "linear-gradient(135deg, #051635 0%, #1f5f78 55%, #2a929b 100%)",
+            }}
+          >
+            <p className="text-xs font-semibold tracking-[0.18em] text-[var(--lime-bright)] uppercase">
+              טופס פנייה
+            </p>
+            <p className="mt-1 text-lg font-extrabold sm:text-xl">
+              השאירו פרטים לייעוץ
+            </p>
+          </div>
+
+          <div className="relative p-4 sm:p-6 md:p-8">
+            <div
+              className="pointer-events-none absolute inset-0 opacity-80"
+              style={{
+                background:
+                  "radial-gradient(ellipse 60% 45% at 0% 0%, rgba(42,146,155,0.1), transparent 55%), radial-gradient(ellipse 50% 40% at 100% 100%, rgba(126,211,33,0.08), transparent 50%)",
+              }}
+              aria-hidden
+            />
+            {sent ? (
+              <div className="relative flex min-h-[240px] flex-col items-center justify-center text-center sm:min-h-[280px]">
+                <div className="brand-gradient-bg mb-3 flex h-12 w-12 items-center justify-center rounded-full text-xl font-bold text-[var(--navy)]">
+                  ✓
+                </div>
+                <p className="text-lg font-bold text-[var(--ink)]">
+                  קיבלנו את הפרטים
                 </p>
-              ) : null}
-              <button
-                type="submit"
-                disabled={submitting}
-                className="brand-gradient-bg mt-2 flex min-h-12 w-full items-center justify-center rounded-full py-3.5 text-sm font-bold text-[var(--navy)] transition hover:brightness-110 disabled:opacity-60"
-              >
-                {submitting ? "שולח…" : "צרו קשר לייעוץ"}
-              </button>
-            </div>
-          )}
+                <p className="mt-2 text-sm text-[var(--muted)]">
+                  הפנייה נשמרה. נחזור אליכם לתיאום שיחת ייעוץ. תודה שבחרתם
+                  ב־INOVIX.
+                </p>
+              </div>
+            ) : (
+              <div className="relative space-y-4">
+                <Field label="שם מלא" name="name" required />
+                <Field label="טלפון" name="phone" type="tel" required />
+                <Field label="אימייל" name="email" type="email" required />
+                <label className="block">
+                  <span className="mb-1.5 block text-sm font-medium text-[var(--teal)]">
+                    ספרו לנו על הפרויקט
+                  </span>
+                  <textarea
+                    name="message"
+                    rows={4}
+                    required
+                    className="w-full resize-none rounded-xl border border-[var(--teal)]/20 bg-[var(--surface-soft)] px-3 py-3 text-base outline-none transition focus:border-[var(--teal)] focus:ring-2 focus:ring-[var(--teal)]/20 sm:px-4"
+                  />
+                </label>
+                {error ? (
+                  <p className="text-sm text-red-600" role="alert">
+                    {error}
+                  </p>
+                ) : null}
+                <button
+                  type="submit"
+                  disabled={submitting}
+                  className="brand-gradient-bg mt-2 flex min-h-12 w-full items-center justify-center rounded-full py-3.5 text-sm font-bold text-[var(--navy)] shadow-[0_12px_28px_rgba(126,211,33,0.28)] transition hover:brightness-110 disabled:opacity-60"
+                >
+                  {submitting ? "שולח…" : "צרו קשר לייעוץ"}
+                </button>
+              </div>
+            )}
+          </div>
         </motion.form>
       </div>
     </section>
@@ -170,14 +200,14 @@ function Field({
 }) {
   return (
     <label className="block">
-      <span className="mb-1.5 block text-sm font-medium text-[var(--ink)]">
+      <span className="mb-1.5 block text-sm font-medium text-[var(--teal)]">
         {label}
       </span>
       <input
         name={name}
         type={type}
         required={required}
-        className="w-full rounded-xl border border-slate-200 bg-[var(--surface-soft)] px-3 py-3 text-base outline-none transition focus:border-[var(--teal)] focus:ring-2 focus:ring-[var(--teal)]/20 sm:px-4"
+        className="w-full rounded-xl border border-[var(--teal)]/20 bg-[var(--surface-soft)] px-3 py-3 text-base outline-none transition focus:border-[var(--teal)] focus:ring-2 focus:ring-[var(--teal)]/20 sm:px-4"
       />
     </label>
   );

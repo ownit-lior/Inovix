@@ -118,7 +118,7 @@ export default function WhatsAppFab({
   if (!mounted) return null;
 
   const inputClass =
-    "w-full rounded-xl border border-slate-200 bg-[var(--surface-soft)] px-3 py-2.5 text-sm text-[var(--ink)] outline-none transition focus:border-[var(--teal)] disabled:opacity-60";
+    "w-full rounded-xl border border-[var(--teal)]/20 bg-white px-3 py-2.5 text-sm text-[var(--ink)] outline-none transition focus:border-[var(--teal)] focus:ring-2 focus:ring-[var(--teal)]/20 disabled:opacity-60";
 
   return (
     <div className="pointer-events-none fixed bottom-4 right-4 z-[95] flex flex-col items-end gap-3 sm:bottom-6 sm:right-6">
@@ -139,16 +139,24 @@ export default function WhatsAppFab({
               reduce ? { opacity: 0 } : { opacity: 0, y: 16, scale: 0.96 }
             }
             transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
-            className="pointer-events-auto w-[min(22rem,calc(100vw-2rem))] overflow-hidden rounded-2xl border border-black/5 bg-white shadow-[0_20px_50px_rgba(5,22,53,0.28)]"
+            className="pointer-events-auto w-[min(22rem,calc(100vw-2rem))] overflow-hidden rounded-2xl border border-[var(--teal)]/25 bg-[var(--surface-soft)] shadow-[0_20px_50px_rgba(5,22,53,0.28)]"
           >
-            <div className="flex items-center justify-between gap-3 bg-[#075E54] px-4 py-3 text-white">
+            <div
+              className="flex items-center justify-between gap-3 px-4 py-3.5 text-white"
+              style={{
+                background:
+                  "linear-gradient(135deg, #051635 0%, #1f5f78 55%, #2a929b 100%)",
+              }}
+            >
               <div className="flex items-center gap-3">
-                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[#25D366] text-sm font-extrabold text-white">
+                <span className="brand-gradient-bg flex h-10 w-10 items-center justify-center rounded-full text-sm font-extrabold text-[var(--navy)]">
                   IN
                 </span>
                 <div>
-                  <p className="text-sm font-bold leading-tight">INOVIX</p>
-                  <p className="text-[0.7rem] text-white/75">
+                  <p className="text-sm font-bold leading-tight tracking-wide">
+                    INOVIX
+                  </p>
+                  <p className="text-[0.7rem] text-[var(--lime-bright)]/90">
                     השאירו פרטים ונמשיך בוואטסאפ
                   </p>
                 </div>
@@ -173,19 +181,28 @@ export default function WhatsAppFab({
               </button>
             </div>
 
-            <div className="space-y-3 bg-[#ECE5DD] px-3 py-4">
-              <div className="max-w-[92%] rounded-2xl rounded-tr-sm bg-white px-3.5 py-2.5 text-sm leading-relaxed text-[var(--ink)] shadow-sm">
-                שלום 👋
-                <br />
+            <div className="relative space-y-3 px-3 py-4">
+              <div
+                className="pointer-events-none absolute inset-0 opacity-70"
+                style={{
+                  background:
+                    "radial-gradient(ellipse 70% 50% at 10% 0%, rgba(42,146,155,0.16), transparent 55%), radial-gradient(ellipse 55% 40% at 90% 100%, rgba(126,211,33,0.12), transparent 50%)",
+                }}
+                aria-hidden
+              />
+              <div className="relative max-w-[92%] rounded-2xl rounded-tr-sm border border-[var(--teal)]/15 bg-white px-3.5 py-2.5 text-sm leading-relaxed text-[var(--ink)] shadow-sm">
+                <span className="mb-1 block text-[0.65rem] font-bold tracking-wide text-[var(--teal)] uppercase">
+                  INOVIX
+                </span>
                 מלאו את הפרטים — אחרי השליחה תועברו לוואטסאפ להמשך השיחה.
               </div>
 
               <form
                 onSubmit={onSubmit}
-                className="space-y-2.5 rounded-2xl bg-white p-3 shadow-sm"
+                className="relative space-y-2.5 rounded-2xl border border-[var(--teal)]/15 bg-white p-3 shadow-[0_8px_24px_rgba(5,22,53,0.06)]"
               >
                 <label className="block">
-                  <span className="mb-1 block text-[0.7rem] font-semibold text-[var(--muted)]">
+                  <span className="mb-1 block text-[0.7rem] font-semibold text-[var(--teal)]">
                     שם מלא *
                   </span>
                   <input
@@ -202,7 +219,7 @@ export default function WhatsAppFab({
                   />
                 </label>
                 <label className="block">
-                  <span className="mb-1 block text-[0.7rem] font-semibold text-[var(--muted)]">
+                  <span className="mb-1 block text-[0.7rem] font-semibold text-[var(--teal)]">
                     טלפון *
                   </span>
                   <input
@@ -220,7 +237,7 @@ export default function WhatsAppFab({
                   />
                 </label>
                 <label className="block">
-                  <span className="mb-1 block text-[0.7rem] font-semibold text-[var(--muted)]">
+                  <span className="mb-1 block text-[0.7rem] font-semibold text-[var(--teal)]">
                     אימייל *
                   </span>
                   <input
@@ -237,7 +254,7 @@ export default function WhatsAppFab({
                   />
                 </label>
                 <label className="block">
-                  <span className="mb-1 block text-[0.7rem] font-semibold text-[var(--muted)]">
+                  <span className="mb-1 block text-[0.7rem] font-semibold text-[var(--teal)]">
                     ספרו לנו על הפרויקט
                   </span>
                   <textarea
@@ -260,7 +277,7 @@ export default function WhatsAppFab({
                 <button
                   type="submit"
                   disabled={submitting}
-                  className="flex w-full min-h-11 items-center justify-center gap-2 rounded-xl bg-[#25D366] px-4 py-2.5 text-sm font-bold text-white transition hover:brightness-110 disabled:cursor-wait disabled:opacity-70"
+                  className="brand-gradient-bg flex w-full min-h-11 items-center justify-center gap-2 rounded-full px-4 py-2.5 text-sm font-bold text-[var(--navy)] shadow-[0_10px_24px_rgba(126,211,33,0.28)] transition hover:brightness-110 disabled:cursor-wait disabled:opacity-70"
                 >
                   {submitting ? (
                     "שומר פרטים..."
@@ -286,7 +303,11 @@ export default function WhatsAppFab({
         aria-label={open ? "סגור טופס WhatsApp" : "פתח טופס WhatsApp"}
         aria-expanded={open}
         aria-controls={panelId}
-        className="pointer-events-auto relative flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_12px_36px_rgba(37,211,102,0.5)] transition hover:brightness-110 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#25D366] sm:h-[3.75rem] sm:w-[3.75rem]"
+        className="pointer-events-auto relative flex h-14 w-14 items-center justify-center rounded-full text-[var(--navy)] shadow-[0_12px_36px_rgba(42,146,155,0.45)] transition hover:brightness-110 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--lime)] sm:h-[3.75rem] sm:w-[3.75rem]"
+        style={{
+          background:
+            "linear-gradient(135deg, #7ed321 0%, #3db89a 48%, #2a7a9b 100%)",
+        }}
         initial={{ opacity: 0, scale: 0.55, y: 18 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         transition={{ type: "spring", stiffness: 380, damping: 22, delay: 0.35 }}
@@ -301,11 +322,11 @@ export default function WhatsAppFab({
         {!reduce && !open && (
           <>
             <span
-              className="whatsapp-pulse absolute inset-0 rounded-full bg-[#25D366]"
+              className="whatsapp-pulse absolute inset-0 rounded-full bg-[var(--teal)]"
               aria-hidden
             />
             <span
-              className="whatsapp-pulse absolute inset-0 rounded-full bg-[#25D366] [animation-delay:0.7s]"
+              className="whatsapp-pulse absolute inset-0 rounded-full bg-[var(--lime)] [animation-delay:0.7s]"
               aria-hidden
             />
           </>

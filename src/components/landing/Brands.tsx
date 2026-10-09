@@ -12,15 +12,17 @@ function LogoSlide({ brand, keyId }: { brand: Brand; keyId: string }) {
   return (
     <li
       key={keyId}
-      className="flex h-14 w-[150px] shrink-0 items-center justify-center sm:h-16 sm:w-[170px] md:w-[190px]"
+      className="flex h-16 w-[160px] shrink-0 items-center justify-center sm:h-[4.5rem] sm:w-[180px] md:w-[200px]"
     >
-      <Image
-        src={brand.logo}
-        alt={brand.name}
-        width={220}
-        height={72}
-        className="max-h-10 w-auto max-w-[140px] object-contain opacity-80 transition duration-300 hover:opacity-100 sm:max-h-11 sm:max-w-[165px]"
-      />
+      <div className="flex h-full w-[92%] items-center justify-center rounded-2xl border border-[var(--teal)]/20 bg-white/90 px-4 shadow-[0_8px_24px_rgba(5,22,53,0.06)] transition duration-300 hover:border-[var(--lime)]/45 hover:shadow-[0_12px_28px_rgba(42,146,155,0.12)]">
+        <Image
+          src={brand.logo}
+          alt={brand.name}
+          width={220}
+          height={72}
+          className="max-h-9 w-auto max-w-[130px] object-contain opacity-85 transition duration-300 hover:opacity-100 sm:max-h-10 sm:max-w-[150px]"
+        />
+      </div>
     </li>
   );
 }
@@ -32,10 +34,23 @@ export default function Brands() {
   return (
     <section
       id="brands"
-      className="bg-gradient-to-b from-[#f3f8f9] to-white py-14 sm:py-16 md:py-20"
+      className="relative overflow-hidden py-14 sm:py-16 md:py-20"
       aria-labelledby="brands-heading"
+      style={{
+        background:
+          "linear-gradient(180deg, #f3f8f9 0%, #eef6f4 42%, #f7fbfa 100%)",
+      }}
     >
-      <div className="mx-auto max-w-6xl px-3 sm:px-4 md:px-6 lg:px-8">
+      <div
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(ellipse 55% 40% at 12% 20%, rgba(42,146,155,0.14), transparent 55%), radial-gradient(ellipse 50% 35% at 88% 80%, rgba(126,211,33,0.12), transparent 50%)",
+        }}
+        aria-hidden
+      />
+
+      <div className="relative mx-auto max-w-6xl px-3 sm:px-4 md:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -52,10 +67,10 @@ export default function Brands() {
           >
             המותגים שאנחנו עובדים איתם
           </h2>
-          <div className="mx-auto mt-4 h-px w-14 bg-[var(--lime)]/60" />
+          <div className="mx-auto mt-4 h-px w-14 bg-[var(--lime)]/70" />
           <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-[var(--muted)] sm:text-base">
             ציוד קצה ותשתיות מהמותגים המובילים בעולם — אבטחה, תקשורת, אודיו
-            וידיאו, חשמל ובית חכם.
+            וידאו, חשמל ובית חכם.
           </p>
         </motion.div>
       </div>
@@ -76,16 +91,24 @@ export default function Brands() {
         }}
       >
         <div
-          className="pointer-events-none absolute inset-y-0 left-0 z-10 w-12 bg-gradient-to-r from-white to-transparent sm:w-20 md:w-28"
+          className="pointer-events-none absolute inset-y-0 left-0 z-10 w-12 sm:w-20 md:w-28"
+          style={{
+            background:
+              "linear-gradient(to right, #f3f8f9 0%, rgba(243,248,249,0) 100%)",
+          }}
           aria-hidden
         />
         <div
-          className="pointer-events-none absolute inset-y-0 right-0 z-10 w-12 bg-gradient-to-l from-white to-transparent sm:w-20 md:w-28"
+          className="pointer-events-none absolute inset-y-0 right-0 z-10 w-12 sm:w-20 md:w-28"
+          style={{
+            background:
+              "linear-gradient(to left, #f7fbfa 0%, rgba(247,251,250,0) 100%)",
+          }}
           aria-hidden
         />
 
         {reduce ? (
-          <ul className="mx-auto flex max-w-6xl flex-wrap items-center justify-center gap-x-8 gap-y-6 px-4">
+          <ul className="mx-auto flex max-w-6xl flex-wrap items-center justify-center gap-x-3 gap-y-3 px-4">
             {ALL_BRANDS.map((brand) => (
               <LogoSlide key={brand.name} brand={brand} keyId={brand.name} />
             ))}
@@ -93,7 +116,7 @@ export default function Brands() {
         ) : (
           <div className="overflow-hidden py-2" dir="ltr">
             <ul
-              className="brand-marquee flex w-max items-center gap-1 sm:gap-3"
+              className="brand-marquee flex w-max items-center gap-2 sm:gap-3"
               style={{
                 animationPlayState: paused ? "paused" : "running",
               }}
