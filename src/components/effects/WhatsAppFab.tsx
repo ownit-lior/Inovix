@@ -3,6 +3,7 @@
 import { useEffect, useId, useRef, useState, type FormEvent } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { CONTACT } from "@/lib/contact";
+import { submitLead } from "@/lib/submit-lead";
 
 const DEFAULT_MESSAGE =
   "שלום INOVIX, אשמח לייעוץ לגבי מערכות לבית / לעסק";
@@ -12,7 +13,8 @@ type WhatsAppFabProps = {
 };
 
 /**
- * WhatsApp FAB — lead form first; WhatsApp opens only after successful submit.
+ * WhatsApp FAB — same lead pipeline as the homepage contact form
+ * (POST /api/leads → Neon). WhatsApp opens only after a successful save.
  */
 export default function WhatsAppFab({
   message = DEFAULT_MESSAGE,
@@ -72,52 +74,45 @@ export default function WhatsAppFab({
     const cleanNote = note.trim();
     const leadMessage = cleanNote || message;
 
-    if (!cleanName || !cleanPhone) {
-      setError("נא למלא שם וטלפון");
+    if (!cleanName || !cleanPhone || !cleanEmail) {
+      setError("נא למלא שם, טלפון ואימייל — כמו בטופס באתר");
       return;
     }
 
     setSubmitting(true);
     setError("");
 
-    try {
-      const res = await fetch("/api/leads", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: cleanName,
-          phone: cleanPhone,
-          email: cleanEmail,
-          message: `[וואטסאפ] ${leadMessage}`,
-        }),
-      });
-      const payload = (await res.json()) as { error?: string };
-      if (!res.ok) {
-        setError(payload.error || "שליחה נכשלה. נסו שוב.");
-        return;
-      }
+    // Same endpoint + payload shape as Contact / LandingLeadForm
+    const result = await submitLead({
+      name: cleanName,
+      phone: cleanPhone,
+      email: cleanEmail,
+      message: leadMessage,
+    });
 
-      const waText = [
-        message,
-        `שם: ${cleanName}`,
-        `טלפון: ${cleanPhone}`,
-        cleanEmail ? `אימייל: ${cleanEmail}` : "",
-        cleanNote ? `הודעה: ${cleanNote}` : "",
-      ]
-        .filter(Boolean)
-        .join("\n");
-
-      openWhatsApp(waText);
-      setName("");
-      setPhone("");
-      setEmail("");
-      setNote("");
-      setOpen(false);
-    } catch {
-      setError("שגיאת רשת. נסו שוב.");
-    } finally {
+    if (!result.ok) {
+      setError(result.error);
       setSubmitting(false);
+      return;
     }
+
+    const waText = [
+      message,
+      `שם: ${cleanName}`,
+      `טלפון: ${cleanPhone}`,
+      `אימייל: ${cleanEmail}`,
+      cleanNote ? `הודעה: ${cleanNote}` : "",
+    ]
+      .filter(Boolean)
+      .join("\n");
+
+    openWhatsApp(waText);
+    setName("");
+    setPhone("");
+    setEmail("");
+    setNote("");
+    setOpen(false);
+    setSubmitting(false);
   };
 
   if (!mounted) return null;
@@ -226,11 +221,12 @@ export default function WhatsAppFab({
                 </label>
                 <label className="block">
                   <span className="mb-1 block text-[0.7rem] font-semibold text-[var(--muted)]">
-                    אימייל
+                    אימייל *
                   </span>
                   <input
                     type="email"
                     name="email"
+                    required
                     autoComplete="email"
                     dir="ltr"
                     placeholder="email@example.com"
@@ -242,7 +238,7 @@ export default function WhatsAppFab({
                 </label>
                 <label className="block">
                   <span className="mb-1 block text-[0.7rem] font-semibold text-[var(--muted)]">
-                    הודעה
+                    ספרו לנו על הפרויקט
                   </span>
                   <textarea
                     name="note"
@@ -276,7 +272,7 @@ export default function WhatsAppFab({
                   )}
                 </button>
                 <p className="text-center text-[0.65rem] leading-snug text-[var(--muted)]">
-                  הפרטים נשמרים אצלנו — ורק אז נפתח וואטסאפ
+                  נשמר באותה מערכת לידים של טופס האתר — ואז נפתח וואטסאפ
                 </p>
               </form>
             </div>

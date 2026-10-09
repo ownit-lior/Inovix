@@ -5,6 +5,7 @@ import { useState, type FormEvent } from "react";
 import { motion } from "framer-motion";
 import { CONTACT } from "@/lib/contact";
 import { IMAGES } from "@/lib/images";
+import { submitLead } from "@/lib/submit-lead";
 
 export default function Contact() {
   const [sent, setSent] = useState(false);
@@ -23,24 +24,15 @@ export default function Contact() {
 
     setSubmitting(true);
     setError("");
-    try {
-      const res = await fetch("/api/leads", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, phone, email, message }),
-      });
-      const payload = (await res.json()) as { error?: string };
-      if (!res.ok) {
-        setError(payload.error || "שליחה נכשלה. נסו שוב.");
-        return;
-      }
-      setSent(true);
-      form.reset();
-    } catch {
-      setError("שגיאת רשת. נסו שוב.");
-    } finally {
+    const result = await submitLead({ name, phone, email, message });
+    if (!result.ok) {
+      setError(result.error);
       setSubmitting(false);
+      return;
     }
+    setSent(true);
+    form.reset();
+    setSubmitting(false);
   };
 
   return (

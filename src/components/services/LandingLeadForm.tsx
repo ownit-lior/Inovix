@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
+import { submitLead } from "@/lib/submit-lead";
 
 export default function LandingLeadForm({
   topicTitle,
@@ -24,31 +25,22 @@ export default function LandingLeadForm({
 
     setSubmitting(true);
     setError("");
-    try {
-      const res = await fetch("/api/leads", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name,
-          phone,
-          message: [
-            `פנייה מדף נחיתה: ${topicTitle}`,
-            note || "מעוניין בייעוץ",
-          ].join("\n"),
-        }),
-      });
-      const payload = (await res.json()) as { error?: string };
-      if (!res.ok) {
-        setError(payload.error || "שליחה נכשלה");
-        return;
-      }
-      setSent(true);
-      form.reset();
-    } catch {
-      setError("שגיאת רשת. נסו שוב או התקשרו.");
-    } finally {
+    const result = await submitLead({
+      name,
+      phone,
+      message: [
+        `פנייה מדף נחיתה: ${topicTitle}`,
+        note || "מעוניין בייעוץ",
+      ].join("\n"),
+    });
+    if (!result.ok) {
+      setError(result.error);
       setSubmitting(false);
+      return;
     }
+    setSent(true);
+    form.reset();
+    setSubmitting(false);
   };
 
   if (sent) {
