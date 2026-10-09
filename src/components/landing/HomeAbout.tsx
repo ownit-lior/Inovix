@@ -23,7 +23,7 @@ export default function HomeAbout() {
   return (
     <section
       id="about"
-      className="relative flex min-h-[85dvh] items-center bg-[var(--navy)] py-20 sm:py-24 md:min-h-[90dvh] md:py-28"
+      className="relative flex min-h-[85dvh] items-center py-20 sm:py-24 md:min-h-[90dvh] md:py-28"
     >
       <div className="relative z-10 mx-auto w-full max-w-4xl px-3 text-center sm:px-4 md:px-6 lg:px-8">
         <motion.div

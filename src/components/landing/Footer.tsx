@@ -10,7 +10,7 @@ import { SOCIAL_LINKS } from "@/lib/social";
 
 export default function Footer() {
   return (
-    <footer className="relative bg-[var(--navy)]">
+    <footer className="relative z-10">
       <motion.div
         className="relative mx-auto flex max-w-6xl flex-col items-center justify-between gap-6 px-3 py-8 text-center sm:gap-7 sm:px-4 sm:py-10 md:flex-row md:items-center md:px-6 md:text-right lg:px-8"
         initial={{ opacity: 0 }}

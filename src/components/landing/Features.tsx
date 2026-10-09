@@ -11,8 +11,6 @@ import {
   useScroll,
   useSpring,
 } from "framer-motion";
-import AmbientOrbs from "@/components/effects/AmbientOrbs";
-import SectionShapes from "@/components/effects/SectionShapes";
 import { IMAGES } from "@/lib/images";
 
 const FEATURES = [
@@ -111,13 +109,10 @@ export default function Features() {
     <section
       id="features"
       ref={containerRef}
-      className="relative bg-[var(--navy)]"
+      className="relative"
       style={{ height: `${count * 100}vh` }}
     >
       <div className="sticky top-0 flex h-[100dvh] items-center overflow-x-clip overflow-y-hidden">
-        <AmbientOrbs />
-        <SectionShapes variant="mixed" />
-        <div className="film-grain" aria-hidden />
 
         <div className="relative z-10 mx-auto grid w-full max-w-6xl items-center gap-8 px-3 sm:px-4 md:grid-cols-[1fr_1.15fr] md:gap-12 md:px-6 lg:px-8">
           <div>

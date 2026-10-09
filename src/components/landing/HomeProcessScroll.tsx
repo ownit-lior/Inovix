@@ -10,8 +10,6 @@ import {
   useTransform,
   AnimatePresence,
 } from "framer-motion";
-import AmbientOrbs from "@/components/effects/AmbientOrbs";
-import SectionShapes from "@/components/effects/SectionShapes";
 
 const STEPS = [
   {
@@ -119,13 +117,10 @@ export default function HomeProcessScroll() {
     <section
       id="process"
       ref={containerRef}
-      className="relative bg-[var(--navy)]"
+      className="relative"
       style={{ height: `${stepCount * 100}vh` }}
     >
       <div className="sticky top-0 flex h-[100dvh] items-center overflow-x-clip overflow-y-hidden">
-        <AmbientOrbs className="opacity-80" />
-        <SectionShapes variant="mixed" />
-        <div className="film-grain" aria-hidden />
 
         {/* Vertical progress rail (top → bottom) */}
         <div

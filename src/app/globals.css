@@ -130,53 +130,23 @@ body {
   background: transparent;
 }
 
-/*
- * Continuous end of homepage: blog → contact → brands share ONE navy canvas
- * and ONE atmosphere layer so teal/lime never hard-cuts at a section edge.
- */
-.brand-flow {
-  position: relative;
-  overflow: hidden;
-  color: #fff;
-  background: var(--navy);
-}
-
-.brand-flow::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  background:
-    linear-gradient(
-      160deg,
-      rgba(42, 146, 155, 0.26) 0%,
-      rgba(5, 22, 53, 0.12) 42%,
-      rgba(126, 211, 33, 0.12) 72%,
-      rgba(42, 146, 155, 0.2) 100%
-    ),
-    radial-gradient(ellipse 70% 40% at 12% 12%, rgba(42, 146, 155, 0.34), transparent 55%),
-    radial-gradient(ellipse 60% 35% at 88% 28%, rgba(126, 211, 33, 0.18), transparent 52%),
-    radial-gradient(ellipse 65% 40% at 20% 62%, rgba(42, 146, 155, 0.22), transparent 55%),
-    radial-gradient(ellipse 55% 35% at 82% 78%, rgba(126, 211, 33, 0.14), transparent 50%);
-}
-
-.brand-flow > section {
-  position: relative;
-  z-index: 2;
-}
-
-.brand-flow > .film-grain,
-.brand-flow > [aria-hidden] {
+/* Full-page canvas: atmosphere lives on .page-canvas only */
+.page-canvas > .film-grain,
+.page-canvas > [aria-hidden] {
   z-index: 0;
 }
 
-/* Legacy alias — keep panels working if referenced */
+/* Legacy aliases — transparent so parent navy shows through */
+.brand-flow,
 .brand-band {
   position: relative;
-  overflow: hidden;
   color: #fff;
   background: transparent;
+}
+
+.brand-flow::before,
+.brand-band::before {
+  content: none;
 }
 
 /* Lead form card on the navy band */
@@ -201,7 +171,7 @@ body {
   border-color: rgba(126, 211, 33, 0.55);
 }
 
-/* Shared navy brand atmosphere — features → showroom → testimonials → contact */
+/* Inner pages keep their own navy band */
 .brand-section {
   position: relative;
   overflow: hidden;
@@ -223,6 +193,18 @@ body {
     ),
     radial-gradient(circle at 12% 18%, rgba(42, 146, 155, 0.28), transparent 42%),
     radial-gradient(circle at 88% 82%, rgba(126, 211, 33, 0.16), transparent 40%);
+}
+
+/* Homepage: no per-block navy/atmosphere — .page-canvas is the only canvas */
+.page-canvas .brand-section {
+  overflow: visible;
+  background: transparent;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+.page-canvas .brand-section::before {
+  content: none;
 }
 
 /*
@@ -279,16 +261,10 @@ body {
   content: none;
 }
 
-/* Continuous homepage canvas: kill accidental edge flashes between blocks */
+/* Overlap 1px so subpixel gaps never flash a seam */
 #main-content > * + *,
 #main-content + footer {
   margin-top: -1px;
-}
-
-/* Kill inherited section chrome that reads as a divider line */
-.brand-section {
-  border: 0 !important;
-  box-shadow: none !important;
 }
 
 /* Infinite partner-logo carousel (3 identical loops → -33.333%) */

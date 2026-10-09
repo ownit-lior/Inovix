@@ -9,8 +9,6 @@ import {
   useScroll,
   useSpring,
 } from "framer-motion";
-import AmbientOrbs from "@/components/effects/AmbientOrbs";
-import SectionShapes from "@/components/effects/SectionShapes";
 
 const BEATS = [
   {
@@ -80,14 +78,11 @@ export default function HomeImagine() {
   return (
     <section
       ref={ref}
-      className="relative bg-[var(--navy)]"
+      className="relative"
       style={{ height: `${BEATS.length * 100}vh` }}
       aria-label="חוויית INOVIX"
     >
       <div className="sticky top-0 flex h-[100dvh] items-center justify-center overflow-x-clip overflow-y-hidden">
-        <AmbientOrbs />
-        <SectionShapes variant="lime" />
-        <div className="film-grain" aria-hidden />
 
         {/* Vertical beat indicators */}
         <div
