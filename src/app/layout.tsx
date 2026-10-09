@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 import { Heebo } from "next/font/google";
 import AccessibilityWidget from "@/components/AccessibilityWidget";
+import WhatsAppFab from "@/components/effects/WhatsAppFab";
 import "./globals.css";
 
 const heebo = Heebo({
@@ -74,6 +75,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           דלג לתוכן המרכזי
         </a>
         {children}
+        <WhatsAppFab />
         <AccessibilityWidget />
       </body>
     </html>
