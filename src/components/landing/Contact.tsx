@@ -107,7 +107,7 @@ export default function Contact() {
 
         <motion.form
           onSubmit={onSubmit}
-          className="overflow-hidden rounded-2xl border border-[var(--teal)]/20 bg-[var(--surface-elevated)] shadow-[0_20px_50px_rgba(5,22,53,0.1)] sm:rounded-3xl"
+          className="brand-band-panel overflow-hidden rounded-2xl border shadow-[0_20px_50px_rgba(5,22,53,0.12)] sm:rounded-3xl"
           initial={{ opacity: 0, y: 48 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
@@ -163,7 +163,7 @@ export default function Contact() {
                     name="message"
                     rows={4}
                     required
-                    className="w-full resize-none rounded-xl border border-[var(--teal)]/20 bg-[var(--surface-soft)] px-3 py-3 text-base outline-none transition focus:border-[var(--teal)] focus:ring-2 focus:ring-[var(--teal)]/20 sm:px-4"
+                    className="brand-band-input w-full resize-none rounded-xl border border-[var(--teal)]/25 px-3 py-3 text-base outline-none transition focus:border-[var(--teal)] focus:ring-2 focus:ring-[var(--teal)]/20 sm:px-4"
                   />
                 </label>
                 {error ? (
@@ -207,7 +207,7 @@ function Field({
         name={name}
         type={type}
         required={required}
-        className="w-full rounded-xl border border-[var(--teal)]/20 bg-[var(--surface-soft)] px-3 py-3 text-base outline-none transition focus:border-[var(--teal)] focus:ring-2 focus:ring-[var(--teal)]/20 sm:px-4"
+        className="brand-band-input w-full rounded-xl border border-[var(--teal)]/25 px-3 py-3 text-base outline-none transition focus:border-[var(--teal)] focus:ring-2 focus:ring-[var(--teal)]/20 sm:px-4"
       />
     </label>
   );
