@@ -1,11 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { motion } from "framer-motion";
 import AmbientOrbs from "@/components/effects/AmbientOrbs";
 import Magnetic from "@/components/effects/Magnetic";
-import { IMAGES } from "@/lib/images";
 
 const PILLARS = [
   {
@@ -26,98 +24,64 @@ export default function HomeAbout() {
   return (
     <section
       id="about"
-      className="brand-section relative border-t border-white/5 py-16 sm:py-20 md:py-24"
+      className="brand-section relative flex min-h-[85dvh] items-center border-t border-white/5 py-20 sm:py-24 md:min-h-[90dvh] md:py-28"
     >
       <AmbientOrbs />
       <div className="film-grain" aria-hidden />
 
-      <div className="relative mx-auto grid max-w-6xl items-center gap-10 px-3 sm:gap-12 sm:px-4 md:grid-cols-2 md:gap-14 md:px-6 lg:px-8">
+      <div className="relative z-10 mx-auto w-full max-w-4xl px-3 text-center sm:px-4 md:px-6 lg:px-8">
         <motion.div
-          className="relative aspect-[4/5] overflow-hidden sm:aspect-[5/6] md:aspect-[4/5]"
-          initial={{ opacity: 0, x: 28 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          initial={{ opacity: 0, y: 28 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.4 }}
+          transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
         >
-          <Image
-            src={IMAGES.about.team}
-            alt="חלל מגורים יוקרתי — הטכנולוגיה משתלבת בעיצוב"
-            fill
-            sizes="(max-width: 768px) 100vw, 50vw"
-            className="object-cover"
-          />
-          <div
-            className="absolute inset-0"
-            style={{
-              background:
-                "linear-gradient(180deg, transparent 45%, rgba(5,22,53,0.75) 100%)",
-            }}
-          />
-          <motion.div
-            className="absolute inset-x-0 bottom-0 p-5 sm:p-6"
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.25, duration: 0.55 }}
-          >
-            <p className="text-xs font-semibold tracking-[0.2em] text-[var(--lime-bright)] uppercase">
-              INOVIX
-            </p>
-            <p className="mt-1 text-lg font-bold text-white sm:text-xl">
-              ייעוץ · תכנון · ביצוע
-            </p>
-          </motion.div>
+          <p className="text-xs font-semibold tracking-[0.22em] text-[var(--lime-bright)] uppercase sm:text-sm">
+            אודות INOVIX
+          </p>
+          <h2 className="mt-4 text-3xl font-extrabold leading-[1.15] text-white sm:text-4xl md:text-5xl lg:text-[3.25rem]">
+            מומחים שמחברים טכנולוגיה
+            <br className="hidden sm:block" /> לחיי הבית
+          </h2>
+          <div className="mx-auto mt-6 h-px w-16 bg-[var(--lime)]/70" />
+          <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-white/75 sm:text-lg">
+            INOVIX נולדה מתוך אמונה פשוטה: בית חכם לא נמדד במספר האפליקציות —
+            אלא באיכות התכנון שמאחד אבטחה, תקשורת, אודיו־וידאו וחשמל חכם למערכת
+            אחת שעובדת בשקט.
+          </p>
         </motion.div>
 
-        <div>
-          <motion.div
-            initial={{ opacity: 0, y: 22 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.4 }}
-            transition={{ duration: 0.55 }}
-          >
-            <p className="text-xs font-semibold tracking-[0.2em] text-[var(--lime-bright)] uppercase sm:text-sm">
-              אודות
-            </p>
-            <h2 className="mt-3 text-2xl font-extrabold leading-tight text-white sm:text-3xl md:text-4xl">
-              מומחים שמחברים טכנולוגיה לחיי הבית
-            </h2>
-            <p className="mt-4 text-sm leading-relaxed text-white/75 sm:text-base">
-              INOVIX נולדה מתוך אמונה פשוטה: בית חכם לא נמדד במספר האפליקציות —
-              אלא באיכות התכנון שמאחד אבטחה, תקשורת, אודיו־וידאו וחשמל חכם
-              למערכת אחת שעובדת בשקט.
-            </p>
-          </motion.div>
-
-          <ul className="mt-8 space-y-5">
-            {PILLARS.map((p, i) => (
-              <motion.li
-                key={p.title}
-                initial={{ opacity: 0, y: 18 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.5 }}
-                transition={{ duration: 0.45, delay: i * 0.08 }}
-                className="border-r-2 border-[var(--lime)]/55 pr-4"
-              >
-                <h3 className="text-base font-bold text-white sm:text-lg">
-                  {p.title}
-                </h3>
-                <p className="mt-1 text-sm leading-relaxed text-white/65">
-                  {p.desc}
-                </p>
-              </motion.li>
-            ))}
-          </ul>
-
-          <Magnetic className="mt-8 inline-block" strength={0.28}>
-            <Link
-              href="/about"
-              className="brand-gradient-bg inline-flex min-h-12 items-center justify-center rounded-full px-7 py-3.5 text-sm font-bold text-[var(--navy)] shadow-[0_12px_32px_rgba(126,211,33,0.28)] transition hover:brightness-110"
+        <ul className="mx-auto mt-12 grid max-w-3xl grid-cols-1 gap-8 sm:mt-14 sm:grid-cols-3 sm:gap-6">
+          {PILLARS.map((p, i) => (
+            <motion.li
+              key={p.title}
+              initial={{ opacity: 0, y: 22 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.5 }}
+              transition={{ duration: 0.5, delay: 0.1 + i * 0.08 }}
+              className="text-center"
             >
-              לאודות המלא
-            </Link>
-          </Magnetic>
-        </div>
+              <p className="text-xs font-bold tracking-[0.18em] text-[var(--teal)]">
+                0{i + 1}
+              </p>
+              <h3 className="mt-2 text-lg font-bold text-white sm:text-xl">
+                {p.title}
+              </h3>
+              <p className="mt-2 text-sm leading-relaxed text-white/60">
+                {p.desc}
+              </p>
+            </motion.li>
+          ))}
+        </ul>
+
+        <Magnetic className="mt-12 inline-block sm:mt-14" strength={0.28}>
+          <Link
+            href="/about"
+            className="brand-gradient-bg inline-flex min-h-12 items-center justify-center rounded-full px-8 py-3.5 text-sm font-bold text-[var(--navy)] shadow-[0_12px_32px_rgba(126,211,33,0.28)] transition hover:brightness-110"
+          >
+            לאודות המלא
+          </Link>
+        </Magnetic>
       </div>
     </section>
   );

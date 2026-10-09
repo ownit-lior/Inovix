@@ -8,83 +8,89 @@ const DEFAULT_MESSAGE =
   "שלום INOVIX, אשמח לייעוץ לגבי מערכות לבית / לעסק";
 
 type WhatsAppFabProps = {
-  /** Prefill message for wa.me */
   message?: string;
 };
 
+/**
+ * Always-on WhatsApp FAB (Ginnie-style chat button):
+ * green circle, pulse ring, optional tip bubble.
+ */
 export default function WhatsAppFab({
   message = DEFAULT_MESSAGE,
 }: WhatsAppFabProps) {
   const reduce = useReducedMotion();
-  const [visible, setVisible] = useState(false);
   const [tip, setTip] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   const href = `https://wa.me/${CONTACT.whatsapp}?text=${encodeURIComponent(message)}`;
 
   useEffect(() => {
-    const onScroll = () => setVisible(window.scrollY > 280);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  useEffect(() => {
-    if (!visible || reduce) return;
-    const show = window.setTimeout(() => setTip(true), 1400);
-    const hide = window.setTimeout(() => setTip(false), 7000);
+    setMounted(true);
+    if (reduce) return;
+    const show = window.setTimeout(() => setTip(true), 2200);
+    const hide = window.setTimeout(() => setTip(false), 9000);
     return () => {
       window.clearTimeout(show);
       window.clearTimeout(hide);
     };
-  }, [visible, reduce]);
+  }, [reduce]);
+
+  if (!mounted) return null;
 
   return (
-    <div className="pointer-events-none fixed bottom-4 end-4 z-[95] flex flex-col items-end gap-2 sm:bottom-6 sm:end-6">
+    <div className="pointer-events-none fixed bottom-4 end-4 z-[95] flex flex-col items-end gap-2.5 sm:bottom-6 sm:end-6">
       <AnimatePresence>
-        {visible && tip && (
-          <motion.p
+        {tip && (
+          <motion.div
             key="wa-tip"
-            initial={{ opacity: 0, y: 8, scale: 0.96 }}
+            initial={{ opacity: 0, y: 10, scale: 0.94 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 6, scale: 0.96 }}
+            exit={{ opacity: 0, y: 8, scale: 0.96 }}
             transition={{ duration: 0.35 }}
-            className="pointer-events-none relative max-w-[12.5rem] rounded-2xl bg-white px-3.5 py-2.5 text-center text-xs font-semibold leading-snug text-[var(--ink)] shadow-[0_12px_32px_rgba(5,22,53,0.22)]"
+            className="pointer-events-none relative max-w-[13rem] rounded-2xl bg-white px-3.5 py-2.5 text-center shadow-[0_14px_36px_rgba(5,22,53,0.28)]"
           >
-            דברו איתנו בוואטסאפ
+            <p className="text-xs font-bold leading-snug text-[var(--ink)]">
+              דברו איתנו בוואטסאפ
+            </p>
+            <p className="mt-0.5 text-[0.7rem] text-[var(--muted)]" dir="ltr">
+              {CONTACT.phoneDisplay}
+            </p>
             <span
-              className="absolute -bottom-1.5 end-6 h-3 w-3 rotate-45 bg-white"
+              className="absolute -bottom-1.5 end-7 h-3 w-3 rotate-45 bg-white"
               aria-hidden
             />
-          </motion.p>
+          </motion.div>
         )}
       </AnimatePresence>
 
-      <AnimatePresence>
-        {visible && (
-          <motion.a
-            key="wa-fab"
-            href={href}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="שלחו הודעה ב־WhatsApp"
-            className="pointer-events-auto relative flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_12px_32px_rgba(37,211,102,0.45)] transition hover:brightness-110 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#25D366] sm:h-16 sm:w-16"
-            initial={{ opacity: 0, scale: 0.6, y: 16 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.7, y: 12 }}
-            transition={{ type: "spring", stiffness: 380, damping: 22 }}
-            whileHover={reduce ? undefined : { scale: 1.06 }}
-            whileTap={reduce ? undefined : { scale: 0.94 }}
-          >
-            {!reduce && (
-              <span
-                className="whatsapp-pulse absolute inset-0 rounded-full bg-[#25D366]"
-                aria-hidden
-              />
-            )}
-            <WhatsAppIcon className="relative z-10 h-7 w-7 sm:h-8 sm:w-8" />
-          </motion.a>
+      <motion.a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="שלחו הודעה ב־WhatsApp"
+        className="pointer-events-auto relative flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_12px_36px_rgba(37,211,102,0.5)] transition hover:brightness-110 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#25D366] sm:h-[3.75rem] sm:w-[3.75rem]"
+        initial={{ opacity: 0, scale: 0.55, y: 18 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        transition={{ type: "spring", stiffness: 380, damping: 22, delay: 0.35 }}
+        whileHover={reduce ? undefined : { scale: 1.07 }}
+        whileTap={reduce ? undefined : { scale: 0.94 }}
+        onMouseEnter={() => setTip(true)}
+        onFocus={() => setTip(true)}
+      >
+        {!reduce && (
+          <>
+            <span
+              className="whatsapp-pulse absolute inset-0 rounded-full bg-[#25D366]"
+              aria-hidden
+            />
+            <span
+              className="whatsapp-pulse absolute inset-0 rounded-full bg-[#25D366] [animation-delay:0.7s]"
+              aria-hidden
+            />
+          </>
         )}
-      </AnimatePresence>
+        <WhatsAppIcon className="relative z-10 h-7 w-7 sm:h-8 sm:w-8" />
+      </motion.a>
     </div>
   );
 }
