@@ -26,8 +26,10 @@ export default function Home() {
           <HomeProcessScroll />
           <Testimonials />
           <HomeBlog />
-          <Contact />
-          <Brands />
+          <div className="brand-band">
+            <Contact />
+            <Brands />
+          </div>
         </main>
         <Footer />
       </div>

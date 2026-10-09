@@ -14,7 +14,7 @@ function LogoSlide({ brand, keyId }: { brand: Brand; keyId: string }) {
       key={keyId}
       className="flex h-16 w-[160px] shrink-0 items-center justify-center sm:h-[4.5rem] sm:w-[180px] md:w-[200px]"
     >
-      <div className="flex h-full w-[92%] items-center justify-center rounded-2xl border border-[var(--teal)]/20 bg-white/90 px-4 shadow-[0_8px_24px_rgba(5,22,53,0.06)] transition duration-300 hover:border-[var(--lime)]/45 hover:shadow-[0_12px_28px_rgba(42,146,155,0.12)]">
+      <div className="flex h-full w-[92%] items-center justify-center rounded-2xl border border-[var(--teal)]/25 bg-white/95 px-4 shadow-[0_8px_24px_rgba(5,22,53,0.07)] transition duration-300 hover:border-[var(--lime)]/50 hover:shadow-[0_12px_28px_rgba(42,146,155,0.14)]">
         <Image
           src={brand.logo}
           alt={brand.name}
@@ -34,22 +34,9 @@ export default function Brands() {
   return (
     <section
       id="brands"
-      className="relative overflow-hidden py-14 sm:py-16 md:py-20"
+      className="relative overflow-hidden pb-16 pt-4 sm:pb-20 sm:pt-6 md:pb-24"
       aria-labelledby="brands-heading"
-      style={{
-        background:
-          "linear-gradient(180deg, #f3f8f9 0%, #eef6f4 42%, #f7fbfa 100%)",
-      }}
     >
-      <div
-        className="pointer-events-none absolute inset-0"
-        style={{
-          background:
-            "radial-gradient(ellipse 55% 40% at 12% 20%, rgba(42,146,155,0.14), transparent 55%), radial-gradient(ellipse 50% 35% at 88% 80%, rgba(126,211,33,0.12), transparent 50%)",
-        }}
-        aria-hidden
-      />
-
       <div className="relative mx-auto max-w-6xl px-3 sm:px-4 md:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -90,11 +77,12 @@ export default function Brands() {
           }
         }}
       >
+        {/* Edge fades match the shared brand-band background */}
         <div
           className="pointer-events-none absolute inset-y-0 left-0 z-10 w-12 sm:w-20 md:w-28"
           style={{
             background:
-              "linear-gradient(to right, #f3f8f9 0%, rgba(243,248,249,0) 100%)",
+              "linear-gradient(to right, #eef6f4 0%, rgba(238,246,244,0) 100%)",
           }}
           aria-hidden
         />
@@ -102,7 +90,7 @@ export default function Brands() {
           className="pointer-events-none absolute inset-y-0 right-0 z-10 w-12 sm:w-20 md:w-28"
           style={{
             background:
-              "linear-gradient(to left, #f7fbfa 0%, rgba(247,251,250,0) 100%)",
+              "linear-gradient(to left, #e4eef0 0%, rgba(228,238,240,0) 100%)",
           }}
           aria-hidden
         />
