@@ -34,7 +34,7 @@ export default function Brands() {
   return (
     <section
       id="brands"
-      className="relative overflow-hidden pb-16 pt-2 sm:pb-20 sm:pt-4 md:pb-24"
+      className="relative z-10 overflow-hidden pb-16 pt-2 sm:pb-20 sm:pt-4 md:pb-24"
       aria-labelledby="brands-heading"
     >
       <div className="relative mx-auto max-w-6xl px-3 sm:px-4 md:px-6 lg:px-8">
@@ -81,7 +81,7 @@ export default function Brands() {
           className="pointer-events-none absolute inset-y-0 left-0 z-10 w-12 sm:w-20 md:w-28"
           style={{
             background:
-              "linear-gradient(to right, var(--navy) 0%, rgba(5,22,53,0) 100%)",
+              "linear-gradient(to right, rgba(5,22,53,0.92) 0%, rgba(5,22,53,0) 100%)",
           }}
           aria-hidden
         />
@@ -89,7 +89,7 @@ export default function Brands() {
           className="pointer-events-none absolute inset-y-0 right-0 z-10 w-12 sm:w-20 md:w-28"
           style={{
             background:
-              "linear-gradient(to left, var(--navy) 0%, rgba(5,22,53,0) 100%)",
+              "linear-gradient(to left, rgba(5,22,53,0.92) 0%, rgba(5,22,53,0) 100%)",
           }}
           aria-hidden
         />

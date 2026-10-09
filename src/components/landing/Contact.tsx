@@ -38,7 +38,7 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="relative py-14 sm:py-16 md:py-24 lg:py-28"
+      className="relative z-10 py-14 sm:py-16 md:py-24 lg:py-28"
     >
       <div className="relative mx-auto grid max-w-6xl grid-cols-1 gap-8 px-3 sm:gap-10 sm:px-4 md:grid-cols-2 md:gap-16 md:px-6 lg:px-8">
         <motion.div

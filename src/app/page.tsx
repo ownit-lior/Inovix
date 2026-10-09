@@ -5,9 +5,7 @@ import HomeAbout from "@/components/landing/HomeAbout";
 import HomeImagine from "@/components/landing/HomeImagine";
 import HomeProcessScroll from "@/components/landing/HomeProcessScroll";
 import Testimonials from "@/components/landing/Testimonials";
-import HomeBlog from "@/components/landing/HomeBlog";
-import Contact from "@/components/landing/Contact";
-import Brands from "@/components/landing/Brands";
+import HomeEndFlow from "@/components/landing/HomeEndFlow";
 import Footer from "@/components/landing/Footer";
 import ScrollProgress from "@/components/effects/ScrollProgress";
 import SmoothScroll from "@/components/effects/SmoothScroll";
@@ -25,11 +23,7 @@ export default function Home() {
           <HomeAbout />
           <HomeProcessScroll />
           <Testimonials />
-          <HomeBlog />
-          <div className="brand-band relative">
-            <Contact />
-            <Brands />
-          </div>
+          <HomeEndFlow />
         </main>
         <Footer />
       </div>
