@@ -157,7 +157,7 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.75, delay: 0.32 }}
         >
-          מערכות מתח נמוך, אודיו־וידאו, תקשורת ובית חכם בסטנדרט הגבוה ביותר.
+          מערכות מתח נמוך, אודיו וידאו, תקשורת ובית חכם בסטנדרט הגבוה ביותר.
         </motion.p>
 
         <motion.div

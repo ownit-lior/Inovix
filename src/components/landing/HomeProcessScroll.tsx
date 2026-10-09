@@ -11,6 +11,7 @@ import {
   AnimatePresence,
 } from "framer-motion";
 import AmbientOrbs from "@/components/effects/AmbientOrbs";
+import SectionShapes from "@/components/effects/SectionShapes";
 
 const STEPS = [
   {
@@ -29,7 +30,7 @@ const STEPS = [
     num: "03",
     title: "תכנון מערכות",
     subtitle: "תוכנית מדויקת לפני ציוד",
-    body: "בונים מפרט מלא: רשת, אבטחה, AV ובית חכם — כולל מיקומים, תרחישים וחלוקת רשתות.",
+    body: "בונים מפרט מלא: רשת, אבטחה, אודיו וידאו ובית חכם — כולל מיקומים, תרחישים וחלוקת רשתות.",
   },
   {
     num: "04",
@@ -123,7 +124,10 @@ export default function HomeProcessScroll() {
     >
       <div className="sticky top-0 flex h-[100dvh] items-center overflow-x-clip overflow-y-hidden">
         <AmbientOrbs className="opacity-80" />
+        <SectionShapes variant="mixed" />
         <div className="film-grain" aria-hidden />
+        <div className="section-seam-top" aria-hidden />
+        <div className="section-seam-bottom" aria-hidden />
 
         {/* Vertical progress rail (top → bottom) */}
         <div

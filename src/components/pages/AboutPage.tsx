@@ -19,7 +19,7 @@ const VALUES = [
   },
   {
     title: "אינטגרציה מלאה",
-    desc: "סנכרון מושלם. אנו מחברים עבורכם את מערכות האבטחה, התקשורת, האודיו־וידאו והחשמל החכם למערכת אחת הפועלת בהרמוניה.",
+    desc: "סנכרון מושלם. אנו מחברים עבורכם את מערכות האבטחה, התקשורת, האודיו וידאו והחשמל החכם למערכת אחת הפועלת בהרמוניה.",
   },
   {
     title: "שקיפות וליווי",
@@ -134,7 +134,7 @@ export default function AboutPage() {
               </h1>
               <p className="mt-4 max-w-2xl text-sm leading-relaxed text-white/90 [text-shadow:0_2px_16px_rgba(5,22,53,0.5)] sm:mt-5 sm:text-base md:text-lg">
                 INOVIX נוסדה כדי לתת לבתים ולעסקים פתרון מקצועי אחד — מאבטחה
-                ותקשורת, דרך אודיו־וידאו, ועד בית חכם שעובד באמת.
+                ותקשורת, דרך אודיו וידאו, ועד בית חכם שעובד באמת.
               </p>
               <div className="mt-7 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:flex-wrap sm:gap-4">
                 <Magnetic strength={0.28}>

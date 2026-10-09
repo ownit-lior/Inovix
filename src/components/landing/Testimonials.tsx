@@ -36,15 +36,15 @@ const REVIEWS = [
     quote:
       "מהייעוץ ועד הביצוע — הכל היה מסודר ומקצועי. קיבלנו מערכת אבטחה ובית חכם שעובדת בשקט ובדיוק.",
     image: IMAGES.projects.penthouse,
-    imageAlt: "פנטהאוז בתל אביב — סלון עם מערכת אודיו־וידאו משולבת",
+    imageAlt: "פנטהאוז בתל אביב — סלון עם מערכת אודיו וידאו משולבת",
   },
   {
     name: "דניאל לוי",
     role: "משרדים, הרצליה פיתוח",
     quote:
-      "תכנון מדויק וביצוע ברמה גבוהה. אבטחה, רשת ואודיו־וידאו — גורם אחד שאחראי על הכל בעסק.",
+      "תכנון מדויק וביצוע ברמה גבוהה. אבטחה, רשת ואודיו וידאו — גורם אחד שאחראי על הכל בעסק.",
     image: IMAGES.services.avOffice,
-    imageAlt: "משרדים בהרצליה פיתוח — חדר ישיבות עם מערכת אודיו־וידאו",
+    imageAlt: "משרדים בהרצליה פיתוח — חדר ישיבות עם מערכת אודיו וידאו",
   },
   {
     name: "מיכל אברהם",
@@ -75,7 +75,7 @@ export default function Testimonials() {
   return (
     <section
       id="testimonials"
-      className="brand-section border-t border-white/5 py-16 text-white sm:py-20 md:py-24"
+      className="brand-section section-seam-y py-16 text-white sm:py-20 md:py-24"
     >
       <div className="relative mx-auto max-w-6xl px-3 sm:px-4 md:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">

@@ -32,7 +32,7 @@ export default function Brands() {
   return (
     <section
       id="brands"
-      className="border-t border-slate-200/80 bg-white py-14 sm:py-16 md:py-20"
+      className="bg-gradient-to-b from-[#f3f8f9] to-white py-14 sm:py-16 md:py-20"
       aria-labelledby="brands-heading"
     >
       <div className="mx-auto max-w-6xl px-3 sm:px-4 md:px-6 lg:px-8">

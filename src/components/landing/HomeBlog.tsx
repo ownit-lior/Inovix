@@ -5,6 +5,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import AmbientOrbs from "@/components/effects/AmbientOrbs";
 import Magnetic from "@/components/effects/Magnetic";
+import SectionShapes from "@/components/effects/SectionShapes";
 import { formatPostDate, getLatestPosts } from "@/lib/blog";
 
 const POSTS = getLatestPosts(3);
@@ -13,9 +14,10 @@ export default function HomeBlog() {
   return (
     <section
       id="blog"
-      className="brand-section relative border-t border-white/5 py-16 sm:py-20 md:py-24"
+      className="brand-section section-blend-to-light relative py-16 sm:py-20 md:py-24"
     >
       <AmbientOrbs />
+      <SectionShapes variant="lime" />
       <div className="film-grain" aria-hidden />
 
       <div className="relative mx-auto max-w-6xl px-3 sm:px-4 md:px-6 lg:px-8">

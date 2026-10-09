@@ -46,7 +46,7 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="brand-tint py-14 sm:py-16 md:py-24 lg:py-28"
+      className="brand-tint section-blend-from-navy py-14 sm:py-16 md:py-24 lg:py-28"
     >
       <div className="relative mx-auto grid max-w-6xl grid-cols-1 gap-8 px-3 sm:gap-10 sm:px-4 md:grid-cols-2 md:gap-16 md:px-6 lg:px-8">
         <motion.div
@@ -64,7 +64,7 @@ export default function Contact() {
           <div className="mt-4 h-px w-14 bg-[var(--lime)]/60" />
           <p className="mt-4 text-sm leading-relaxed text-[var(--muted)] sm:text-base">
             השאירו פרטים ונחזור אליכם לשיחת ייעוץ. נבין את הצרכים — ונציע תכנון
-            וביצוע מדויקים לאבטחה, תקשורת, אודיו־וידאו ובית חכם.
+            וביצוע מדויקים לאבטחה, תקשורת, אודיו וידאו ובית חכם.
           </p>
           <a
             href={`tel:${CONTACT.phoneTel}`}

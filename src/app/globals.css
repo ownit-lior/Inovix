@@ -167,6 +167,94 @@ body {
     radial-gradient(circle at 88% 82%, rgba(126, 211, 33, 0.16), transparent 40%);
 }
 
+/* Seamless color blends between homepage blocks — no hard separators */
+.section-seam-top,
+.section-seam-bottom {
+  pointer-events: none;
+  position: absolute;
+  inset-inline: 0;
+  z-index: 2;
+  height: clamp(4.5rem, 12vh, 8rem);
+}
+
+.section-seam-top {
+  top: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(5, 22, 53, 0.95) 0%,
+    rgba(5, 22, 53, 0.45) 45%,
+    transparent 100%
+  );
+}
+
+.section-seam-bottom {
+  bottom: 0;
+  background: linear-gradient(
+    0deg,
+    rgba(5, 22, 53, 0.95) 0%,
+    rgba(5, 22, 53, 0.45) 45%,
+    transparent 100%
+  );
+}
+
+.section-seam-y {
+  position: relative;
+}
+
+.section-seam-y::after {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  inset-inline: 0;
+  bottom: -1px;
+  height: clamp(3.5rem, 10vh, 7rem);
+  z-index: 3;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(5, 22, 53, 0.55) 40%,
+    var(--navy) 100%
+  );
+}
+
+/* Navy → light (contact) soft handoff */
+.section-blend-to-light {
+  position: relative;
+}
+
+.section-blend-to-light::after {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  inset-inline: 0;
+  bottom: -1px;
+  height: clamp(5rem, 14vh, 9rem);
+  z-index: 3;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(244, 247, 248, 0.35) 45%,
+    #f3f8f9 100%
+  );
+}
+
+/* Light section pulls navy wash from above */
+.section-blend-from-navy::before {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  height: clamp(4rem, 12vh, 8rem);
+  z-index: 2;
+  background: linear-gradient(
+    180deg,
+    rgba(5, 22, 53, 0.55) 0%,
+    rgba(5, 22, 53, 0.12) 55%,
+    transparent 100%
+  );
+}
+
 /* Infinite partner-logo carousel (3 identical loops → -33.333%) */
 @keyframes brand-marquee-scroll {
   from {

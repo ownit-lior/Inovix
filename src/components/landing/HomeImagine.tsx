@@ -10,6 +10,7 @@ import {
   useSpring,
 } from "framer-motion";
 import AmbientOrbs from "@/components/effects/AmbientOrbs";
+import SectionShapes from "@/components/effects/SectionShapes";
 
 const BEATS = [
   {
@@ -18,7 +19,7 @@ const BEATS = [
   },
   {
     eyebrow: "תכנון",
-    lines: ["אבטחה, רשת, AV ובית חכם", "מערכת אחת. חוויה אחת."],
+    lines: ["אבטחה, רשת, אודיו וידאו ובית חכם", "מערכת אחת. חוויה אחת."],
   },
   {
     eyebrow: "ביצוע",
@@ -85,7 +86,10 @@ export default function HomeImagine() {
     >
       <div className="sticky top-0 flex h-[100dvh] items-center justify-center overflow-x-clip overflow-y-hidden">
         <AmbientOrbs />
+        <SectionShapes variant="lime" />
         <div className="film-grain" aria-hidden />
+        <div className="section-seam-top" aria-hidden />
+        <div className="section-seam-bottom" aria-hidden />
 
         {/* Vertical beat indicators */}
         <div

@@ -55,7 +55,7 @@ export const TOUR_STOPS: TourStop[] = [
   },
   {
     id: "media",
-    label: "אודיו־וידאו",
+    label: "אודיו וידאו",
     eyebrow: "בידור אדריכלי",
     summary:
       "קיר מדיה עם מסך ורמקולים שקועים בתקרה — חוויית בידור בלי לפגוע בעיצוב.",
@@ -76,7 +76,7 @@ export const TOUR_STOPS: TourStop[] = [
     label: "שליטה",
     eyebrow: "בית חכם",
     summary:
-      "מסך מגע שקוע בקיר — המוח שמחבר תאורה, אקלים, אבטחה ו־AV.",
+      "מסך מגע שקוע בקיר — המוח שמחבר תאורה, אקלים, אבטחה ואודיו וידאו.",
     position: [-2.2, 1.6, 2.6],
     target: [-4.1, 1.45, 0.7],
   },
@@ -103,7 +103,7 @@ export const TOUR_HOTSPOTS: TourHotspot[] = [
   {
     id: "hs-av",
     stopId: "media",
-    title: "אודיו־וידאו",
+    title: "אודיו וידאו",
     body: "רמקולים אדריכליים שקועים ומסך שמשתלב בעיצוב הסלון.",
     href: "/services/av",
     position: [0.3, 2.65, -3.45],

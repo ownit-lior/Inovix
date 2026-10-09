@@ -39,7 +39,7 @@ export default function TourPageClient() {
             <div className="mx-auto mt-5 h-px w-16 bg-[var(--lime)]/70" />
             <p className="mx-auto mt-5 max-w-xl text-sm leading-relaxed text-white/80 sm:text-base md:text-lg">
               אנחנו משלימים את הסיור התלת־ממדי בווילה החכמה. בקרוב תוכלו לסייר
-              בחללים ולגלות את מערכות האבטחה, התקשורת, האודיו־וידאו והבית החכם
+              בחללים ולגלות את מערכות האבטחה, התקשורת, האודיו וידאו והבית החכם
               משולבות בעיצוב.
             </p>
             <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
