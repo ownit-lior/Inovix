@@ -14,7 +14,7 @@ export default function HomeBlog() {
   return (
     <section
       id="blog"
-      className="brand-section section-blend-to-light relative py-16 sm:py-20 md:py-24"
+      className="brand-section relative py-16 sm:py-20 md:py-24"
     >
       <AmbientOrbs />
       <SectionShapes variant="lime" />
