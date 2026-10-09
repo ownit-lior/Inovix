@@ -126,8 +126,6 @@ export default function HomeProcessScroll() {
         <AmbientOrbs className="opacity-80" />
         <SectionShapes variant="mixed" />
         <div className="film-grain" aria-hidden />
-        <div className="section-seam-top" aria-hidden />
-        <div className="section-seam-bottom" aria-hidden />
 
         {/* Vertical progress rail (top → bottom) */}
         <div

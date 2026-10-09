@@ -280,8 +280,15 @@ body {
 }
 
 /* Continuous homepage canvas: kill accidental edge flashes between blocks */
-#main-content > * + * {
+#main-content > * + *,
+#main-content + footer {
   margin-top: -1px;
+}
+
+/* Kill inherited section chrome that reads as a divider line */
+.brand-section {
+  border: 0 !important;
+  box-shadow: none !important;
 }
 
 /* Infinite partner-logo carousel (3 identical loops → -33.333%) */

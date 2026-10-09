@@ -75,9 +75,9 @@ export default function Testimonials() {
   return (
     <section
       id="testimonials"
-      className="brand-section py-16 text-white sm:py-20 md:py-24"
+      className="relative py-16 text-white sm:py-20 md:py-24"
     >
-      <div className="relative mx-auto max-w-6xl px-3 sm:px-4 md:px-6 lg:px-8">
+      <div className="relative z-10 mx-auto max-w-6xl px-3 sm:px-4 md:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <motion.p
             className="text-xs font-semibold tracking-[0.2em] text-[var(--lime-bright)] uppercase sm:text-sm sm:tracking-[0.24em]"

@@ -2,13 +2,14 @@
 
 import AmbientOrbs from "@/components/effects/AmbientOrbs";
 import SectionShapes from "@/components/effects/SectionShapes";
+import Testimonials from "@/components/landing/Testimonials";
 import HomeBlog from "@/components/landing/HomeBlog";
 import Contact from "@/components/landing/Contact";
 import Brands from "@/components/landing/Brands";
 
 /**
- * One continuous navy canvas for blog → contact → brands.
- * Shared atmosphere so teal/lime orbs never get cut by a section edge.
+ * One continuous navy canvas: testimonials → blog → contact → brands.
+ * Shared atmosphere — no per-section background cuts / divider lines.
  */
 export default function HomeEndFlow() {
   return (
@@ -16,6 +17,7 @@ export default function HomeEndFlow() {
       <AmbientOrbs />
       <SectionShapes variant="mixed" />
       <div className="film-grain" aria-hidden />
+      <Testimonials />
       <HomeBlog />
       <Contact />
       <Brands />

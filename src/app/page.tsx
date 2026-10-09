@@ -4,7 +4,6 @@ import Features from "@/components/landing/Features";
 import HomeAbout from "@/components/landing/HomeAbout";
 import HomeImagine from "@/components/landing/HomeImagine";
 import HomeProcessScroll from "@/components/landing/HomeProcessScroll";
-import Testimonials from "@/components/landing/Testimonials";
 import HomeEndFlow from "@/components/landing/HomeEndFlow";
 import Footer from "@/components/landing/Footer";
 import ScrollProgress from "@/components/effects/ScrollProgress";
@@ -22,7 +21,6 @@ export default function Home() {
           <Features />
           <HomeAbout />
           <HomeProcessScroll />
-          <Testimonials />
           <HomeEndFlow />
         </main>
         <Footer />

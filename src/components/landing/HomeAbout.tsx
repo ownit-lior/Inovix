@@ -2,9 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import AmbientOrbs from "@/components/effects/AmbientOrbs";
 import Magnetic from "@/components/effects/Magnetic";
-import SectionShapes from "@/components/effects/SectionShapes";
 
 const PILLARS = [
   {
@@ -25,12 +23,8 @@ export default function HomeAbout() {
   return (
     <section
       id="about"
-      className="brand-section relative flex min-h-[85dvh] items-center py-20 sm:py-24 md:min-h-[90dvh] md:py-28"
+      className="relative flex min-h-[85dvh] items-center bg-[var(--navy)] py-20 sm:py-24 md:min-h-[90dvh] md:py-28"
     >
-      <AmbientOrbs />
-      <SectionShapes variant="teal" />
-      <div className="film-grain" aria-hidden />
-
       <div className="relative z-10 mx-auto w-full max-w-4xl px-3 text-center sm:px-4 md:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 28 }}

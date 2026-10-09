@@ -88,8 +88,6 @@ export default function HomeImagine() {
         <AmbientOrbs />
         <SectionShapes variant="lime" />
         <div className="film-grain" aria-hidden />
-        <div className="section-seam-top" aria-hidden />
-        <div className="section-seam-bottom" aria-hidden />
 
         {/* Vertical beat indicators */}
         <div
