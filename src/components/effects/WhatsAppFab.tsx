@@ -118,7 +118,7 @@ export default function WhatsAppFab({
   if (!mounted) return null;
 
   const inputClass =
-    "w-full rounded-xl border border-[var(--teal)]/20 bg-white px-3 py-2.5 text-sm text-[var(--ink)] outline-none transition focus:border-[var(--teal)] focus:ring-2 focus:ring-[var(--teal)]/20 disabled:opacity-60";
+    "w-full rounded-xl border border-[var(--teal)]/20 bg-[var(--surface)] px-3 py-2.5 text-sm text-[var(--ink)] outline-none transition focus:border-[var(--teal)] focus:ring-2 focus:ring-[var(--teal)]/20 disabled:opacity-60";
 
   return (
     <div className="pointer-events-none fixed bottom-4 right-4 z-[95] flex flex-col items-end gap-3 sm:bottom-6 sm:right-6">
@@ -190,7 +190,7 @@ export default function WhatsAppFab({
                 }}
                 aria-hidden
               />
-              <div className="relative max-w-[92%] rounded-2xl rounded-tr-sm border border-[var(--teal)]/15 bg-white px-3.5 py-2.5 text-sm leading-relaxed text-[var(--ink)] shadow-sm">
+              <div className="relative max-w-[92%] rounded-2xl rounded-tr-sm border border-[var(--teal)]/15 bg-[var(--surface)] px-3.5 py-2.5 text-sm leading-relaxed text-[var(--ink)] shadow-sm">
                 <span className="mb-1 block text-[0.65rem] font-bold tracking-wide text-[var(--teal)] uppercase">
                   INOVIX
                 </span>
@@ -199,7 +199,7 @@ export default function WhatsAppFab({
 
               <form
                 onSubmit={onSubmit}
-                className="relative space-y-2.5 rounded-2xl border border-[var(--teal)]/15 bg-white p-3 shadow-[0_8px_24px_rgba(5,22,53,0.06)]"
+                className="relative space-y-2.5 rounded-2xl border border-[var(--teal)]/15 bg-[var(--surface)] p-3 shadow-[0_8px_24px_rgba(5,22,53,0.06)]"
               >
                 <label className="block">
                   <span className="mb-1 block text-[0.7rem] font-semibold text-[var(--teal)]">

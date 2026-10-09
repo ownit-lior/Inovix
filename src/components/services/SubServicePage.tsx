@@ -165,7 +165,7 @@ export default function SubServicePage({ topic }: { topic: ServiceTopic }) {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.05 }}
-                  className="flex items-start gap-3 rounded-2xl border border-slate-200 bg-white px-5 py-4"
+                  className="flex items-start gap-3 rounded-2xl border border-slate-200 bg-[var(--surface)] px-5 py-4"
                 >
                   <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[var(--teal)]/12 text-sm font-bold text-[var(--teal)]">
                     {i + 1}
@@ -266,7 +266,7 @@ export default function SubServicePage({ topic }: { topic: ServiceTopic }) {
               {topic.closeBullets.map((b) => (
                 <li
                   key={b}
-                  className="rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm font-semibold"
+                  className="rounded-2xl border border-slate-200 bg-[var(--surface)] px-4 py-3 text-sm font-semibold"
                 >
                   {b}
                 </li>
@@ -281,7 +281,7 @@ export default function SubServicePage({ topic }: { topic: ServiceTopic }) {
               </a>
               <a
                 href={`tel:${CONTACT.phoneTel}`}
-                className="inline-flex min-h-12 items-center justify-center rounded-full border border-[var(--navy)]/20 bg-white px-8 text-sm font-bold text-[var(--navy)]"
+                className="inline-flex min-h-12 items-center justify-center rounded-full border border-[var(--navy)]/20 bg-[var(--surface)] px-8 text-sm font-bold text-[var(--navy)]"
                 dir="ltr"
               >
                 {CONTACT.phoneDisplay}
@@ -292,7 +292,7 @@ export default function SubServicePage({ topic }: { topic: ServiceTopic }) {
 
         {/* FAQ */}
         {topic.faqs.length > 0 ? (
-          <section className="bg-white px-3 py-14 text-[var(--ink)] sm:px-5 sm:py-20">
+          <section className="bg-[var(--surface)] px-3 py-14 text-[var(--ink)] sm:px-5 sm:py-20">
             <div className="mx-auto max-w-3xl">
               <h2 className="text-center text-2xl font-extrabold sm:text-3xl">
                 שאלות נפוצות לפני שמתקדמים

@@ -80,7 +80,7 @@ export default function AccessibilityWidget() {
           id={panelId}
           role="dialog"
           aria-label="תפריט נגישות"
-          className="absolute bottom-16 left-0 w-[min(18.5rem,calc(100vw-2rem))] rounded-2xl border border-[var(--teal)]/20 bg-white p-4 text-[var(--ink)] shadow-[0_20px_50px_rgba(5,22,53,0.2)]"
+          className="absolute bottom-16 left-0 w-[min(18.5rem,calc(100vw-2rem))] rounded-2xl border border-[var(--teal)]/20 bg-[var(--surface)] p-4 text-[var(--ink)] shadow-[0_20px_50px_rgba(5,22,53,0.2)]"
         >
           <div className="mb-3 flex items-center justify-between gap-2">
             <h2 className="text-base font-extrabold">נגישות</h2>

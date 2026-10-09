@@ -160,7 +160,7 @@ export default function AboutPage() {
         </section>
 
         {/* Stats */}
-        <section className="border-b border-slate-200/80 bg-white py-10 sm:py-12">
+        <section className="border-b border-slate-200/80 bg-[var(--surface)] py-10 sm:py-12">
           <div className="mx-auto grid max-w-6xl grid-cols-2 gap-6 px-3 sm:gap-8 sm:px-4 md:grid-cols-4 md:px-6 lg:px-8">
             {STATS.map((stat, i) => (
               <motion.div
@@ -235,7 +235,7 @@ export default function AboutPage() {
         </section>
 
         {/* Domains */}
-        <section className="bg-white py-14 sm:py-16 md:py-20">
+        <section className="bg-[var(--surface)] py-14 sm:py-16 md:py-20">
           <div className="mx-auto max-w-6xl px-3 sm:px-4 md:px-6 lg:px-8">
             <motion.div
               className="mx-auto max-w-2xl text-center"
@@ -344,7 +344,7 @@ export default function AboutPage() {
         </section>
 
         {/* Process */}
-        <section className="relative overflow-hidden bg-white py-14 sm:py-16 md:py-20">
+        <section className="relative overflow-hidden bg-[var(--surface)] py-14 sm:py-16 md:py-20">
           <div className="mx-auto max-w-6xl px-3 sm:px-4 md:px-6 lg:px-8">
             <motion.div
               initial={{ opacity: 0, y: 24 }}
@@ -388,7 +388,7 @@ export default function AboutPage() {
                   transition={{ duration: 0.4, delay: i * 0.05 }}
                   className="relative grid gap-3 border-b border-slate-200/80 py-6 last:border-b-0 sm:grid-cols-[3.5rem_1fr] sm:gap-5 sm:py-7"
                 >
-                  <span className="relative z-10 inline-flex h-9 w-9 items-center justify-center rounded-full bg-[var(--navy)] text-sm font-bold text-white shadow-[0_0_0_4px_white] sm:h-10 sm:w-10">
+                  <span className="relative z-10 inline-flex h-9 w-9 items-center justify-center rounded-full bg-[var(--navy)] text-sm font-bold text-white shadow-[0_0_0_4px_var(--surface)] sm:h-10 sm:w-10">
                     {i + 1}
                   </span>
                   <div>

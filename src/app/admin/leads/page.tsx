@@ -79,7 +79,7 @@ export default function AdminLeadsPage() {
             leads.map((lead) => (
               <article
                 key={lead.id}
-                className="rounded-2xl border border-[var(--teal)]/15 bg-white p-4 shadow-sm"
+                className="rounded-2xl border border-[var(--teal)]/15 bg-[var(--surface)] p-4 shadow-sm"
               >
                 <div className="flex flex-wrap items-baseline justify-between gap-2">
                   <h2 className="font-bold">{lead.name}</h2>

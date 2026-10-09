@@ -14,7 +14,7 @@ function LogoSlide({ brand, keyId }: { brand: Brand; keyId: string }) {
       key={keyId}
       className="flex h-16 w-[160px] shrink-0 items-center justify-center sm:h-[4.5rem] sm:w-[180px] md:w-[200px]"
     >
-      <div className="flex h-full w-[92%] items-center justify-center rounded-2xl border border-[var(--teal)]/25 bg-white/95 px-4 shadow-[0_8px_24px_rgba(5,22,53,0.07)] transition duration-300 hover:border-[var(--lime)]/50 hover:shadow-[0_12px_28px_rgba(42,146,155,0.14)]">
+      <div className="flex h-full w-[92%] items-center justify-center rounded-2xl border border-[var(--teal)]/25 bg-[var(--surface-elevated)]/95 px-4 shadow-[0_8px_24px_rgba(5,22,53,0.07)] transition duration-300 hover:border-[var(--lime)]/50 hover:shadow-[0_12px_28px_rgba(42,146,155,0.14)]">
         <Image
           src={brand.logo}
           alt={brand.name}

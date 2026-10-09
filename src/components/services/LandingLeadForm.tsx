@@ -60,21 +60,21 @@ export default function LandingLeadForm({
         name="name"
         required
         placeholder="שם מלא"
-        className="min-h-12 w-full rounded-xl border border-white/20 bg-white px-4 text-[var(--ink)] outline-none focus:ring-2 focus:ring-[var(--lime)]/50"
+        className="min-h-12 w-full rounded-xl border border-white/20 bg-[var(--surface)] px-4 text-[var(--ink)] outline-none focus:ring-2 focus:ring-[var(--lime)]/50"
       />
       <input
         name="phone"
         type="tel"
         required
         placeholder="טלפון"
-        className="min-h-12 w-full rounded-xl border border-white/20 bg-white px-4 text-[var(--ink)] outline-none focus:ring-2 focus:ring-[var(--lime)]/50"
+        className="min-h-12 w-full rounded-xl border border-white/20 bg-[var(--surface)] px-4 text-[var(--ink)] outline-none focus:ring-2 focus:ring-[var(--lime)]/50"
         dir="ltr"
       />
       <textarea
         name="note"
         rows={3}
         placeholder="ספרו בקצרה על הנכס / הצורך (אופציונלי)"
-        className="w-full resize-none rounded-xl border border-white/20 bg-white px-4 py-3 text-[var(--ink)] outline-none focus:ring-2 focus:ring-[var(--lime)]/50"
+        className="w-full resize-none rounded-xl border border-white/20 bg-[var(--surface)] px-4 py-3 text-[var(--ink)] outline-none focus:ring-2 focus:ring-[var(--lime)]/50"
       />
       {error ? <p className="text-sm text-red-300">{error}</p> : null}
       <button

@@ -43,7 +43,7 @@ export default function BlogPostPage({ post }: { post: BlogPost }) {
           </div>
         </section>
 
-        <div className="bg-white px-3 pb-2 sm:px-4 md:px-6">
+        <div className="bg-[var(--surface)] px-3 pb-2 sm:px-4 md:px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -59,7 +59,7 @@ export default function BlogPostPage({ post }: { post: BlogPost }) {
           </motion.div>
         </div>
 
-        <article className="bg-white py-8 sm:py-10 md:py-12">
+        <article className="bg-[var(--surface)] py-8 sm:py-10 md:py-12">
           <div className="mx-auto max-w-3xl space-y-5 px-3 sm:px-4 md:px-6">
             {post.body.map((block, i) => {
               const isHeading = block.startsWith("## ");

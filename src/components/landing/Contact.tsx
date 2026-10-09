@@ -107,7 +107,7 @@ export default function Contact() {
 
         <motion.form
           onSubmit={onSubmit}
-          className="overflow-hidden rounded-2xl border border-[var(--teal)]/20 bg-white shadow-[0_20px_50px_rgba(5,22,53,0.1)] sm:rounded-3xl"
+          className="overflow-hidden rounded-2xl border border-[var(--teal)]/20 bg-[var(--surface-elevated)] shadow-[0_20px_50px_rgba(5,22,53,0.1)] sm:rounded-3xl"
           initial={{ opacity: 0, y: 48 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}

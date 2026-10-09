@@ -34,7 +34,7 @@ export default function BlogIndexPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.2 }}
                   transition={{ duration: 0.5, delay: i * 0.06 }}
-                  className="flex flex-col overflow-hidden rounded-2xl border border-slate-200/80 bg-white shadow-[0_10px_40px_rgba(15,23,42,0.04)]"
+                  className="flex flex-col overflow-hidden rounded-2xl border border-slate-200/80 bg-[var(--surface)] shadow-[0_10px_40px_rgba(15,23,42,0.04)]"
                 >
                   <Link href={`/blog/${post.slug}`} className="block">
                     <PageImage

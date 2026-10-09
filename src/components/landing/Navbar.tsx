@@ -162,7 +162,7 @@ export default function Navbar({ variant = "auto" }: NavbarProps) {
                     "absolute top-full start-1/2 z-50 mt-2 w-56 -translate-x-1/2 rounded-2xl border p-2 shadow-[0_16px_40px_rgba(5,22,53,0.22)]",
                     homeBrand
                       ? "border-white/15 bg-[var(--navy)]"
-                      : "border-slate-100 bg-white",
+                      : "border-slate-100 bg-[var(--surface)]",
                   ].join(" ")}
                 >
                   {SERVICES.map((s) => (
@@ -269,8 +269,8 @@ export default function Navbar({ variant = "auto" }: NavbarProps) {
               homeBrand
                 ? "border-white/30 bg-white/10"
                 : solid
-                  ? "border-slate-200 bg-white"
-                  : "border-white/35 bg-white/95",
+                  ? "border-slate-200 bg-[var(--surface)]"
+                  : "border-white/35 bg-[var(--surface-elevated)]/95",
             ].join(" ")}
             aria-label={open ? "סגור תפריט" : "פתח תפריט"}
             aria-expanded={open}
@@ -280,17 +280,17 @@ export default function Navbar({ variant = "auto" }: NavbarProps) {
             <span className="relative block h-3.5 w-5">
               <span
                 className={`absolute start-0 top-0 block h-0.5 w-5 origin-center transition duration-300 ${
-                  homeBrand ? "bg-white" : "bg-[var(--navy)]"
+                  homeBrand ? "bg-[var(--surface)]" : "bg-[var(--navy)]"
                 } ${open ? "translate-y-[6px] rotate-45" : ""}`}
               />
               <span
                 className={`absolute start-0 top-[6px] block h-0.5 w-5 transition duration-300 ${
-                  homeBrand ? "bg-white" : "bg-[var(--navy)]"
+                  homeBrand ? "bg-[var(--surface)]" : "bg-[var(--navy)]"
                 } ${open ? "opacity-0" : ""}`}
               />
               <span
                 className={`absolute start-0 top-[12px] block h-0.5 w-5 origin-center transition duration-300 ${
-                  homeBrand ? "bg-white" : "bg-[var(--navy)]"
+                  homeBrand ? "bg-[var(--surface)]" : "bg-[var(--navy)]"
                 } ${open ? "-translate-y-[6px] -rotate-45" : ""}`}
               />
             </span>
@@ -312,7 +312,7 @@ export default function Navbar({ variant = "auto" }: NavbarProps) {
               "overflow-hidden border-t lg:hidden",
               homeBrand
                 ? "border-white/10 bg-[var(--navy)]"
-                : "border-slate-100 bg-white",
+                : "border-slate-100 bg-[var(--surface)]",
             ].join(" ")}
           >
             <ul className="flex flex-col gap-1 px-3 py-4 sm:px-4">

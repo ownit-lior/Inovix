@@ -256,7 +256,7 @@ export default function ServicePage({ service }: { service: Service }) {
               {service.highlights.map((item) => (
                 <li
                   key={item.text}
-                  className="flex items-center gap-3 rounded-2xl border border-slate-200/80 bg-white px-4 py-3.5 shadow-[0_8px_30px_rgba(15,23,42,0.04)] sm:px-5"
+                  className="flex items-center gap-3 rounded-2xl border border-slate-200/80 bg-[var(--surface)] px-4 py-3.5 shadow-[0_8px_30px_rgba(15,23,42,0.04)] sm:px-5"
                 >
                   <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-[var(--teal)]/10 text-[var(--teal)]">
                     <HighlightIcon icon={item.icon} />
@@ -272,7 +272,7 @@ export default function ServicePage({ service }: { service: Service }) {
 
         {/* Pillars — end-to-end value */}
         {service.pillars && (
-          <section className="bg-white py-14 sm:py-16 md:py-20">
+          <section className="bg-[var(--surface)] py-14 sm:py-16 md:py-20">
             <div className="mx-auto max-w-6xl px-3 sm:px-4 md:px-6 lg:px-8">
               <motion.div
                 className="mx-auto max-w-2xl text-center"
@@ -397,7 +397,7 @@ export default function ServicePage({ service }: { service: Service }) {
         )}
 
         {/* Offerings */}
-        <section className="bg-white py-14 sm:py-16 md:py-20">
+        <section className="bg-[var(--surface)] py-14 sm:py-16 md:py-20">
           <div className="mx-auto max-w-6xl px-3 sm:px-4 md:px-6 lg:px-8">
             <motion.div
               className="mx-auto max-w-2xl text-center"
@@ -434,7 +434,7 @@ export default function ServicePage({ service }: { service: Service }) {
                       <div
                         className={`relative aspect-[4/3] overflow-hidden ${
                           item.imageFit === "contain"
-                            ? "bg-white"
+                            ? "bg-[var(--surface)]"
                             : "bg-slate-200"
                         }`}
                       >
@@ -561,7 +561,7 @@ export default function ServicePage({ service }: { service: Service }) {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, amount: 0.2 }}
                     transition={{ duration: 0.45, delay: i * 0.04 }}
-                    className="bg-white px-5 py-5 sm:px-6 sm:py-6"
+                    className="bg-[var(--surface)] px-5 py-5 sm:px-6 sm:py-6"
                   >
                     <h3 className="text-base font-bold text-[var(--ink)] sm:text-lg">
                       {item.title}
@@ -578,7 +578,7 @@ export default function ServicePage({ service }: { service: Service }) {
 
         {/* Fit + Support */}
         {(service.fit || service.support) && (
-          <section className="bg-white py-14 sm:py-16 md:py-20">
+          <section className="bg-[var(--surface)] py-14 sm:py-16 md:py-20">
             <div className="mx-auto grid max-w-6xl gap-12 px-3 sm:px-4 md:grid-cols-2 md:gap-14 md:px-6 lg:px-8">
               {service.fit && (
                 <motion.div
@@ -665,7 +665,7 @@ export default function ServicePage({ service }: { service: Service }) {
                 <Link
                   key={s.slug}
                   href={s.href}
-                  className="group overflow-hidden rounded-2xl border border-slate-200 bg-white transition hover:border-[var(--teal)]/40 hover:shadow-[0_12px_36px_rgba(15,23,42,0.06)]"
+                  className="group overflow-hidden rounded-2xl border border-slate-200 bg-[var(--surface)] transition hover:border-[var(--teal)]/40 hover:shadow-[0_12px_36px_rgba(15,23,42,0.06)]"
                 >
                   <div className="relative aspect-[16/10] overflow-hidden bg-slate-200">
                     <Image

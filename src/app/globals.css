@@ -15,8 +15,10 @@
   --gold-bright: var(--lime-bright);
   --ink: #051635;
   --muted: #5b6b7c;
-  --surface: #ffffff;
-  --surface-soft: #f4f7f8;
+  /* Brand-tinted surfaces — no pure white page fields */
+  --surface: #eef6f4;
+  --surface-soft: #e4eef0;
+  --surface-elevated: #f3f8f9;
   --showroom: #0b1220;
   --brand-gradient: linear-gradient(135deg, #7ed321 0%, #3db89a 48%, #2a7a9b 100%);
   --background: var(--surface);
@@ -134,7 +136,7 @@ body {
   overflow: hidden;
   color: var(--ink);
   /* Light field for the form; navy→teal bridge is a fixed-height top wash */
-  background-color: #eef6f4;
+  background-color: var(--surface);
   background-image:
     linear-gradient(
       180deg,
@@ -143,15 +145,15 @@ body {
       #1e5564 38%,
       #4a8a92 58%,
       #b7d8dc 78%,
-      #e8f2f3 92%,
-      #eef6f4 100%
+      var(--surface) 92%,
+      var(--surface) 100%
     ),
     linear-gradient(
       180deg,
-      #e8f2f3 0%,
-      #f7fbfa 40%,
-      #eef6f4 75%,
-      #e4eef0 100%
+      var(--surface) 0%,
+      var(--surface-elevated) 40%,
+      var(--surface) 75%,
+      var(--surface-soft) 100%
     );
   background-size:
     100% clamp(7rem, 20vh, 12rem),
