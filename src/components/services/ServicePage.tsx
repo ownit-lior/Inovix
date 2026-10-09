@@ -270,6 +270,132 @@ export default function ServicePage({ service }: { service: Service }) {
           </div>
         </section>
 
+        {/* Pillars — end-to-end value */}
+        {service.pillars && (
+          <section className="bg-white py-14 sm:py-16 md:py-20">
+            <div className="mx-auto max-w-6xl px-3 sm:px-4 md:px-6 lg:px-8">
+              <motion.div
+                className="mx-auto max-w-2xl text-center"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+              >
+                <p className="text-xs font-semibold tracking-[0.18em] text-[var(--teal)] uppercase sm:text-sm">
+                  {service.pillars.eyebrow}
+                </p>
+                <h2 className="mt-2 text-2xl font-extrabold text-[var(--ink)] sm:text-3xl md:text-4xl">
+                  {service.pillars.title}
+                </h2>
+                <p className="mt-3 text-sm leading-relaxed text-[var(--muted)] sm:text-base">
+                  {service.pillars.subtitle}
+                </p>
+              </motion.div>
+
+              <div className="mt-8 grid grid-cols-1 gap-4 sm:mt-10 sm:gap-5 md:grid-cols-3">
+                {service.pillars.items.map((item, i) => (
+                  <motion.div
+                    key={item.title}
+                    initial={{ opacity: 0, y: 24 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.3 }}
+                    transition={{ duration: 0.5, delay: i * 0.08 }}
+                    className="border-t-2 border-[var(--teal)]/70 pt-5 sm:pt-6"
+                  >
+                    <p className="text-xs font-bold tracking-[0.16em] text-[var(--teal)]">
+                      0{i + 1}
+                    </p>
+                    <h3 className="mt-2 text-lg font-bold text-[var(--ink)] sm:text-xl">
+                      {item.title}
+                    </h3>
+                    <p className="mt-2 text-sm leading-relaxed text-[var(--muted)]">
+                      {item.body}
+                    </p>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* Process steps */}
+        {service.process && (
+          <section className="bg-[var(--surface-soft)] py-14 sm:py-16 md:py-20">
+            <div className="mx-auto max-w-6xl px-3 sm:px-4 md:px-6 lg:px-8">
+              <motion.div
+                className="mx-auto max-w-2xl text-center"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+              >
+                <p className="text-xs font-semibold tracking-[0.18em] text-[var(--teal)] uppercase sm:text-sm">
+                  {service.process.eyebrow}
+                </p>
+                <h2 className="mt-2 text-2xl font-extrabold text-[var(--ink)] sm:text-3xl md:text-4xl">
+                  {service.process.title}
+                </h2>
+                <p className="mt-3 text-sm leading-relaxed text-[var(--muted)] sm:text-base">
+                  {service.process.subtitle}
+                </p>
+              </motion.div>
+
+              <ol className="relative mt-10 space-y-0 sm:mt-12">
+                <div
+                  className="pointer-events-none absolute top-3 bottom-3 right-[1.15rem] hidden w-px bg-gradient-to-b from-[var(--teal)]/50 via-[var(--teal)]/25 to-transparent md:block"
+                  aria-hidden
+                />
+                {service.process.steps.map((step, i) => (
+                  <motion.li
+                    key={step.title}
+                    initial={{ opacity: 0, y: 28 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.25 }}
+                    transition={{ duration: 0.5, delay: i * 0.05 }}
+                    className="relative grid gap-4 border-b border-slate-200/80 py-7 last:border-b-0 sm:gap-5 sm:py-8 md:grid-cols-[4.5rem_1fr] md:gap-8"
+                  >
+                    <div className="flex items-center gap-3 md:block">
+                      <span className="relative z-10 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[var(--navy)] text-sm font-bold text-white shadow-[0_0_0_4px_var(--surface-soft)] md:h-10 md:w-10">
+                        {i + 1}
+                      </span>
+                      <p className="text-xs font-semibold tracking-[0.14em] text-[var(--teal)] uppercase md:mt-3 md:hidden">
+                        שלב {i + 1}
+                      </p>
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-extrabold text-[var(--ink)] sm:text-2xl">
+                        {step.title}
+                      </h3>
+                      <p className="mt-1.5 text-sm font-medium text-[var(--teal)] sm:text-base">
+                        {step.subtitle}
+                      </p>
+                      <ul className="mt-4 space-y-2">
+                        {step.bullets.map((b) => (
+                          <li
+                            key={b}
+                            className="flex gap-2.5 text-sm leading-relaxed text-[var(--muted)] sm:text-[0.95rem]"
+                          >
+                            <span
+                              className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--lime)]"
+                              aria-hidden
+                            />
+                            <span>{b}</span>
+                          </li>
+                        ))}
+                      </ul>
+                      {step.note ? (
+                        <p className="mt-4 border-r-2 border-[var(--lime)]/70 pr-3 text-sm leading-relaxed text-[var(--ink)]/75 italic">
+                          {step.note}
+                        </p>
+                      ) : null}
+                    </div>
+                  </motion.li>
+                ))}
+              </ol>
+            </div>
+          </section>
+        )}
+
         {/* Offerings */}
         <section className="bg-white py-14 sm:py-16 md:py-20">
           <div className="mx-auto max-w-6xl px-3 sm:px-4 md:px-6 lg:px-8">
@@ -401,6 +527,123 @@ export default function ServicePage({ service }: { service: Service }) {
                   לעמוד חשמל ובית חכם
                 </Link>
               </motion.div>
+            </div>
+          </section>
+        )}
+
+        {/* Scenarios */}
+        {service.scenarios && (
+          <section className="bg-[var(--surface-soft)] py-14 sm:py-16 md:py-20">
+            <div className="mx-auto max-w-6xl px-3 sm:px-4 md:px-6 lg:px-8">
+              <motion.div
+                className="mx-auto max-w-2xl text-center"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+              >
+                <p className="text-xs font-semibold tracking-[0.18em] text-[var(--teal)] uppercase sm:text-sm">
+                  {service.scenarios.eyebrow}
+                </p>
+                <h2 className="mt-2 text-2xl font-extrabold text-[var(--ink)] sm:text-3xl md:text-4xl">
+                  {service.scenarios.title}
+                </h2>
+                <p className="mt-3 text-sm leading-relaxed text-[var(--muted)] sm:text-base">
+                  {service.scenarios.subtitle}
+                </p>
+              </motion.div>
+
+              <div className="mt-8 grid grid-cols-1 gap-3 sm:mt-10 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3">
+                {service.scenarios.items.map((item, i) => (
+                  <motion.article
+                    key={item.title}
+                    initial={{ opacity: 0, y: 22 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.2 }}
+                    transition={{ duration: 0.45, delay: i * 0.04 }}
+                    className="bg-white px-5 py-5 sm:px-6 sm:py-6"
+                  >
+                    <h3 className="text-base font-bold text-[var(--ink)] sm:text-lg">
+                      {item.title}
+                    </h3>
+                    <p className="mt-2 text-sm leading-relaxed text-[var(--muted)]">
+                      {item.description}
+                    </p>
+                  </motion.article>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* Fit + Support */}
+        {(service.fit || service.support) && (
+          <section className="bg-white py-14 sm:py-16 md:py-20">
+            <div className="mx-auto grid max-w-6xl gap-12 px-3 sm:px-4 md:grid-cols-2 md:gap-14 md:px-6 lg:px-8">
+              {service.fit && (
+                <motion.div
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.25 }}
+                  transition={{ duration: 0.55 }}
+                >
+                  <p className="text-xs font-semibold tracking-[0.18em] text-[var(--teal)] uppercase sm:text-sm">
+                    {service.fit.eyebrow}
+                  </p>
+                  <h2 className="mt-2 text-2xl font-extrabold text-[var(--ink)] sm:text-3xl">
+                    {service.fit.title}
+                  </h2>
+                  <p className="mt-3 text-sm leading-relaxed text-[var(--muted)] sm:text-base">
+                    {service.fit.body}
+                  </p>
+                  <ul className="mt-6 space-y-4">
+                    {service.fit.matches.map((m) => (
+                      <li key={m.label} className="border-r-2 border-[var(--teal)]/40 pr-4">
+                        <p className="text-sm font-bold text-[var(--ink)] sm:text-base">
+                          {m.label}
+                        </p>
+                        <p className="mt-1 text-sm leading-relaxed text-[var(--muted)]">
+                          {m.detail}
+                        </p>
+                      </li>
+                    ))}
+                  </ul>
+                </motion.div>
+              )}
+
+              {service.support && (
+                <motion.div
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.25 }}
+                  transition={{ duration: 0.55, delay: 0.06 }}
+                  className="rounded-3xl bg-[var(--navy)] px-6 py-8 text-white sm:px-8 sm:py-10"
+                >
+                  <p className="text-xs font-semibold tracking-[0.18em] text-[var(--lime-bright)] uppercase sm:text-sm">
+                    {service.support.eyebrow}
+                  </p>
+                  <h2 className="mt-2 text-2xl font-extrabold sm:text-3xl">
+                    {service.support.title}
+                  </h2>
+                  <p className="mt-3 text-sm leading-relaxed text-white/75 sm:text-base">
+                    {service.support.body}
+                  </p>
+                  <ul className="mt-6 space-y-3">
+                    {service.support.points.map((p) => (
+                      <li
+                        key={p}
+                        className="flex gap-3 text-sm leading-relaxed text-white/85 sm:text-[0.95rem]"
+                      >
+                        <span
+                          className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--lime-bright)]"
+                          aria-hidden
+                        />
+                        <span>{p}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </motion.div>
+              )}
             </div>
           </section>
         )}
