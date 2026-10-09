@@ -14,13 +14,13 @@ function LogoSlide({ brand, keyId }: { brand: Brand; keyId: string }) {
       key={keyId}
       className="flex h-16 w-[160px] shrink-0 items-center justify-center sm:h-[4.5rem] sm:w-[180px] md:w-[200px]"
     >
-      <div className="brand-band-logo flex h-full w-[92%] items-center justify-center rounded-2xl border px-4 shadow-[0_8px_24px_rgba(5,22,53,0.08)] transition duration-300 hover:shadow-[0_12px_28px_rgba(42,146,155,0.16)]">
+      <div className="brand-band-logo flex h-full w-[92%] items-center justify-center rounded-2xl border px-4 shadow-[0_8px_24px_rgba(0,0,0,0.2)] transition duration-300 hover:shadow-[0_12px_28px_rgba(42,146,155,0.25)]">
         <Image
           src={brand.logo}
           alt={brand.name}
           width={220}
           height={72}
-          className="max-h-9 w-auto max-w-[130px] object-contain opacity-85 transition duration-300 hover:opacity-100 sm:max-h-10 sm:max-w-[150px]"
+          className="max-h-9 w-auto max-w-[130px] object-contain opacity-90 transition duration-300 hover:opacity-100 sm:max-h-10 sm:max-w-[150px]"
         />
       </div>
     </li>
@@ -34,7 +34,7 @@ export default function Brands() {
   return (
     <section
       id="brands"
-      className="relative overflow-hidden pb-16 pt-4 sm:pb-20 sm:pt-6 md:pb-24"
+      className="relative overflow-hidden pb-16 pt-2 sm:pb-20 sm:pt-4 md:pb-24"
       aria-labelledby="brands-heading"
     >
       <div className="relative mx-auto max-w-6xl px-3 sm:px-4 md:px-6 lg:px-8">
@@ -45,17 +45,17 @@ export default function Brands() {
           transition={{ duration: 0.55 }}
           className="text-center"
         >
-          <p className="text-xs font-semibold tracking-[0.18em] text-[var(--teal)] uppercase sm:text-sm sm:tracking-[0.22em]">
+          <p className="text-xs font-semibold tracking-[0.18em] text-[var(--lime-bright)] uppercase sm:text-sm sm:tracking-[0.22em]">
             שותפים ומותגים
           </p>
           <h2
             id="brands-heading"
-            className="mt-2 text-2xl font-extrabold text-[var(--ink)] sm:mt-3 sm:text-3xl"
+            className="mt-2 text-2xl font-extrabold text-white sm:mt-3 sm:text-3xl"
           >
             המותגים שאנחנו עובדים איתם
           </h2>
           <div className="mx-auto mt-4 h-px w-14 bg-[var(--lime)]/70" />
-          <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-[var(--muted)] sm:text-base">
+          <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-white/70 sm:text-base">
             ציוד קצה ותשתיות מהמותגים המובילים בעולם — אבטחה, תקשורת, אודיו
             וידאו, חשמל ובית חכם.
           </p>
@@ -77,12 +77,11 @@ export default function Brands() {
           }
         }}
       >
-        {/* Edge fades match the teal brand-band */}
         <div
           className="pointer-events-none absolute inset-y-0 left-0 z-10 w-12 sm:w-20 md:w-28"
           style={{
             background:
-              "linear-gradient(to right, #c5e4e8 0%, rgba(197,228,232,0) 100%)",
+              "linear-gradient(to right, var(--navy) 0%, rgba(5,22,53,0) 100%)",
           }}
           aria-hidden
         />
@@ -90,7 +89,7 @@ export default function Brands() {
           className="pointer-events-none absolute inset-y-0 right-0 z-10 w-12 sm:w-20 md:w-28"
           style={{
             background:
-              "linear-gradient(to left, #a8d4da 0%, rgba(168,212,218,0) 100%)",
+              "linear-gradient(to left, var(--navy) 0%, rgba(5,22,53,0) 100%)",
           }}
           aria-hidden
         />

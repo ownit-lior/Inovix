@@ -26,7 +26,7 @@ export default function Home() {
           <HomeProcessScroll />
           <Testimonials />
           <HomeBlog />
-          <div className="brand-band relative -mt-px">
+          <div className="brand-band relative -mt-px section-seam-y">
             <Contact />
             <Brands />
           </div>

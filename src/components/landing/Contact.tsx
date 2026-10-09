@@ -38,7 +38,7 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="relative pt-[clamp(5.5rem,16vh,9rem)] pb-14 sm:pb-16 md:pb-24 lg:pb-28"
+      className="relative py-14 sm:py-16 md:py-24 lg:py-28"
     >
       <div className="relative mx-auto grid max-w-6xl grid-cols-1 gap-8 px-3 sm:gap-10 sm:px-4 md:grid-cols-2 md:gap-16 md:px-6 lg:px-8">
         <motion.div
@@ -47,24 +47,24 @@ export default function Contact() {
           viewport={{ once: true, amount: 0.25 }}
           transition={{ duration: 0.6 }}
         >
-          <p className="text-xs font-semibold tracking-[0.18em] text-[var(--teal)] uppercase sm:text-sm sm:tracking-[0.22em]">
+          <p className="text-xs font-semibold tracking-[0.18em] text-[var(--lime-bright)] uppercase sm:text-sm sm:tracking-[0.22em]">
             ייעוץ ראשוני
           </p>
-          <h2 className="mt-2 text-2xl font-extrabold text-[var(--ink)] sm:mt-3 sm:text-3xl md:text-4xl">
+          <h2 className="mt-2 text-2xl font-extrabold text-white sm:mt-3 sm:text-3xl md:text-4xl">
             בואו נתחיל בייעוץ לבית או לעסק שלכם
           </h2>
-          <div className="mt-4 h-px w-14 bg-[var(--lime)]/60" />
-          <p className="mt-4 text-sm leading-relaxed text-[var(--muted)] sm:text-base">
+          <div className="mt-4 h-px w-14 bg-[var(--lime)]/70" />
+          <p className="mt-4 text-sm leading-relaxed text-white/70 sm:text-base">
             השאירו פרטים ונחזור אליכם לשיחת ייעוץ. נבין את הצרכים — ונציע תכנון
             וביצוע מדויקים לאבטחה, תקשורת, אודיו וידאו ובית חכם.
           </p>
           <a
             href={`tel:${CONTACT.phoneTel}`}
-            className="mt-5 inline-flex items-center gap-2.5 text-lg font-extrabold tracking-wide text-[var(--ink)] transition hover:text-[var(--teal)] sm:mt-6 sm:text-xl"
+            className="mt-5 inline-flex items-center gap-2.5 text-lg font-extrabold tracking-wide text-white transition hover:text-[var(--lime-bright)] sm:mt-6 sm:text-xl"
             dir="ltr"
           >
             <span
-              className="flex h-9 w-9 items-center justify-center rounded-full bg-[var(--teal)]/12 text-[var(--teal)]"
+              className="flex h-9 w-9 items-center justify-center rounded-full bg-[var(--teal)]/25 text-[var(--lime-bright)]"
               aria-hidden
             >
               <svg viewBox="0 0 24 24" className="h-4 w-4" fill="currentColor">
@@ -73,7 +73,7 @@ export default function Contact() {
             </span>
             {CONTACT.phoneDisplay}
           </a>
-          <ul className="mt-6 space-y-3 text-sm text-[var(--ink)]/80 sm:mt-8">
+          <ul className="mt-6 space-y-3 text-sm text-white/80 sm:mt-8">
             <li className="flex items-center gap-2">
               <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--lime)]" />
               ייעוץ מקצועי ללא התחייבות
@@ -93,7 +93,7 @@ export default function Contact() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.55, delay: 0.12 }}
-            className="relative mt-8 hidden aspect-[16/10] overflow-hidden rounded-2xl border border-[var(--teal)]/15 shadow-[0_16px_40px_rgba(5,22,53,0.08)] md:mt-10 md:block"
+            className="relative mt-8 hidden aspect-[16/10] overflow-hidden rounded-2xl border border-white/15 shadow-[0_16px_40px_rgba(0,0,0,0.35)] md:mt-10 md:block"
           >
             <Image
               src={IMAGES.home.contact}
@@ -107,7 +107,7 @@ export default function Contact() {
 
         <motion.form
           onSubmit={onSubmit}
-          className="brand-band-panel overflow-hidden rounded-2xl border shadow-[0_20px_50px_rgba(5,22,53,0.12)] sm:rounded-3xl"
+          className="brand-band-panel overflow-hidden rounded-2xl border shadow-[0_24px_60px_rgba(0,0,0,0.35)] sm:rounded-3xl"
           initial={{ opacity: 0, y: 48 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
@@ -130,10 +130,10 @@ export default function Contact() {
 
           <div className="relative p-4 sm:p-6 md:p-8">
             <div
-              className="pointer-events-none absolute inset-0 opacity-80"
+              className="pointer-events-none absolute inset-0 opacity-90"
               style={{
                 background:
-                  "radial-gradient(ellipse 60% 45% at 0% 0%, rgba(42,146,155,0.1), transparent 55%), radial-gradient(ellipse 50% 40% at 100% 100%, rgba(126,211,33,0.08), transparent 50%)",
+                  "radial-gradient(ellipse 60% 45% at 0% 0%, rgba(42,146,155,0.14), transparent 55%), radial-gradient(ellipse 50% 40% at 100% 100%, rgba(126,211,33,0.1), transparent 50%)",
               }}
               aria-hidden
             />
@@ -163,7 +163,7 @@ export default function Contact() {
                     name="message"
                     rows={4}
                     required
-                    className="brand-band-input w-full resize-none rounded-xl border border-[var(--teal)]/25 px-3 py-3 text-base outline-none transition focus:border-[var(--teal)] focus:ring-2 focus:ring-[var(--teal)]/20 sm:px-4"
+                    className="brand-band-input w-full resize-none rounded-xl border px-3 py-3 text-base text-[var(--ink)] outline-none transition focus:border-[var(--teal)] focus:ring-2 focus:ring-[var(--teal)]/25 sm:px-4"
                   />
                 </label>
                 {error ? (
@@ -207,7 +207,7 @@ function Field({
         name={name}
         type={type}
         required={required}
-        className="brand-band-input w-full rounded-xl border border-[var(--teal)]/25 px-3 py-3 text-base outline-none transition focus:border-[var(--teal)] focus:ring-2 focus:ring-[var(--teal)]/20 sm:px-4"
+        className="brand-band-input w-full rounded-xl border px-3 py-3 text-base text-[var(--ink)] outline-none transition focus:border-[var(--teal)] focus:ring-2 focus:ring-[var(--teal)]/25 sm:px-4"
       />
     </label>
   );

@@ -130,38 +130,12 @@ body {
   background: transparent;
 }
 
-/* Contact + brands: navy handoff → clear teal brand field (not near-white) */
+/* Contact + brands: same navy brand atmosphere as HomeBlog (no white field) */
 .brand-band {
   position: relative;
   overflow: hidden;
-  color: var(--ink);
-  --band: #c5e4e8;
-  --band-mid: #d2ebed;
-  --band-deep: #a8d4da;
-  background-color: var(--band);
-  background-image:
-    linear-gradient(
-      180deg,
-      var(--navy) 0%,
-      #0c2d4a 16%,
-      #1a5564 34%,
-      #2a7a86 52%,
-      #5fa8b0 70%,
-      var(--band-deep) 86%,
-      var(--band) 100%
-    ),
-    linear-gradient(
-      165deg,
-      var(--band-mid) 0%,
-      var(--band) 38%,
-      #b8dde2 72%,
-      var(--band-deep) 100%
-    );
-  background-size:
-    100% clamp(7rem, 20vh, 12rem),
-    100% 100%;
-  background-repeat: no-repeat;
-  background-position: top, top;
+  color: #fff;
+  background: var(--navy);
 }
 
 .brand-band::before {
@@ -171,29 +145,15 @@ body {
   pointer-events: none;
   z-index: 0;
   background:
-    radial-gradient(ellipse 75% 32% at 10% 8%, rgba(42, 146, 155, 0.45), transparent 55%),
-    radial-gradient(ellipse 55% 26% at 90% 12%, rgba(126, 211, 33, 0.22), transparent 50%),
-    radial-gradient(ellipse 70% 45% at 6% 48%, rgba(42, 146, 155, 0.28), transparent 55%),
-    radial-gradient(ellipse 60% 40% at 94% 55%, rgba(126, 211, 33, 0.16), transparent 52%),
-    radial-gradient(ellipse 55% 35% at 50% 88%, rgba(31, 95, 120, 0.18), transparent 50%);
-}
-
-/* Soft navy wash into footer from the light band */
-.brand-band::after {
-  content: "";
-  position: absolute;
-  inset-inline: 0;
-  bottom: 0;
-  height: clamp(5rem, 16vh, 10rem);
-  pointer-events: none;
-  z-index: 1;
-  background: linear-gradient(
-    180deg,
-    transparent 0%,
-    rgba(5, 22, 53, 0.18) 40%,
-    rgba(5, 22, 53, 0.55) 72%,
-    var(--navy) 100%
-  );
+    linear-gradient(
+      145deg,
+      rgba(42, 146, 155, 0.28) 0%,
+      rgba(5, 22, 53, 0.2) 48%,
+      rgba(126, 211, 33, 0.12) 100%
+    ),
+    radial-gradient(circle at 14% 18%, rgba(42, 146, 155, 0.32), transparent 42%),
+    radial-gradient(circle at 88% 42%, rgba(126, 211, 33, 0.14), transparent 40%),
+    radial-gradient(circle at 30% 78%, rgba(42, 122, 155, 0.2), transparent 45%);
 }
 
 .brand-band > * {
@@ -201,24 +161,26 @@ body {
   z-index: 2;
 }
 
-/* Elevated panels inside the teal contact/brands band */
+/* Lead form card on the navy band */
 .brand-band-panel {
-  background: color-mix(in srgb, var(--teal) 14%, #dff0f2);
-  border-color: color-mix(in srgb, var(--teal) 40%, transparent);
+  background: rgba(255, 255, 255, 0.97);
+  border-color: rgba(42, 146, 155, 0.35);
+  color: var(--ink);
 }
 
 .brand-band-input {
-  background: color-mix(in srgb, var(--teal) 8%, #f2fafb);
+  background: #e8f4f5;
+  border-color: rgba(42, 146, 155, 0.28);
 }
 
 .brand-band-logo {
-  background: color-mix(in srgb, var(--teal) 16%, #e8f6f7);
-  border-color: color-mix(in srgb, var(--teal) 40%, transparent);
+  background: rgba(255, 255, 255, 0.96);
+  border-color: rgba(42, 146, 155, 0.35);
 }
 
 .brand-band-logo:hover {
-  background: color-mix(in srgb, var(--lime) 14%, #e8f6f7);
-  border-color: color-mix(in srgb, var(--lime) 55%, transparent);
+  background: #fff;
+  border-color: rgba(126, 211, 33, 0.55);
 }
 
 /* Shared navy brand atmosphere — features → showroom → testimonials → contact */
@@ -295,25 +257,13 @@ body {
   );
 }
 
-/* Navy blog → brand-band: dissolve into the same navy so seams disappear */
+/* Blog → contact: keep continuous navy (no light flash) */
 .section-blend-to-light {
   position: relative;
 }
 
 .section-blend-to-light::after {
-  content: "";
-  pointer-events: none;
-  position: absolute;
-  inset-inline: 0;
-  bottom: -1px;
-  height: clamp(3rem, 8vh, 5.5rem);
-  z-index: 3;
-  background: linear-gradient(
-    180deg,
-    transparent 0%,
-    rgba(5, 22, 53, 0.55) 55%,
-    var(--navy) 100%
-  );
+  content: none;
 }
 
 /* Light section pulls navy wash from above */
